@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 card background">
+            <div class="card-body">
+                <p class="heading">Registration</p>
+                <form [formGroup]="registrationForm" >
+                    <div class="form-group">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6">
+                                <div class="input-group mb-2 col-md-4">
+                                    <input type="text" class="form-control" placeholder="First Name"  required formControlName="firstName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-2 col-md-4">
+                                    <input type="text" class="form-control" placeholder="Last Name"  required formControlName="lastName">
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-2  col-md-6">
+                                <input type="text" class="form-control" placeholder="E-mail"  required formControlName="email">
+                            </div> 
+                            <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger erroMsg">
+                                E-mail is not valid
+                              </div>
+
+                            <div class="input-group mb-2  col-md-6">
+                                <input type="text" class="form-control" placeholder="Mobile Number"  required formControlName="mobileNumber">
+                            </div> 
+
+                            <div class="input-group mb-2  col-md-6">
+                                <input type="text" class="form-control" placeholder="Pharmacy Name"  required formControlName="pharmacyName">
+                            </div> 
+
+                            <div class="col-md-6">
+                                <div class="input-group mb-2 col-md-4">
+                                    <input [(ngModel)]="newPassword"  type="password" class="form-control" placeholder="New Password"  required formControlName="password">
+                                </div>
+                                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger erroMsg">
+                                    <div *ngIf="password?.errors">
+                                     Password can't be  Empty
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-2 col-md-4">
+                                    <input [(ngModel)]="confirmNewPassword" type="password" class="form-control" placeholder="Confirm Password"  required formControlName="confirmPassword">
+                                </div>
+                                <div *ngIf="confirmPassword?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger erroMsg">
+                                    <div *ngIf="confirmPassword?.errors">
+                                        Password can't be  Empty
+                                    </div>
+                                  </div>
+                                  <div *ngIf="confirmNewPassword != newPassword &&  confirmNewPassword !=null && newPassword !=null && confirmNewPassword !=''  " class="alert alert-danger erroMsg">
+                                    New Password and Confirm Password are not match
+                                  </div>
+                            </div> 
+                            
+                            
+                            <div class="col-md-1"> 
+                                    <input type="checkbox" [(ngModel)]="privacyCheckNgModel" formControlName="privacyCheck" >
+                            </div>
+                            <div class="col-md-11">
+                                <div class="input-group mb-2 ">
+                                    <p style="color: black;">I accept the <b> Terms of Use</b> & <b>Privacy Policy</b></p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary loingBtn" [disabled]="confirmNewPassword != newPassword  ||  confirmNewPassword == null || newPassword == null || !privacyCheckNgModel " (click)="onRegister()">Register Now</button>
+                        </div>
+                      </div>
+                   </form>
+            </div>
+        
+      </div>
+    </div>
+</div>
+
+

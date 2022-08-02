@@ -1,0 +1,33 @@
+{
+	"AUTH": {
+		"LOGIN": {
+			"Heading": "Loginseite",
+			"Login": "Anmeldung",
+			"PasswordEmpty": "Passwort kann nicht leer sein",
+			"PasswordPlasholder": "Passwort",
+			"SignUp": "Anmelden",
+			"UserDoNotHaveAccount": "Wenn Sie kein Konto haben?",
+			"UserNameInvalid": "Der Benutzername sollte eine gültige E-Mail-Adresse sein",
+			"UserNamePlaseholder": "Nutzername"
+		},
+		"SIGNUP": {
+			"ConfirmPasswordPlaseholder": "Passwort bestätigen",
+			"Heading": "Anmeldeseite",
+			"Login": "Anmeldung",
+			"NewPasswordPlasholder": "Neues Kennwort",
+			"PasswordEmpty": "Passwort kann nicht leer sein",
+			"PasswordNotEqual": "Neues Passwort Ungleich Passwort bestätigen",
+			"SignUp": "Anmelden",
+			"UserAlreadyHaveAccount": "Wenn Sie bereits ein Konto haben?",
+			"UserNameInvalid": "Der Benutzername sollte eine gültige E-Mail-Adresse sein",
+			"UserNamePlaseholder": "Nutzername"
+		}
+	},
+	"HOME": {
+		"BODY": "",
+		"SELECT": "",
+		"TEST": "",
+		"TEXT": "",
+		"TITLE": ""
+	}
+}

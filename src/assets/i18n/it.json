@@ -1,0 +1,33 @@
+{
+	"AUTH": {
+		"LOGIN": {
+			"Heading": "Pagina di login",
+			"Login": "Accesso",
+			"PasswordEmpty": "La password non può essere vuota",
+			"PasswordPlasholder": "Parola d'ordine",
+			"SignUp": "Iscriviti",
+			"UserDoNotHaveAccount": "Se non hai un account?",
+			"UserNameInvalid": "Il nome utente deve essere un'e-mail valida",
+			"UserNamePlaseholder": "Nome utente"
+		},
+		"SIGNUP": {
+			"ConfirmPasswordPlaseholder": "Conferma password",
+			"Heading": "ISCRIVITI ALLA PAGINA",
+			"Login": "Accesso",
+			"NewPasswordPlasholder": "Nuova password",
+			"PasswordEmpty": "La password non può essere vuota",
+			"PasswordNotEqual": "Nuova password Diversa da Conferma password",
+			"SignUp": "Iscriviti",
+			"UserAlreadyHaveAccount": "Se hai già un account?",
+			"UserNameInvalid": "Il nome utente deve essere un'e-mail valida",
+			"UserNamePlaseholder": "Nome utente"
+		}
+	},
+	"HOME": {
+		"BODY": "",
+		"SELECT": "",
+		"TEST": "",
+		"TEXT": "",
+		"TITLE": ""
+	}
+}

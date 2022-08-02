@@ -1,0 +1,33 @@
+{
+	"AUTH": {
+		"LOGIN": {
+			"Heading": "ログインページ",
+			"Login": "ログイン",
+			"PasswordEmpty": "パスワードは空にできません",
+			"PasswordPlasholder": "パスワード",
+			"SignUp": "サインアップ",
+			"UserDoNotHaveAccount": "アカウントをお持ちでない場合は？",
+			"UserNameInvalid": "ユーザー名は有効なメールアドレスである必要があります",
+			"UserNamePlaseholder": "ユーザー名"
+		},
+		"SIGNUP": {
+			"ConfirmPasswordPlaseholder": "パスワードを認証する",
+			"Heading": "サインアップページ",
+			"Login": "ログイン",
+			"NewPasswordPlasholder": "新しいパスワード",
+			"PasswordEmpty": "パスワードは空にできません",
+			"PasswordNotEqual": "新しいパスワードがパスワードの確認と等しくない",
+			"SignUp": "サインアップ",
+			"UserAlreadyHaveAccount": "すでにアカウントをお持ちの場合は？",
+			"UserNameInvalid": "ユーザー名は有効なメールアドレスである必要があります",
+			"UserNamePlaseholder": "ユーザー名"
+		}
+	},
+	"HOME": {
+		"BODY": "",
+		"SELECT": "",
+		"TEST": "",
+		"TEXT": "",
+		"TITLE": ""
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"AUTH": {
+		"LOGIN": {
+			"Heading": "LOGIN PAGE",
+			"Login": "Login",
+			"PasswordEmpty": "Password cannot be empty",
+			"PasswordPlasholder": "Password",
+			"SignUp": "Sign Up",
+			"UserDoNotHaveAccount": "If you have not account ?",
+			"UserNameInvalid": "Username should be a valid email",
+			"UserNamePlaseholder": "UserName"
+		},
+		"SIGNUP": {
+			"ConfirmPasswordPlaseholder": "Confirm Password",
+			"Heading": "SIGN UP PAGE",
+			"Login": "Login",
+			"NewPasswordPlasholder": "New Password",
+			"PasswordEmpty": "Password cannot be empty",
+			"PasswordNotEqual": "New Password Not equal to Confirm password",
+			"SignUp": "Sign Up",
+			"UserAlreadyHaveAccount": "If you have already an account ?",
+			"UserNameInvalid": "Username should be a valid email",
+			"UserNamePlaseholder": "UserName"
+		}
+	},
+	"HOME": {
+		"BODY": "",
+		"SELECT": "",
+		"TEST": "",
+		"TEXT": "",
+		"TITLE": ""
+	}
+}
