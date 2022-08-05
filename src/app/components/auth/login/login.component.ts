@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.primengConfig.ripple = true;
 
-  //  this.isBlock=true;
-  //  await this.delay(4000);
-  //  this.isBlock=false;
+   this.isBlock=true;
+   await this.delay(4000);
+   this.isBlock=false;
 
   }
  delay(ms: number) {
