@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthorizationsService } from 'src/app/services/authorizations.service';
 
 @Component({
@@ -61,7 +62,7 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get('pharmacyRegisterationNumber')
   }
 
-  constructor(private service:AuthorizationsService) { }
+  constructor(private service:AuthorizationsService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -129,6 +130,11 @@ export class RegistrationComponent implements OnInit {
     this.isSecondSideFast = true;
     console.log( this.isSecondSideFast )
   }
+  
+  navigateToLogin(){
+    this.router.navigateByUrl('/login');
+    }
+
 
   async toastFunction(title:string,isSuccess:boolean){
     this.toastContent= title;
