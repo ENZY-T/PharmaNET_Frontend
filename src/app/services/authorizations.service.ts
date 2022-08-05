@@ -17,6 +17,7 @@ export class AuthorizationsService {
     console.log(data);
     return this.http.post(`${this.baseURL}/login`, data);
   }
+  
   userSignUp(data: any): Observable<any> {
     console.log(data);
     return this.http.post(`${this.baseURL}/signUp`, data);
@@ -26,4 +27,12 @@ export class AuthorizationsService {
     return this.http.post(`${this.baseURL}/register`, data);
   }
 
+  customerRegister(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}/customerRegister`, data);
+  }
+  pharmacyRegister(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}/pharmacyRegister`, data);
+  }
 }

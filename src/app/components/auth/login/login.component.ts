@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
+  
   isShowToast:boolean =false;
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
@@ -82,8 +83,8 @@ export class LoginComponent implements OnInit {
   
   async navigateToSignUp(){
   //  this.remove();
-    this.toastFunction("Failed to add",false);
-    this.router.navigateByUrl('/signUp');
+   // this.toastFunction("Failed to add",false);
+    this.router.navigateByUrl('/registration');
   }
 
  async toastFunction(title:string,isSuccess:boolean){
