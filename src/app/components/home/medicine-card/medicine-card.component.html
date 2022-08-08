@@ -1,0 +1,39 @@
+
+
+
+
+<p-card header="" subheader="" [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+            <p-fileUpload name="demo[]"
+                    accept="image/*" (onUpload)="onUpload($event)" [auto]="true" >
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+            </p-fileUpload>
+
+
+    </ng-template>
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm mb-4">
+                <input type="text" [(ngModel)]="name" pInputText placeholder="Name">         
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm mb-4" >
+                <input type="text" [(ngModel)]="price" pInputText placeholder="Price">   
+             </div>
+        </div>
+        <div class="row">
+             <div class="col-sm">
+                <p-rating [(ngModel)]="ratingNumber"></p-rating>
+              </div>
+        </div>
+    </div>
+        <ng-template pTemplate="footer">
+        <p-button label="Save" icon="pi pi-check" (click)="onSave()"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" (click)="onCancel()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+    </ng-template>
+</p-card>

@@ -7,6 +7,7 @@ import { LoadingUiModule } from './modules/loading-ui/loading-ui.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TestComponent } from './test/test.component';
 import { NavigationbarModule } from './modules/navigationbar/navigationbar.module';
+import { HomeModule } from './components/home/home.module';
 
 //translate dependencies
 // import { HttpClient } from '@angular/common/http';
@@ -19,6 +20,7 @@ import { NavigationbarModule } from './modules/navigationbar/navigationbar.modul
   declarations: [
     AppComponent,
     TestComponent
+
     
   ],
   imports: [
@@ -29,6 +31,7 @@ import { NavigationbarModule } from './modules/navigationbar/navigationbar.modul
     LoadingUiModule,
     ReactiveFormsModule,
     NavigationbarModule,
+    HomeModule
     
     // TranslateModule.forRoot(
     //   { loader:{

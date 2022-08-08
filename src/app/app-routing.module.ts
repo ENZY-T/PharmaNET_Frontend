@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { MedicineCardComponent } from './components/home/medicine-card/medicine-card.component';
 import { LocalizationComponent } from './modules/localization/localization.component';
 import { TestComponent } from './test/test.component';
 
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'test', component: TestComponent },
   { path: 'changeLanguage', component: LocalizationComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'medicineCard', component: MedicineCardComponent },
 
 ];
 
