@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MedicineCardComponent } from './medicine-card/medicine-card.component';
+import { MedicineCardComponent } from './medicine-card-edit/medicine-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
@@ -8,9 +8,10 @@ import {RatingModule} from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import { MedicineCardPrevComponent } from './medicine-card-prev/medicine-card-prev.component';
 
 @NgModule({
-  declarations: [MedicineCardComponent, DashboardComponent],
+  declarations: [MedicineCardComponent, DashboardComponent, MedicineCardPrevComponent],
   imports: [
     CommonModule,
     CardModule,
@@ -21,6 +22,6 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
 
   ],
-  exports:[MedicineCardComponent,DashboardComponent],
+  exports:[MedicineCardComponent,DashboardComponent,MedicineCardPrevComponent],
 })
 export class HomeModule { }
