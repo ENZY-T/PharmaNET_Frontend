@@ -1,10 +1,11 @@
 
-
 .heading{
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 30px;
-}
 
+}
 .background{
     background-image: url("https://images.theconversation.com/files/256057/original/file-20190129-108364-17hlc1x.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
 
@@ -12,4 +13,20 @@
 .register{
     min-height: 60vh;
     background-color: red;
+}
+.leftRegister{
+  
+    height: 65vh;
+    background-color: blue;
+    border-radius:  30px 0px 0px 30px;
+    background-image: url('https://thumbs.dreamstime.com/b/doctor-medical-background-24834402.jpg');
+
+}
+.righRegister{
+   
+    height: 65vh;
+    background-color:rgba(124, 109, 109, 0.212);
+    border-radius:  0px 30px 30px 0px;
+    background-image: url("https://images.theconversation.com/files/256057/original/file-20190129-108364-17hlc1x.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
+
 }

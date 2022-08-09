@@ -10,6 +10,8 @@ import { AuthorizationsService } from 'src/app/services/authorizations.service';
 })
 export class RegistrationComponent implements OnInit {
 
+  selectedValue: String = 'val1';
+
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
 
@@ -25,9 +27,9 @@ export class RegistrationComponent implements OnInit {
   role?:String;
   registrationForm = new FormGroup({
 
-    firstName : new FormControl('isuru'),
-    lastName : new FormControl('lakshan'),
-    email: new FormControl('isuru@gmail.com', [Validators.required, Validators.email]),
+    firstName : new FormControl(''),
+    lastName : new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
     mobileNumber : new FormControl(),
     pharmacyName : new FormControl(),
     password: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -69,6 +71,9 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+  onChange(e:any){
+    console.log(this.selectedValue);
   }
   onCustomerRegister(){
     console.log("on reg customer");
