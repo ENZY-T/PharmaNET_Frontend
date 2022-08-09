@@ -10,6 +10,9 @@ import { AuthorizationsService } from 'src/app/services/authorizations.service';
 })
 export class RegistrationComponent implements OnInit {
 
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
+
   isShowToast:boolean =false;
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
@@ -19,12 +22,12 @@ export class RegistrationComponent implements OnInit {
   privacyCheckNgModel:boolean =false;
   isFirstSideFast:boolean =false;
   isSecondSideFast:boolean =false;
-  
+  role?:String;
   registrationForm = new FormGroup({
 
-    firstName : new FormControl(),
-    lastName : new FormControl(),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    firstName : new FormControl('isuru'),
+    lastName : new FormControl('lakshan'),
+    email: new FormControl('isuru@gmail.com', [Validators.required, Validators.email]),
     mobileNumber : new FormControl(),
     pharmacyName : new FormControl(),
     password: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -65,22 +68,40 @@ export class RegistrationComponent implements OnInit {
   constructor(private service:AuthorizationsService,private router: Router) { }
 
   ngOnInit(): void {
+    
   }
   onCustomerRegister(){
-    this.toastFunction("Customer registered successfully",true);
-
+    console.log("on reg customer");
+    this.isBlock=true;
+    this.role ='customer';
     let data={
       FName:this.firstName?.value ,
       LName: this.lastName?.value,
       Email :this.email?.value,
       Password :this.password?.value,
+      confirmPassword :this.confirmPassword?.value,
+      role:this.role
      }
   
      this.service.customerRegister(data)
-     .subscribe(res => {
-          console.log(res);
-     });
+     .subscribe(
+      (val) => {
+        this.toastFunction("Customer registered successfully",true);
 
+          console.log("POST call successful value returned in body", val);
+          this.isBlock=false;
+      },
+      response => {
+        this.toastFunction("Customer registered Faild",false);
+
+          console.log("POST call in error", response);
+          this.isBlock=false;
+      },
+      () => {
+          console.log("The POST observable is now completed.");
+      });
+
+     
   }
   onPharmacyRegister(){
     this.toastFunction("Pharmacy registered successfully",true);
@@ -115,7 +136,7 @@ export class RegistrationComponent implements OnInit {
   
      this.service.register(data)
      .subscribe(res => {
-          console.log(res);
+          console.log(res.st);
      });
   }
   onNavigateFirstSide(){

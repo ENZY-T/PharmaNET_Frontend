@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   isToastTypeSuccess:boolean =true ;
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(1)])
+    username: new FormControl('isuru123@gmail.com', [Validators.required, Validators.email]),
+    password: new FormControl('Isu@123', [Validators.required, Validators.minLength(1)])
   })
 
   get username(){
@@ -48,9 +48,9 @@ export class LoginComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.primengConfig.ripple = true;
 
-   this.isBlock=true;
-   await this.delay(4000);
-   this.isBlock=false;
+  //  this.isBlock=true;
+  //  await this.delay(4000);
+  //  this.isBlock=false;
 
   }
  delay(ms: number) {
@@ -69,16 +69,32 @@ export class LoginComponent implements OnInit {
     console.log(name);
   }
   async onLogin(){
-   // this.add();
+    this.isBlock=true;
     let data={
      email:this.username?.value,
      password:this.password?.value
     }
     this.service.userLogin(data)
-    .subscribe(res => {
-         console.log(res);
-    });
-   this.toastFunction("add successfully",true);
+    .subscribe(
+      (val) => {
+          console.log("POST call successful value returned in body", val);
+        //  this.isBlock=false;
+      },
+      response => {
+          console.log(response)
+          console.log(response.status)
+          if(response.status == 200){
+            this.toastFunction("Customer log successfully",true);
+            this.isBlock=false;
+          }
+          else{
+            this.toastFunction("Customer login Faild",false);
+            this.isBlock=false;
+          }
+      },
+      () => {
+          console.log("The POST observable is now completed.");
+      });
    }
   
   async navigateToSignUp(){

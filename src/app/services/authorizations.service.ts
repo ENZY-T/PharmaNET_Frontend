@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
+import {HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/';
 import { configData } from '../assets/config';
 
@@ -23,13 +23,13 @@ export class AuthorizationsService {
     return this.http.post(`${this.baseURL}/signUp`, data);
   }
   register(data: any): Observable<any> {
-    console.log(data);
+ 
     return this.http.post(`${this.baseURL}/register`, data);
   }
 
   customerRegister(data: any): Observable<any> {
-    console.log(data);
-    return this.http.post(`${this.baseURL}/customerRegister`, data);
+    //console.log(data);
+    return this.http.post(`${this.baseURL}/register`, data);
   }
   pharmacyRegister(data: any): Observable<any> {
     console.log(data);

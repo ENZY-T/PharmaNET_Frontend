@@ -1,5 +1,5 @@
 
 export enum configData {
   
-    baseURL ="https://"
+    baseURL ="https://localhost:5001/api/auth"
 }
