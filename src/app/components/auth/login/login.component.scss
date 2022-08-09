@@ -1,5 +1,3 @@
-
-
 .cardConfig{
     margin: 10px;
     margin-left: 0px;
@@ -38,7 +36,7 @@
   
     height: 65vh;
     background-color: blue;
-    border-radius:  30px 0px 0px 30px;
+    border-radius:  12px 0px 0px 12px;
     background-image: url('https://thumbs.dreamstime.com/b/doctor-medical-background-24834402.jpg');
 
 }
@@ -46,14 +44,14 @@
    
     height: 65vh;
     background-color:rgba(124, 109, 109, 0.212);
-    border-radius:  0px 30px 30px 0px;
+    border-radius:  0px 12px 12px 0px;
     background-image: url("https://images.theconversation.com/files/256057/original/file-20190129-108364-17hlc1x.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
 
 }
 
 @media (max-width: 768px) { 
     .rightLogin{
-        border-radius:  30px 30px 30px 30px;
+        border-radius:  12px 12px 12px 12px;
         margin: 10px;
     }
  }
