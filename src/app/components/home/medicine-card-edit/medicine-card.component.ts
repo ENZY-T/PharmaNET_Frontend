@@ -12,6 +12,7 @@ export class MedicineCardComponent implements OnInit {
   name:String ='';
   price:number=0;
 
+  fileName?:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -37,7 +38,29 @@ export class MedicineCardComponent implements OnInit {
     for(let file of event.files) {
         this.uploadedFiles.push(file);
     }
+}
+
+myUploader(event:any, form:any){
+  for(let file of event.files) {
+      this.uploadedFiles.push(file);
+  }
+  form.clear();
+}
+
+onFileSelected(event:any) {
+
+  const file:File = event.target.files[0];
+
+  if (file) {
+
+      this.fileName = file.name;
+
+      const formData = new FormData();
+
+      formData.append("thumbnail", file);
+      console.log(formData);
     
+  }
 }
 
 }

@@ -1,28 +1,30 @@
+<input type="file" class="file-upload" (onchange)="onFileSelected($event)">
 
-<p-card header="" subheader=""  [style]="{width: '16em'}" styleClass="p-card-shadow">
+<p-card header="" subheader=""   styleClass="p-card-shadow ">
     <ng-template pTemplate="header">
             <p-fileUpload name="demo[]"
-                    accept="image/*" (onUpload)="onUpload($event)" [auto]="true" >
+                    accept="image/*" [auto]="true" (onUpload)="onUpload($event)"  >
                     <ng-template pTemplate="content">
-                        <ul *ngIf="uploadedFiles.length">
-                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                        </ul>
                     </ng-template>
             </p-fileUpload>
-
-
     </ng-template>
     <div class="container">
         <div class="row ">
-            <div class="col-sm mb-4">
-                <input type="text" [(ngModel)]="name" pInputText placeholder="Name">         
-             </div>
+                <div class="col-md-3">
+                    <label><p>Medicine : </p></label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" [(ngModel)]="name" pInputText placeholder="Name">         
+                </div>  
         </div>
         <div class="row">
-            <div class="col-sm mb-4" >
-                <input type="text" [(ngModel)]="price" pInputText placeholder="Price">   
-             </div>
-        </div>
+            <div class="col-md-3" >
+                <label><p>Price $ : </p></label>
+                </div>
+                <div class="col-md-2" >
+                    <input type="text" [(ngModel)]="price" pInputText placeholder="Price">   
+                </div> 
+       </div>
         <div class="row">
              <div class="col-sm">
                 <p-rating [(ngModel)]="ratingNumber"></p-rating>
@@ -30,7 +32,13 @@
         </div>
     </div>
         <ng-template pTemplate="footer">
-        <p-button label="Save" icon="pi pi-check" (click)="onSave()"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" (click)="onCancel()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
-    </ng-template>
+
+            <div class="row ">
+                <div class="col">
+                    <p-button label="Save" icon="pi pi-check" (click)="onSave()" styleClass="p-button-sm py-1 px-2"></p-button>
+                    <p-button label="Cancel" icon="pi pi-times" (click)="onCancel()" styleClass="p-button-secondary p-button-sm py-1 px-2" [style]="{'margin-left': '.5em'}"></p-button>
+             
+                 </div>
+           </div>
+          </ng-template>
 </p-card>

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { CustomerViewComponent } from './components/customer/customer-view/customer-view.component';
+import { NavBarComponent } from './components/customer/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { MedicineCardComponent } from './components/home/medicine-card-edit/medicine-card.component';
 import { MedicineCardPrevComponent } from './components/home/medicine-card-prev/medicine-card-prev.component';
@@ -20,7 +22,8 @@ const routes: Routes = [
   { path: 'medicineCard', component: MedicineCardComponent },
   { path: 'medicineCardPrev', component: MedicineCardPrevComponent },
   { path: 'promotions', component: PromotionsComponent },
-
+  { path: 'customerView', component: CustomerViewComponent },
+  { path: 'customerViewNavigationbar', component: NavBarComponent },
 ];
 
 @NgModule({

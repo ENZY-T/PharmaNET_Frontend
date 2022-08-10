@@ -8,9 +8,6 @@ import { medCard } from 'src/app/models/med-card';
 })
 export class MedicineCardPrevComponent implements OnInit {
   
-  
-  
-
   @Input() ratingNumber?: number;
   @Input() name?:String ;
   @Input() price?:number;

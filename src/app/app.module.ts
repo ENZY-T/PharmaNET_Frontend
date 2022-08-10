@@ -8,19 +8,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { TestComponent } from './test/test.component';
 import { NavigationbarModule } from './modules/navigationbar/navigationbar.module';
 import { HomeModule } from './components/home/home.module';
+import { CustomerModule } from './components/customer/customer.module';
 
-//translate dependencies
-// import { HttpClient } from '@angular/common/http';
-// import { TranslateModule ,TranslateLoader } from '@ngx-translate/core';
-// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-// export function HttpLoaderFactory(http:HttpClient){
-//   return new TranslateHttpLoader(http);
-// }
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
-    
+    TestComponent,
     
   ],
   imports: [
@@ -31,16 +24,9 @@ import { HomeModule } from './components/home/home.module';
     LoadingUiModule,
     ReactiveFormsModule,
     NavigationbarModule,
-    HomeModule
-    
-    // TranslateModule.forRoot(
-    //   { loader:{
-    //      provide: TranslateLoader,
-    //      useFactory: HttpLoaderFactory,
-    //      deps:[HttpClient]
-    //    }
-    //  }
-    //  )
+    HomeModule,
+    CustomerModule,
+  
 
   ],
   providers: [],
