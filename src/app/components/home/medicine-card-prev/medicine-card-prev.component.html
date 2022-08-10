@@ -1,15 +1,15 @@
-<div class="shadow p-4" style="width: 14rem;" >
+<div class="shadow p-4 medCard m-0 border" style="width: 14rem;" >
     <img class="card-img-top" src={{image}} alt="Card image cap">
     <div class="card-body">
         <div class="container">
-            <div class="row" style="margin-bottom: 5px;">
+            <div class="row" >
               <div class="col-sm">
-                <h4>{{name}}</h4>
+                <p class="medName">{{name}}</p>
               </div>
             </div>
-            <div class="row" style="margin-bottom: 5px;">
+            <div class="row" >
                 <div class="col-sm" >
-                    <h5>$ : {{price}}</h5>
+                    <p class="medPrice">$ : {{price}}<p>
                 </div>
               </div>
               <div class="row" style="margin-bottom: 5px;">
@@ -17,9 +17,9 @@
                     <p-rating [(ngModel)]="ratingNumber"></p-rating>
                 </div>
               </div>
-              <div class="row" style="margin-bottom: 5px;">
+              <div class="row" >
                 <div class="col-sm">
-                    <p-button label="Save" icon="pi pi-check" (click)="onAddRating()"></p-button>
+                    <button pButton type="button" label="Save" icon="pi pi-check" (click)="onAddRating()" class="p-button-sm py-1 px-2"></button>
                 </div>
               </div>
           </div>

@@ -1,7 +1,8 @@
 export interface medCard {
-    price:Number,
+    id:number,
+    price:number,
     name:string,
     image:string,
-    ratingNumber:Number
+    ratingNumber:number
   }
   

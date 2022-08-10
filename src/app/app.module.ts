@@ -20,7 +20,7 @@ import { HomeModule } from './components/home/home.module';
   declarations: [
     AppComponent,
     TestComponent
-
+    
     
   ],
   imports: [
