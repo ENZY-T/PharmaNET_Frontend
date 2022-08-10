@@ -25,7 +25,6 @@ import { CustomerModule } from './components/customer/customer.module';
     ReactiveFormsModule,
     NavigationbarModule,
     HomeModule,
-    CustomerModule,
   
 
   ],

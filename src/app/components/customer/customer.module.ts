@@ -9,16 +9,17 @@ import { OnlineServicesComponent } from './online-services/online-services.compo
 import { HomeModule } from '../home/home.module';
 import { AboutPharmacyComponent } from './about-pharmacy/about-pharmacy.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
-
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent],
   imports: [
   CommonModule,
   ButtonModule,
   NgImageSliderModule,
   HomeModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  
 ],
 exports:[CustomerViewComponent,NavBarComponent]
 })
