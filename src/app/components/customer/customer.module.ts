@@ -10,6 +10,8 @@ import { HomeModule } from '../home/home.module';
 import { AboutPharmacyComponent } from './about-pharmacy/about-pharmacy.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import {SidebarModule} from 'primeng/sidebar';
+
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent],
   imports: [
@@ -19,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
   HomeModule,
   FormsModule,
   ReactiveFormsModule,
+  SidebarModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-view.component.scss']
 })
 export class CustomerViewComponent implements OnInit {
-
+  visibleSidebar1:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
