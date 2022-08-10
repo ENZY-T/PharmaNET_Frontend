@@ -6,13 +6,19 @@ import {ButtonModule} from 'primeng/button';
 import { MainWallpaperComponent } from './main-wallpaper/main-wallpaper.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { OnlineServicesComponent } from './online-services/online-services.component';
+import { HomeModule } from '../home/home.module';
+import { AboutPharmacyComponent } from './about-pharmacy/about-pharmacy.component';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent],
   imports: [
   CommonModule,
   ButtonModule,
-  NgImageSliderModule
+  NgImageSliderModule,
+  HomeModule,
+  FormsModule,
+  ReactiveFormsModule
 ],
 exports:[CustomerViewComponent,NavBarComponent]
 })
