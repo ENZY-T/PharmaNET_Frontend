@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        
+        <div class="col-12">
+            <h5 class="heading">Promotions</h5>
+        </div>
+    </div>
+      <div class="row row-cols-* g-5" >
+         
+            <div class="col-3" *ngFor="let med of medicineCards">
+                <app-medicine-card-prev 
+                   [ratingNumber]  ='medicineCards[med.id].ratingNumber' 
+                   [name]='medicineCards[med.id].name'
+                   [image]='medicineCards[med.id].image'
+                   [price] ='medicineCards[med.id].price'>
+                </app-medicine-card-prev>
+              </div>
+         
+    </div>
+</div>

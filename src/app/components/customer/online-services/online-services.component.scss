@@ -5,11 +5,13 @@
     color: rgb(0, 0, 0);
 }
 .left{
+    margin-right: 10px;
     height: 60vh;
     border-radius:  4px 0px 0px 4px;
     background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm373batch15-217-01.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=d8bbc66e02e81095950de55fcc9347f5');
 }
 .right{
+    margin-left: 10px;
     height: 60vh;
     border-radius:  0px 4px 4px 0px;
     background-image: url("https://wwwnc.cdc.gov/travel/images/pharmacist-meds.jpg");

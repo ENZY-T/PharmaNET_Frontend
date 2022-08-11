@@ -3,7 +3,7 @@ ul {
     padding: 0px;
 }
 .footer-section {
-  background: #151414;
+  background:#424242ff;
   position: relative;
 }
 .footer-cta {
@@ -136,7 +136,7 @@ ul {
   transform: rotate(-6deg);
 }
 .copyright-area{
-  background: #202020;
+  background:  rgb(41, 39, 39);
   padding: 25px 0;
 }
 .copyright-text p {
@@ -157,4 +157,7 @@ ul {
 .footer-menu li a {
   font-size: 14px;
   color: #878787;
+}
+ul.ba {
+  list-style-type: none;
 }
