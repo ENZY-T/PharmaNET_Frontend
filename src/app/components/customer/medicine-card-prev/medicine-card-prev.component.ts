@@ -17,7 +17,5 @@ export class MedicineCardPrevComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  onAddRating(){
 
-  }
 }
