@@ -1,19 +1,16 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12  mb-4">
-            <h5 class="heading">Promotions</h5>
-        </div>
-    </div>
-      <div class="row row-cols-* g-5" >
-         
-            <div class="col-3" *ngFor="let med of medicineCards">
+
+ <p-carousel [value]="medicineCards" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="header">
+        <h5 class="heading mt-2 mb-4">Promotions</h5>
+    </ng-template>
+    <ng-template let-product pTemplate="item">
+        <div class="product-item mb-4">
                 <app-medicine-card-prev 
-                   [ratingNumber]  ='medicineCards[med.id].ratingNumber' 
-                   [name]='medicineCards[med.id].name'
-                   [image]='medicineCards[med.id].image'
-                   [price] ='medicineCards[med.id].price'>
-                </app-medicine-card-prev>
-              </div>
-         
-    </div>
-</div>
+                [ratingNumber]  ='product.ratingNumber' 
+                [name]='product.name'
+                [image]='product.image'
+                [price] ='product.price'>
+             </app-medicine-card-prev>
+        </div>
+    </ng-template>
+</p-carousel>

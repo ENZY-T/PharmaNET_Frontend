@@ -17,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'primeng/fileupload';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent],
@@ -32,7 +33,8 @@ import { FileUploadModule } from 'primeng/fileupload';
   RatingModule,
   FormsModule,
   FileUploadModule,
-  HttpClientModule
+  HttpClientModule,
+  CarouselModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]

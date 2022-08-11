@@ -9,13 +9,28 @@ import { medCard } from 'src/app/models/med-card';
 export class PromotionsComponent implements OnInit {
 
   medicineCards: medCard[] = [];
+  responsiveOptions:any;
 
-  name:String ='Betadin';
-  price:number=1000;
-  ratingNumber: number = 3;
-  image:String ='https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg';
- 
-  constructor() { }
+
+  constructor() { 
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 2,
+          numScroll: 2
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
+  }
 
   ngOnInit(): void {
     this.medicineCards = [
