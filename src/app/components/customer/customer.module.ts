@@ -11,9 +11,10 @@ import { AboutPharmacyComponent } from './about-pharmacy/about-pharmacy.componen
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import {SidebarModule} from 'primeng/sidebar';
+import { CardSliderComponent } from './card-slider/card-slider.component';
 
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent],
   imports: [
   CommonModule,
   ButtonModule,
