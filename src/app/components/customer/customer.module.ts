@@ -18,6 +18,7 @@ import { RatingModule } from 'primeng/rating';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
+import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent],
@@ -34,7 +35,8 @@ import {CarouselModule} from 'primeng/carousel';
   FormsModule,
   FileUploadModule,
   HttpClientModule,
-  CarouselModule
+  CarouselModule,
+  ToastUiModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]

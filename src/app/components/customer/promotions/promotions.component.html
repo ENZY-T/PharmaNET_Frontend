@@ -1,15 +1,21 @@
+<app-toast-ui  
+[isShowToast]="isShowToast"
+[Title]="toastContent"
+[isToastTypeSuccess]="isToastTypeSuccess">
+</app-toast-ui> 
 
  <p-carousel [value]="medicineCards" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="header">
         <h5 class="heading mt-2 mb-4">Promotions</h5>
+
+        <!-- <h5 class="heading mt-2 mb-4">{{message}}</h5> -->
+
     </ng-template>
     <ng-template let-product pTemplate="item">
         <div class="product-item mb-4">
                 <app-medicine-card-prev 
-                [ratingNumber]  ='product.ratingNumber' 
-                [name]='product.name'
-                [image]='product.image'
-                [price] ='product.price'>
+                (childEvent)="onAdd($event)"
+                [item]='product'>
              </app-medicine-card-prev>
         </div>
     </ng-template>

@@ -10,7 +10,12 @@ export class PromotionsComponent implements OnInit {
 
   medicineCards: medCard[] = [];
   responsiveOptions:any;
+  message:String='';
+  addedMedicines: medCard[] = [];
 
+  isShowToast:boolean =false;
+  toastContent:string="";
+  isToastTypeSuccess:boolean =true ;
 
   constructor() { 
     this.responsiveOptions = [
@@ -33,6 +38,8 @@ export class PromotionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
+
     this.medicineCards = [
       { id:0, name: 'Synthroid ', price:1000,image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:3 },
       { id:1, name: 'Crestor ', price:2000,image:'https://www.healthguard.lk/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/7/3/735334_1.jpg',ratingNumber:2 },
@@ -43,5 +50,21 @@ export class PromotionsComponent implements OnInit {
 
   ];
   }
-
+  async toastFunction(title:string,isSuccess:boolean){
+    this.toastContent= title;
+    this.isToastTypeSuccess =isSuccess;
+    await this.delay(0);
+    this.isShowToast=true;
+    await this.delay(0);
+    this.isShowToast=false;
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  onAdd(e:any){
+    this.addedMedicines.push(e);
+    console.log(this.addedMedicines.length);
+    this.toastFunction(e.name +" Added to Cart",true);
+   // console.log(e)
+  }
 }

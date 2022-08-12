@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
   //  this.isBlock=false;
 
   }
- delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
+
   add(){
     console.log("Add");
     localStorage.setItem("UserName","Isuru");
@@ -110,5 +108,8 @@ export class LoginComponent implements OnInit {
       this.isShowToast=true;
       await this.delay(0);
       this.isShowToast=false;
+    }
+    delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
     }
 }

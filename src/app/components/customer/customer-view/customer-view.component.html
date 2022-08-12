@@ -1,7 +1,8 @@
-<!-- <p-sidebar [(visible)]="visibleSidebar1">
-    Content
-</p-sidebar>
-<p-button type="button" class="mr-2" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></p-button> -->
+<app-toast-ui 
+[isShowToast]="isShowToast"
+[Title]="toastContent"
+[isToastTypeSuccess]="isToastTypeSuccess">
+</app-toast-ui> 
 
 <app-nav-bar></app-nav-bar>
 <app-main-wallpaper></app-main-wallpaper>
