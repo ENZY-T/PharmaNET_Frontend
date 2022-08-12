@@ -21,7 +21,8 @@ import {CarouselModule} from 'primeng/carousel';
 import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { CartListComponent } from './cart-list/cart-list.component';
 import {OrderListModule} from 'primeng/orderlist';
-
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent],
   imports: [
@@ -39,7 +40,9 @@ import {OrderListModule} from 'primeng/orderlist';
   HttpClientModule,
   CarouselModule,
   ToastUiModule,
-  OrderListModule
+  OrderListModule,
+  AvatarModule,
+  AvatarGroupModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]
