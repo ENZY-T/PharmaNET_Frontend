@@ -23,8 +23,10 @@ import { CartListComponent } from './cart-list/cart-list.component';
 import {OrderListModule} from 'primeng/orderlist';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
+import { LocationComponent } from './location/location.component';
+import { MapModule } from 'src/app/modules/map/map.module';
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent],
   imports: [
   CommonModule,
   ButtonModule,
@@ -42,7 +44,8 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
   ToastUiModule,
   OrderListModule,
   AvatarModule,
-  AvatarGroupModule
+  AvatarGroupModule,
+  MapModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]
