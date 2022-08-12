@@ -9,6 +9,7 @@ import { TestComponent } from './test/test.component';
 import { NavigationbarModule } from './modules/navigationbar/navigationbar.module';
 import { HomeModule } from './components/home/home.module';
 import { CustomerModule } from './components/customer/customer.module';
+import { MapModule } from './modules/map/map.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CustomerModule } from './components/customer/customer.module';
     ReactiveFormsModule,
     NavigationbarModule,
     HomeModule,
+    MapModule
   
 
   ],
