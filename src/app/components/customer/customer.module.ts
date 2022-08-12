@@ -19,9 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
 import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
+import { CartListComponent } from './cart-list/cart-list.component';
+import {OrderListModule} from 'primeng/orderlist';
 
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent],
   imports: [
   CommonModule,
   ButtonModule,
@@ -36,7 +38,8 @@ import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
   FileUploadModule,
   HttpClientModule,
   CarouselModule,
-  ToastUiModule
+  ToastUiModule,
+  OrderListModule
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]
