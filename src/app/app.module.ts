@@ -10,6 +10,12 @@ import { NavigationbarModule } from './modules/navigationbar/navigationbar.modul
 import { HomeModule } from './components/home/home.module';
 import { CustomerModule } from './components/customer/customer.module';
 import { MapModule } from './modules/map/map.module';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
+import {InputTextModule} from 'primeng/inputtext';
+import {ImageModule} from 'primeng/image';
+import {CardModule} from 'primeng/card';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +32,12 @@ import { MapModule } from './modules/map/map.module';
     ReactiveFormsModule,
     NavigationbarModule,
     HomeModule,
-    MapModule
+    MapModule,
+    FileUploadModule,
+    HttpClientModule,
+    InputTextModule,
+    ImageModule,
+    CardModule
   
 
   ],

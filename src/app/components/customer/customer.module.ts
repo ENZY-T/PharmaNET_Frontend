@@ -16,7 +16,6 @@ import { MedicineCardPrevComponent } from './medicine-card-prev/medicine-card-pr
 import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 import { HttpClientModule } from '@angular/common/http';
-import { FileUploadModule } from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
 import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { CartListComponent } from './cart-list/cart-list.component';
@@ -25,8 +24,12 @@ import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import { LocationComponent } from './location/location.component';
 import { MapModule } from 'src/app/modules/map/map.module';
+import { FileUploadModule } from 'src/app/modules/file-upload/file-upload.module';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import {DialogModule} from 'primeng/dialog';
+
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent],
   imports: [
   CommonModule,
   ButtonModule,
@@ -35,7 +38,6 @@ import { MapModule } from 'src/app/modules/map/map.module';
   ReactiveFormsModule,
   SidebarModule,
   CardModule,
-  ButtonModule,
   RatingModule,
   FormsModule,
   FileUploadModule,
@@ -45,7 +47,9 @@ import { MapModule } from 'src/app/modules/map/map.module';
   OrderListModule,
   AvatarModule,
   AvatarGroupModule,
-  MapModule
+  MapModule,
+  DialogModule
+  
   
 ],
 exports:[CustomerViewComponent,NavBarComponent]

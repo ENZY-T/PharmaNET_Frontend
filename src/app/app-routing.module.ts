@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/auth/registration/registrati
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { CartListComponent } from './components/customer/cart-list/cart-list.component';
 import { CustomerViewComponent } from './components/customer/customer-view/customer-view.component';
+import { ImageUploadComponent } from './components/customer/image-upload/image-upload.component';
 import { LocationComponent } from './components/customer/location/location.component';
 import { NavBarComponent } from './components/customer/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'customerViewNavigationbar', component: NavBarComponent },
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
+  { path: 'prescriptionUpload', component: ImageUploadComponent },
 ];
 
 @NgModule({
