@@ -40,7 +40,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-5 " >
-                  <button pButton pRipple type="button" label="Upload Prescription" class="p-button-sm ms-3 p-button-rounded p-button-warning"></button>
+                  <button pButton pRipple type="button" label="Upload Prescription" (click)="showDialog()" class="p-button-sm ms-3 p-button-rounded p-button-warning"></button>
                 </div>
            </div>
         </div>
@@ -71,3 +71,12 @@
       </div>
     </div>
   </div>
+
+  <p-dialog  [(visible)]="display" [style]="{width: '50vw'}">
+    <div>
+      <app-image-upload></app-image-upload>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="display=false" label="Close" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
