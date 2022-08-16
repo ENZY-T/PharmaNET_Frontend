@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {InputTextModule} from 'primeng/inputtext';
 import {ImageModule} from 'primeng/image';
 import {CardModule} from 'primeng/card';
+import {GalleriaModule} from 'primeng/galleria';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {CardModule} from 'primeng/card';
     HttpClientModule,
     InputTextModule,
     ImageModule,
-    CardModule
+    CardModule,
+    GalleriaModule
   
 
   ],

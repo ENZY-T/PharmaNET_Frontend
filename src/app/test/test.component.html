@@ -1,49 +1,9 @@
-
-    <div class="container text-center ">
-        <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-                <p-image [src]="currentImage" alt="Image" width="250"  [preview]="true"></p-image>
-            </div>
-            <div class="col-md-4">
-            </div>
-      </div>
-        <div class="row mt-2">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-                <input type="file" pInputText (change)="onSelectFile($event)"/>
-            </div>
-            <div class="col-md-4">
-            </div>
-    </div>
-        <div class="row mt-2">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button pButton pRipple label="Upload" icon="pi pi-check"  class="p-button-sm "></button>
-                        </div>
-                        <div class="col-md-4">
-                            <button pButton pRipple label="Delete" (click)="onClearImage()"  icon="pi pi-trash" class="p-button-sm  p-button-danger"></button>
-                        </div>
-                        <div class="col-md-4">
-                            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-sm  p-button-warning"></button>
-                        </div>
-            
-                    </div>
-                </div>
-             
-             
-                  </div>
-            <div class="col-md-3">
-            </div>
-        
-       </div>
-
-    
-
+<div style="height: 100px;">
+    <p-galleria [value]="images"  [containerStyle]="{'width': '1350px'}" [autoPlay]="true" [showThumbnails]="false"  [numVisible]="5"
+    [circular]="true" [showItemNavigators]="true">
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.image" style="height: 500px;" />
+    </ng-template>
+   
+</p-galleria>
 </div>

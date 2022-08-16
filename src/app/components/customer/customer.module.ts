@@ -27,6 +27,7 @@ import { MapModule } from 'src/app/modules/map/map.module';
 import { FileUploadModule } from 'src/app/modules/file-upload/file-upload.module';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import {DialogModule} from 'primeng/dialog';
+import {GalleriaModule} from 'primeng/galleria';
 
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent],
@@ -48,7 +49,8 @@ import {DialogModule} from 'primeng/dialog';
   AvatarModule,
   AvatarGroupModule,
   MapModule,
-  DialogModule
+  DialogModule,
+  GalleriaModule
   
   
 ],
