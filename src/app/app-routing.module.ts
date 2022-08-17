@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/home/dashboard/dashboard.compon
 import { MedicineCardComponent } from './components/home/medicine-card-edit/medicine-card.component';
 import { MedicineCardPrevComponent } from './components/home/medicine-card-prev/medicine-card-prev.component';
 import { PromotionsComponent } from './components/home/promotions/promotions.component';
+import { PharmacyProfilePrevComponent } from './components/pharmacy-profile/pharmacy-profile-prev/pharmacy-profile-prev.component';
 import { LocalizationComponent } from './modules/localization/localization.component';
 import { TestComponent } from './test/test.component';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
   { path: 'prescriptionUpload', component: ImageUploadComponent },
+  { path: 'pharmacyProfile', component: PharmacyProfilePrevComponent },
 ];
 
 @NgModule({

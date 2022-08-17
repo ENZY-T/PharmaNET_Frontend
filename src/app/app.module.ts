@@ -21,7 +21,7 @@ import {GalleriaModule} from 'primeng/galleria';
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
+    TestComponent
     
   ],
   imports: [
