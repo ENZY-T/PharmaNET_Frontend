@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
-  value2?: string;
+  display: boolean = false;
   
   registrationForm = new FormGroup({
 
@@ -17,6 +17,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     mobileNumber : new FormControl(),
     address : new FormControl(),
+    profile : new FormControl(),
     
   })
 
@@ -35,11 +36,27 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   get address(){
     return this.registrationForm.get('address')
   }
+  get profile(){
+    return this.registrationForm.get('profile')
+  }
  
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  showDialog() {
+    this.display = true;
+  }
+  onSave(){
+    let data={
+      FName:this.firstName?.value,
+      LName:this.lastName?.value,
+      Email:this.email?.value,
+      MobileNumber:this.mobileNumber?.value,
+      Address:this.address?.value,
+      Profile:this.profile?.value,
+     }
+     console.log(data);
+  }
 }

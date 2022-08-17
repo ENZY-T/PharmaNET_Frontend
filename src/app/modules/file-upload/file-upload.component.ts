@@ -11,13 +11,14 @@ export class FileUploadComponent implements OnInit {
   currentImage=this.baseImage;
 
   uploadedFiles: any[] = [];
+  selectedFile?: any;
   constructor() { }
 
   ngOnInit(): void {
   }
   onSelectFile(e:any){
     if(e.target.files){
-      console.log(e.target.files);
+      this.selectedFile=e.target.files;
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload =(event:any) =>{
@@ -25,7 +26,10 @@ export class FileUploadComponent implements OnInit {
       }
     }
   }
-
+  onUpload(){
+    console.log(this.selectedFile);
+    console.log(this.selectedFile[0].name);
+  }
   onClearImage(){
     this.currentImage =this.baseImage;
   }
