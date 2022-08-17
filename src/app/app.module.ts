@@ -16,6 +16,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ImageModule} from 'primeng/image';
 import {CardModule} from 'primeng/card';
 import {GalleriaModule} from 'primeng/galleria';
+import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-profile.module';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {GalleriaModule} from 'primeng/galleria';
     InputTextModule,
     ImageModule,
     CardModule,
-    GalleriaModule
+    GalleriaModule,
+    PharmacyProfileModule
   
 
   ],

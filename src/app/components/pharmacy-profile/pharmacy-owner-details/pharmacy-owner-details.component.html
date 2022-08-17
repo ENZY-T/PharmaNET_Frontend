@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <div class="row justify-content-md-center">
+        <div class="card cardStyle" style="width: 50vw;">
+        <div class="card-body ">
+            <h3 class="heading">Pharmacy Owner Details</h3>
+            
+            <form [formGroup]="registrationForm" >
+                <div class="form-group ">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-6 mt-3">
+    
+                            <div class="input-group mb-2 col-md-4">
+                                <span class="p-float-label" style="width: 400px;">
+                                <input type="text" class="form-control" pInputText  required formControlName="firstName">
+                                <label for="float-input">First Name</label>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="input-group mb-2 col-md-">
+                                <span class="p-float-label" style="width: 400px;">
+                                    <input type="text" class="form-control" pInputText   placeholder="Last Name"  required formControlName="lastName">
+                                    <label for="float-input">Last Name</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-2  col-md-6 mt-3">
+                            <span class="p-float-label" style="width: 800px;">
+                                <input type="text" pInputText   class="form-control" placeholder="E-mail"  required formControlName="email">
+                                <label for="float-input">Email</label>
+                            </span>
+                        </div> 
+                        <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger erroMsg">
+                            E-mail is not valid
+                        </div>
+                        <div class="input-group mb-2  col-md-6 mt-3">
+                            <span class="p-float-label" style="width: 800px;">
+                            <input type="text"  pInputText   class="form-control" placeholder="Mobile Number"   formControlName="mobileNumber">
+                            <label for="float-input">Mobile Number</label>
+                        </span>
+                        </div> 
+                        <div class="input-group mb-2  col-md-6 mt-3" >
+                            <span class="p-float-label" style="width: 800px;">
+                            <input type="text"  pInputText   class="form-control" placeholder="Address"   formControlName="address">
+                            <label for="float-input">Address</label>
+                        </span>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                    <button type="submit" class="btn btn-primary loingBtn" >Save</button>
+                   </div>             
+                  </div>
+               </form>
+            
+               </div>
+
+
+    </div>
+</div>
+
+</div>
