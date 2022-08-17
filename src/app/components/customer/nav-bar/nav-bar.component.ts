@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   display: boolean = false;
-  
+  heading:string = "Upload Prescription";
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  showDialog() {
+  onUpload() {
     this.display = true;
   }
 

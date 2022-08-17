@@ -9,7 +9,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
   display: boolean = false;
-  
+  heading:string = "Upload Profile";
+  selectedFile?: any;
+  selectedImage?: string='No File selected';
+
   registrationForm = new FormGroup({
 
     firstName : new FormControl(''),
@@ -45,7 +48,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showDialog() {
+  onUpload() {
     this.display = true;
   }
   onSave(){
@@ -56,7 +59,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       MobileNumber:this.mobileNumber?.value,
       Address:this.address?.value,
       Profile:this.profile?.value,
+      File:this.selectedFile
      }
      console.log(data);
+  }
+  onSelectFile(file:any){
+    this.selectedFile =file;
+    this.selectedImage =file[0].name;
   }
 }

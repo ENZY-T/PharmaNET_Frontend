@@ -1,46 +1,55 @@
+<p-dialog [(visible)]="display" [style]="{width: '50vw'}" [closable]="false">
+    <div>
+        <h4 style="text-align: center;">{{heading}}</h4>
 
-    <div class="container text-center ">
-        <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-                <p-image [src]="currentImage" alt="Image" width="250"  [preview]="true"></p-image>
-            </div>
-            <div class="col-md-4">
-            </div>
-      </div>
-        <div class="row mt-2">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-                <input type="file" pInputText (change)="onSelectFile($event)"/>
-            </div>
-            <div class="col-md-4">
-            </div>
-    </div>
-        <div class="row mt-2">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-4">
-                            <button pButton pRipple label="Upload" icon="pi pi-check" (click)="onUpload()" class="p-button-sm"></button>
-                        </div>
-                        <div class="col-md-4 ms-2">
-                            <button pButton pRipple label="Delete" (click)="onClearImage()"  icon="pi pi-trash" class="p-button-sm  p-button-danger"></button>
-                        </div>
-                        <div class="col-md-2">
+        <div class="container text-center ">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <p-image [src]="currentImage" alt="Image" width="250"  [preview]="true"></p-image>
+                </div>
+                <div class="col-md-4">
+                </div>
+          </div>
+            <div class="row mt-2">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <input type="file" pInputText (change)="onSelectFile($event)"/>
+                </div>
+                <div class="col-md-4">
+                </div>
+        </div>
+            <div class="row mt-2">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+
+                                <button pButton pRipple label="Upload" (click)="onUpload()" class="p-button-outlined p-button-sm"></button>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <button pButton pRipple label="Delete" (click)="onClearImage()"  class="p-button-outlined  p-button-danger p-button-sm"></button>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
                         </div>
                     </div>
+                 
+                 
+                      </div>
+                <div class="col-md-3">
                 </div>
-             
-             
-                  </div>
-            <div class="col-md-3">
-            </div>
-        
-       </div>
-</div>
+            
+           </div>
+    </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="onClose()" label="Close" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>

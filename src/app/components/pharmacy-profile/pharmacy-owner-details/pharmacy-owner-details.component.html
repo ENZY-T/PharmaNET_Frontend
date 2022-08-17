@@ -46,7 +46,8 @@
                         </div> 
                         <div class="input-group mb-2  col-md-6 mt-3" >       
                                 <span class="me-4 mt-1" >Upload Profile</span>
-                                <p-button label="Choose" icon="pi pi-plus" (click)="showDialog()" ></p-button>
+                                <p-button label="Choose"  icon="pi pi-plus" (click)="onUpload()" ></p-button>
+                                <label class="mt-2 ms-2">{{selectedImage}}</label>
                             </div> 
                     </div>
                 </div>
@@ -62,13 +63,9 @@
 
 </div>
 
-<p-dialog [(visible)]="display" [style]="{width: '50vw'}">
-    <div>
-        <h4 style="text-align: center;">Upload Profile</h4>
-
-        <app-file-upload></app-file-upload>
-    </div>
-    <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="display=false" label="Close" styleClass="p-button-text"></p-button>
-  </ng-template>
-</p-dialog>
+<app-file-upload 
+[display]="display"
+[heading]="heading"
+(displayEmit)="display=$event"
+(fileEmit)="onSelectFile($event)"
+></app-file-upload>
