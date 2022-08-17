@@ -64,7 +64,14 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
      console.log(data);
   }
   onSelectFile(file:any){
+    if(file == 'delete'){
+    this.selectedFile =[];
+    this.selectedImage ='No File selected';
+    }else{
     this.selectedFile =file;
     this.selectedImage =file[0].name;
+    }
+    
+
   }
 }

@@ -36,17 +36,21 @@ export class FileUploadComponent implements OnInit {
     // console.log(this.selectedFile[0].name);
     this.fileEmit.emit(this.selectedFile);
     this.onClose();
+    this.currentImage =this.baseImage;
 
   }
-  onClearImage(){
+  onRemoveImage(){
+    this.fileEmit.emit('delete');
     this.currentImage =this.baseImage;
-   
+    this.onClose();
   }
 
  
   onClose(){
     this.display =false;
     this.displayEmit.emit(this.display);
+    this.currentImage =this.baseImage;
+
   }
 
 }
