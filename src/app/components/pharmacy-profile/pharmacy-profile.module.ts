@@ -8,6 +8,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'src/app/modules/file-upload/file-upload.module';
 import { ButtonModule } from 'primeng/button';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
 
 @NgModule({
   declarations: [PharmacyProfilePrevComponent,PharmacyDetailsComponent, PharmacyOwnerDetailsComponent],
@@ -18,7 +20,8 @@ import { ButtonModule } from 'primeng/button';
     InputTextModule,
     DialogModule,
     FileUploadModule,
-    ButtonModule
+    ButtonModule,
+    InputTextareaModule
   ],
   exports:[PharmacyProfilePrevComponent,PharmacyDetailsComponent]
 })
