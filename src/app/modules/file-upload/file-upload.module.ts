@@ -4,6 +4,7 @@ import { FileUploadComponent } from './file-upload.component';
 import {ImageModule} from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { ToastUiModule } from '../toast-ui/toast-ui.module';
 
 
 
@@ -15,7 +16,8 @@ import { DialogModule } from 'primeng/dialog';
     CommonModule,
     ImageModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    ToastUiModule
   ],
   exports:[FileUploadComponent]
 })

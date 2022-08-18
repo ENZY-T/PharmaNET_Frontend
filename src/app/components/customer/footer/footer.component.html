@@ -1,3 +1,11 @@
+<app-toast-ui
+  [isShowToast]="isShowToast"
+  [Title]="toastContent"
+  [isToastTypeSuccess]="isToastTypeSuccess"
+>
+</app-toast-ui>
+
+
 <footer class="footer-section">
     <div class="container">
         <div class="footer-cta pt-5 pb-5">
@@ -109,8 +117,8 @@
                         </div>
                         <div class="subscribe-form">
                             <form action="#">
-                                <input type="text" style="height: 40px;" placeholder="Email Address">
-                                <button pButton pRipple type="button" style="height: 40px;" label="Subscribe" ></button>
+                                <input type="text" style="height: 40px;"  name="value" [(ngModel)]="value" placeholder="Email Address">
+                                <button pButton pRipple type="button" (click)="onSubsrcibe()" style="height: 40px;" label="Subscribe" ></button>
                             </form>
                         </div>
                         <div class="container-fluid">

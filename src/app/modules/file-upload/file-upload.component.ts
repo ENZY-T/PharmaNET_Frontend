@@ -13,6 +13,10 @@ export class FileUploadComponent implements OnInit {
   @Output() public displayEmit = new EventEmitter();
   @Output() public fileEmit = new EventEmitter();
 
+  isShowToast:boolean =false;
+  toastContent:string="";
+  isToastTypeSuccess:boolean =true ;
+
   baseImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzcEuDSD5CiA2L2-T_i_JJ1rErInY7NjFi-AARAxc1q_D8k8scfZu8fT7M2fGNBj4iiHI&usqp=CAU";
   currentImage=this.baseImage;
 
@@ -37,6 +41,8 @@ export class FileUploadComponent implements OnInit {
     this.fileEmit.emit(this.selectedFile);
     this.onClose();
     this.currentImage =this.baseImage;
+    this.toastFunction("Upload successfully",true);
+
 
   }
   onRemoveImage(){
@@ -51,6 +57,18 @@ export class FileUploadComponent implements OnInit {
     this.displayEmit.emit(this.display);
     this.currentImage =this.baseImage;
 
+  }
+
+  async toastFunction(title:string,isSuccess:boolean){
+    this.toastContent= title;
+    this.isToastTypeSuccess =isSuccess;
+    await this.delay(0);
+    this.isShowToast=true;
+    await this.delay(0);
+    this.isShowToast=false;
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
 }

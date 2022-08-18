@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pharmacy-owner-details',
@@ -44,15 +45,14 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   }
  
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
   onUpload() {
     this.display = true;
   }
-  onSave(){
-    this.toastFunction("Pharmacy Owerner Details added Succefully",true);
+   onSaveAndNext(){
     let data={
       FName:this.firstName?.value,
       LName:this.lastName?.value,
@@ -62,6 +62,9 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       File:this.selectedFile
      }
      console.log(data);
+    
+     this.router.navigateByUrl('/pharmacyDetails');
+
   }
   onClear(){
     

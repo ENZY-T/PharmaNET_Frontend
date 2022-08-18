@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
 import { GalleriaModule } from 'primeng/galleria';
 import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-profile.module';
-
+import {StepsModule} from 'primeng/steps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +63,7 @@ import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-pr
     FormsModule,
     GalleriaModule,
     PharmacyProfileModule,
+    StepsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
