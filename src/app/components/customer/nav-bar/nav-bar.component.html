@@ -77,7 +77,7 @@
               </form>
         </div>
         <div class="col-md-2 ">
-            <button pButton pRipple type="button" label="Upload Prescription" (click)="showDialog()" class="p-button-sm py-1 mt-1 p-button-rounded p-button-warning"></button>
+            <button pButton pRipple type="button" label="Upload Prescription" (click)="onUpload()" class="p-button-sm py-1 mt-1 p-button-rounded p-button-warning"></button>
         </div>
         <div class="col-md-1">
             <a href="#" class="badge badge-light" style="text-decoration: none;"><p class="firstNavItems mt-1">Sign in</p></a>
@@ -91,11 +91,10 @@
       </div>
   </div>
 
-  <p-dialog [(visible)]="display" [style]="{width: '50vw'}">
-    <div>
-      <app-image-upload></app-image-upload>
-    </div>
-    <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="display=false" label="Close" styleClass="p-button-text"></p-button>
-  </ng-template>
-</p-dialog>
+
+  <app-file-upload 
+  [display]="display"
+  [heading]="heading"
+  (displayEmit)="display=$event"
+  ></app-file-upload>
+  

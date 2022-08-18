@@ -27,6 +27,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
+import { GalleriaModule } from 'primeng/galleria';
+import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-profile.module';
 
 @NgModule({
   declarations: [
@@ -53,12 +55,6 @@ import { TagModule } from 'primeng/tag';
     InputTextModule,
     ImageModule,
     CardModule,
-    ToastModule,
-    ToolbarModule,
-    TableModule,
-    DialogModule,
-    ConfirmDialogModule,
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FileUploadComponent } from './file-upload.component';
 import {ImageModule} from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -13,7 +14,8 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     ImageModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule
   ],
   exports:[FileUploadComponent]
 })
