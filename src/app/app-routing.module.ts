@@ -1,3 +1,4 @@
+import { PharmacyDashboardComponent } from './components/pharmacy-dashboard/pharmacy-dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -30,10 +31,11 @@ const routes: Routes = [
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
   { path: 'prescriptionUpload', component: ImageUploadComponent },
+  { path: 'pharma-dash', component: PharmacyDashboardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

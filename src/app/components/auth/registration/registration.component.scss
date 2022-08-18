@@ -9,9 +9,14 @@
   background-position: center;
 }
 
-.rightRegister {
-}
-
 .erroMsg {
   font-size: 0.8rem;
+}
+
+.bg {
+  background-color: $bg-light;
+}
+
+.fg {
+  background-color: white;
 }
