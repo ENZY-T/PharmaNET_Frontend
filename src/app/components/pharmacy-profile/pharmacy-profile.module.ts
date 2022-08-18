@@ -9,6 +9,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'src/app/modules/file-upload/file-upload.module';
 import { ButtonModule } from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DialogModule,
     FileUploadModule,
     ButtonModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ToastUiModule
   ],
   exports:[PharmacyProfilePrevComponent,PharmacyDetailsComponent]
 })

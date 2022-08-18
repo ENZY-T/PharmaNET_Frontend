@@ -8,6 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
+  isShowToast:boolean =false;
+  toastContent:string="";
+  isToastTypeSuccess:boolean =true ;
+
   display: boolean = false;
   heading:string = "Upload Profile";
   selectedFile?: any;
@@ -48,6 +52,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.display = true;
   }
   onSave(){
+    this.toastFunction("Pharmacy Owerner Details added Succefully",true);
     let data={
       FName:this.firstName?.value,
       LName:this.lastName?.value,
@@ -69,7 +74,17 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.selectedFile =file;
     this.selectedImage =file[0].name;
     }
-    
-
+  
+  }
+  async toastFunction(title:string,isSuccess:boolean){
+    this.toastContent= title;
+    this.isToastTypeSuccess =isSuccess;
+    await this.delay(0);
+    this.isShowToast=true;
+    await this.delay(0);
+    this.isShowToast=false;
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

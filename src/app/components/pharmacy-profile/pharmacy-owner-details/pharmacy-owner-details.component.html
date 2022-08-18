@@ -1,3 +1,10 @@
+
+<app-toast-ui 
+[isShowToast]="isShowToast"
+[Title]="toastContent"
+[isToastTypeSuccess]="isToastTypeSuccess">
+</app-toast-ui> 
+
 <div class="container mt-5">
     <div class="row justify-content-md-center">
         <div class="card cardStyle" style="width: 50vw;">
@@ -46,7 +53,7 @@
                         </div> 
                         <div class="input-group mb-2  col-md-6 mt-3" >       
                                 <span class="me-4 mt-1" >Upload Profile</span>
-                                <p-button label="Choose"  icon="pi pi-plus" (click)="onUpload()" ></p-button>
+                                <p-button label="Choose" icon="pi pi-plus" styleClass="p-button-sm" (click)="onUpload()"></p-button>
                                 <label class="mt-2 ms-2">{{selectedImage}}</label>
                             </div> 
                     </div>
@@ -54,8 +61,8 @@
                 <div class="container-fluid">
 
                      <div class="row justify-content-center">
-                            <div class="col-2 mt-3 d-flex ">
-                                 <button type="submit" class="btn btn-primary loingBtn me-2" (click)="onSave()" >Save</button>
+                            <div class="col-4 mt-3 d-flex ">
+                                 <button type="submit" class="btn btn-primary  loingBtn me-2" (click)="onSave()" >Save & Next</button>
                                  <button type="submit" class="btn btn-warning loingBtn" (click)="onClear()" >Clear</button>
                           </div>             
                   </div>
