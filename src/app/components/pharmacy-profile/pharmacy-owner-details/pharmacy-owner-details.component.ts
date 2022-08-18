@@ -20,7 +20,6 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     mobileNumber : new FormControl(),
     address : new FormControl(),
-    profile : new FormControl(),
     
   })
 
@@ -39,9 +38,6 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   get address(){
     return this.registrationForm.get('address')
   }
-  get profile(){
-    return this.registrationForm.get('profile')
-  }
  
 
   constructor() { }
@@ -58,10 +54,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       Email:this.email?.value,
       MobileNumber:this.mobileNumber?.value,
       Address:this.address?.value,
-      Profile:this.profile?.value,
       File:this.selectedFile
      }
      console.log(data);
+  }
+  onClear(){
+    
   }
   onSelectFile(file:any){
     if(file == 'delete'){

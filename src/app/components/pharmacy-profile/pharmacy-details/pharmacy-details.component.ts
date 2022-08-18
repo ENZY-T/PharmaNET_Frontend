@@ -19,7 +19,6 @@ export class PharmacyDetailsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     contactNumber : new FormControl(),
     aboutCompany : new FormControl(),
-    pharmacyLogo : new FormControl(),
     
   })
 
@@ -38,10 +37,7 @@ export class PharmacyDetailsComponent implements OnInit {
   get aboutCompany(){
     return this.registrationForm.get('aboutCompany')
   }
-  get pharmacyLogo(){
-    return this.registrationForm.get('pharmacyLogo')
-  }
- 
+
 
   constructor() { }
 
@@ -57,10 +53,12 @@ export class PharmacyDetailsComponent implements OnInit {
       Email:this.email?.value,
       ContactNumber:this.contactNumber?.value,
       AboutCompany:this.aboutCompany?.value,
-      PhamacyLogo:this.pharmacyLogo?.value,
       File:this.selectedFile
      }
      console.log(data);
+  }
+  onClear(){
+    
   }
   onSelectFile(file:any){
     if(file == 'delete'){
