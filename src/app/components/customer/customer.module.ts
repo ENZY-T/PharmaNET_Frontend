@@ -28,9 +28,10 @@ import { FileUploadModule } from 'src/app/modules/file-upload/file-upload.module
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import {DialogModule} from 'primeng/dialog';
 import {GalleriaModule} from 'primeng/galleria';
+import { PrescriptionUploadComponent } from './prescription-upload/prescription-upload.component';
 
 @NgModule({
-  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent],
+  declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent, PrescriptionUploadComponent],
   imports: [
   CommonModule,
   ButtonModule,

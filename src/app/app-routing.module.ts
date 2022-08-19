@@ -17,6 +17,7 @@ import { PharmacyProfilePrevComponent } from './components/pharmacy-profile/phar
 import { LocalizationComponent } from './modules/localization/localization.component';
 import { TestComponent } from './test/test.component';
 import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy-details/pharmacy-details.component';
+import { PrescriptionUploadComponent } from './components/customer/prescription-upload/prescription-upload.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'pharma-dash', component: PharmacyDashboardComponent },
   { path: 'pharmacyProfile', component: PharmacyProfilePrevComponent },
   { path: 'pharmacyDetails', component: PharmacyDetailsComponent },
+  { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
 ];
 
 @NgModule({
