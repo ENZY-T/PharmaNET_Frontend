@@ -19,6 +19,7 @@ import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy
 import { PrescriptionUploadComponent } from './components/customer/prescription-upload/prescription-upload.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignupComponent },
   { path: 'registration', component: RegistrationComponent },
@@ -31,7 +32,6 @@ const routes: Routes = [
   { path: 'customerViewNavigationbar', component: NavBarComponent },
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
-  { path: 'prescriptionUpload', component: ImageUploadComponent },
   { path: 'pharma-dash', component: PharmacyDashboardComponent },
   { path: 'pharmacyProfile', component: PharmacyProfilePrevComponent },
   { path: 'pharmacyDetails', component: PharmacyDetailsComponent },
