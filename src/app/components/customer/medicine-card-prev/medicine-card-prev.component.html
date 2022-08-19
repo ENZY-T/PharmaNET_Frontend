@@ -31,7 +31,8 @@
         </div>
         <div class="row rowStyle">
           <div class="col">
-            <button
+            <ng-container *ngIf="item.isSelect == false; else setSelected">
+              <button
               pButton
               pRipple
               type="button"
@@ -39,6 +40,21 @@
               label="Add to Cart"
               class="p-button-outlined py-1 px-2 p-button-rounded btnStyle"
             ></button>
+
+            </ng-container>
+            <ng-template #setSelected>
+              <button
+              pButton
+              pRipple
+              type="button"
+              (click)="addToCart(item)"
+              label="Selected"
+              class="p-button-outlined py-1 px-2  p-button-rounded p-button-danger btnStyleSelectedItem"
+            ></button>
+            </ng-template>
+            
+            
+
           </div>
         </div>
       </div>
