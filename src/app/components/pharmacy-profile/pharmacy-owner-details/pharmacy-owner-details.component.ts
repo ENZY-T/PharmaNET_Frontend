@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-pharmacy-owner-details',
@@ -49,7 +50,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   }
  
 
-  constructor( private router: Router) { }
+  constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +58,9 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.display = true;
   }
   async onSaveAndNext(){
+    
+    this.isBlock=true;
+
     let data={
       FName:this.firstName?.value,
       LName:this.lastName?.value,
@@ -65,13 +69,26 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       Address:this.address?.value,
       File:this.selectedFile
      }
-     console.log(data);
-     
-      this.isBlock=true;
-      await this.delay(3000);
-      this.isBlock=false;
-      this.router.navigateByUrl('/pharmacyDetails');
 
+     this.service.pharmacyOwnerData(data)
+     .subscribe(
+       (val) => {
+           this.isBlock=false;
+       },
+       response => {
+           if(response.status == 200){
+            this.isBlock=false;
+            this.toastFunction("Pharmacy Owner Details added Succefully",true);
+            this.router.navigateByUrl('/pharmacyDetails');
+           }
+           else{
+             this.toastFunction("Customer login Faild",false);
+             this.isBlock=false;
+           }
+       },
+       () => {
+           this.isBlock=false;
+       });
   }
 
   onClear(){
