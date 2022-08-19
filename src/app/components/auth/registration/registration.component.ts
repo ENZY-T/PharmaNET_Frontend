@@ -91,18 +91,18 @@ export class RegistrationComponent implements OnInit {
      this.service.customerRegister(data)
      .subscribe(
       (val) => {
-          console.log("POST call successful value returned in body", val);
+        //  console.log("POST call successful value returned in body", val);
           this.onRegisterSuccess();
 
       },
       response => {
         this.toastFunction("Customer registered Faild",false);
        
-          console.log("POST call in error", response);
+        //  console.log("POST call in error", response);
           this.isBlock=false;
       },
       () => {
-          console.log("The POST observable is now completed.");
+         // console.log("The POST observable is now completed.");
       });
 
      
@@ -111,7 +111,7 @@ export class RegistrationComponent implements OnInit {
     this.toastFunction("Customer registered successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    this.router.navigateByUrl('/customerView');
+    this.router.navigateByUrl('/login');
   }
   
    onPharmacyRegister(){
@@ -128,10 +128,23 @@ export class RegistrationComponent implements OnInit {
 
      }
   
+
      this.service.pharmacyRegister(data)
-     .subscribe(res => {
-          console.log(res);
-     });
+     .subscribe(
+      (val) => {
+         // console.log("POST call successful value returned in body", val);
+          this.onRegisterSuccess();
+
+      },
+      response => {
+        this.toastFunction("Pharmacy Owner registered Faild",false);
+       
+         // console.log("POST call in error", response);
+          this.isBlock=false;
+      },
+      () => {
+         // console.log("The POST observable is now completed.");
+      });
 
   }
 

@@ -16,8 +16,10 @@ import { PromotionsComponent } from './components/home/promotions/promotions.com
 import { PharmacyProfilePrevComponent } from './components/pharmacy-profile/pharmacy-profile-prev/pharmacy-profile-prev.component';
 import { LocalizationComponent } from './modules/localization/localization.component';
 import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy-details/pharmacy-details.component';
+import { PrescriptionUploadComponent } from './components/customer/prescription-upload/prescription-upload.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignupComponent },
   { path: 'registration', component: RegistrationComponent },
@@ -30,10 +32,10 @@ const routes: Routes = [
   { path: 'customerViewNavigationbar', component: NavBarComponent },
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
-  { path: 'prescriptionUpload', component: ImageUploadComponent },
   { path: 'pharma-dash', component: PharmacyDashboardComponent },
   { path: 'pharmacyProfile', component: PharmacyProfilePrevComponent },
   { path: 'pharmacyDetails', component: PharmacyDetailsComponent },
+  { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
 ];
 
 @NgModule({

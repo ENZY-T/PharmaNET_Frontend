@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.primengConfig.ripple = true;
+    this.removeFromLocalStorage();
 
   //  this.isBlock=true;
   //  await this.delay(4000);
@@ -54,13 +55,19 @@ export class LoginComponent implements OnInit {
 
   }
 
-  add(){
+  addToLocalStorage(){
     console.log("Add");
-    localStorage.setItem("UserName","Isuru");
+
+    var user ="";
+    if(this.username?.value){
+      user =this.username?.value;
+    }
+
+    localStorage.setItem("UserName",user);
     let name =localStorage.getItem("UserName");
     console.log(name);
   }
-  remove(){
+  removeFromLocalStorage(){
     console.log("Remove");
     localStorage.removeItem("UserName");
     let name =localStorage.getItem("UserName");
@@ -75,15 +82,15 @@ export class LoginComponent implements OnInit {
     this.service.userLogin(data)
     .subscribe(
       (val) => {
-          console.log("POST call successful value returned in body", val);
-          this.onLoginSuccess();
-        //  this.isBlock=false;
+        //  console.log("POST call successful value returned in body", val);
+          this.onLoginSuccess(val);
+       
       },
       response => {
-          console.log(response)
-          console.log(response.status)
+       //   console.log(response)
+       //   console.log(response.status)
           if(response.status == 200){
-            this.onLoginSuccess();
+            this.onLoginSuccess(response);
           }
           else{
             this.toastFunction("Customer login Faild",false);
@@ -91,20 +98,27 @@ export class LoginComponent implements OnInit {
           }
       },
       () => {
-          console.log("The POST observable is now completed.");
+        // console.log("The POST observable is now completed.");
       });
    }
+  
   
   async navigateToSignUp(){
   //  this.remove();
    // this.toastFunction("Failed to add",false);
     this.router.navigateByUrl('/registration');
   }
-  async onLoginSuccess(){
+  async onLoginSuccess(res:any){
+    this.addToLocalStorage();
     this.toastFunction("Customer log successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    this.router.navigateByUrl('/customerView');
+    if(res.role == "customer"){
+      this.router.navigateByUrl('/customerView');
+    }
+    else if(res.role == "pharmacyOwner"){
+      this.router.navigateByUrl('/pharma-dash');
+    }
   }
   
  async toastFunction(title:string,isSuccess:boolean){

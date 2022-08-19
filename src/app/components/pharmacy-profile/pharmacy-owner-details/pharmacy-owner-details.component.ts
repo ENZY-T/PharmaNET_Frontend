@@ -118,6 +118,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     }
   
   }
+  
   async toastFunction(title:string,isSuccess:boolean){
     this.toastContent= title;
     this.isToastTypeSuccess =isSuccess;
