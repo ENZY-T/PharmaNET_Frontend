@@ -67,8 +67,15 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
 
   }
   onClear(){
-    
+    this.firstName?.reset();
+    this.lastName?.reset();
+    this.email?.reset();
+    this.mobileNumber?.reset();
+    this.address?.reset();
+    this.selectedImage =''
+
   }
+  
   onSelectFile(file:any){
     if(file == 'delete'){
     this.selectedFile =[];

@@ -67,6 +67,12 @@ export class PharmacyDetailsComponent implements OnInit {
      console.log(data);
   }
   onClear(){
+    this.pharmacyName?.reset();
+    this.pharmacyAddress?.reset();
+    this.email?.reset();
+    this.contactNumber?.reset();
+    this.aboutCompany?.reset();
+    this.selectedImage =''
 
   }
   onSelectFile(file:any){
