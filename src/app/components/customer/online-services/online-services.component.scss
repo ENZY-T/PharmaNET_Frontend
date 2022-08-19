@@ -1,0 +1,50 @@
+.onlineServices{
+    background-color: rgba(202, 193, 193, 0.363);
+}
+.deliveryText{
+    margin-top: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    color: #2e2f2fff;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+
+}
+.left{
+    margin-right: 10px;
+    height: 60vh;
+    border-radius:  4px 0px 0px 4px;
+}
+.right{
+    margin-left: 10px;
+    height: 60vh;
+    border-radius:  0px 4px 4px 0px;
+}
+.prescription{
+    margin-top: 10vh;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+   
+}
+.prescriptionDescription{
+    margin-top: 5vh;
+    text-align: center;
+}
+.rowDown{
+    height: 60vh;
+    float: none;
+    display: table-cell;
+    vertical-align: bottom;
+}
+.onlineServiceImages{
+    border-radius: 50%; 
+    width: 180px;
+    height: 180px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+      }
+}

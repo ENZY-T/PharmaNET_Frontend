@@ -1,18 +1,31 @@
 
-<p-card header={{name}} subheader={{price}}  [style]="{'width': '25rem', 'margin-bottom': '2em'}" class="medCard"  styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-        <img alt="Card" src="https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg">
-  
-    </ng-template>
-    <div class="container">
-        <div class="row">
-             <div class="col-sm">
-                <p-rating [(ngModel)]="ratingNumber"></p-rating>
+<div class="card" style="width: 14rem;" >
+  <div class="card-columns">
+    <img class="card-img-top" src={{image}} alt="Card image cap">
+    <div class="card-body">
+        <div class="container">
+            <div class="row" >
+              <div class="col-sm">
+                <p class="medName">{{name}}</p>
               </div>
-        </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm" >
+                    <p class="medPrice">$ : {{price}}<p>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 2px;">
+                <div class="col-sm">
+                    <p-rating [(ngModel)]="ratingNumber"></p-rating>
+                </div>
+              </div>
+              <div class="row" >
+                <div class="col-sm">
+                    <button pButton type="button" label="Save" icon="pi pi-check" (click)="onAddRating()" class="p-button-sm py-1 px-2"></button>
+                </div>
+              </div>
+          </div>
     </div>
-        <ng-template pTemplate="footer">
-            <p-button label="Save" icon="pi pi-check" (click)="onAddRating()"></p-button>
+  </div>
+</div>
 
-          </ng-template>
-</p-card>

@@ -1,171 +1,303 @@
-<app-toast-ui 
-[isShowToast]="isShowToast"
-[Title]="toastContent"
-[isToastTypeSuccess]="isToastTypeSuccess">
-</app-toast-ui> 
+<app-toast-ui
+  [isShowToast]="isShowToast"
+  [Title]="toastContent"
+  [isToastTypeSuccess]="isToastTypeSuccess"
+>
+</app-toast-ui>
 
-<div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-md-4 d-none d-md-block leftRegister"  >
-      </div>
-      <div class="col-md-5 righRegister"  >
-        <div class="card-body">
-            <h3 class="heading">REGISTER</h3>
-               <ng-container *ngIf="isFirstSideFast == false ; else setUserPreview">
-                <form [formGroup]="registrationForm" >
-                    <div class="form-group">
-                        <div class="row justify-content-md-center">
-                            <div class="col-md-6">
-                                <div class="input-group mb-2 col-md-4">
-                                    <input type="text" class="form-control" placeholder="First Name"  required formControlName="firstName">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-2 col-md-4">
-                                    <input type="text" class="form-control" placeholder="Last Name"  required formControlName="lastName">
-                                </div>
-                            </div>
-                            <div class="input-group mb-2  col-md-6">
-                                <input type="text" class="form-control" placeholder="E-mail"  required formControlName="email">
-                            </div> 
-                            <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger erroMsg">
-                                E-mail is not valid
-                              </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-2 col-md-4">
-                                    <input [(ngModel)]="newPassword"  type="password" class="form-control" placeholder="New Password"  required formControlName="password">
-                                </div>
-                                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger erroMsg">
-                                    <div *ngIf="password?.errors">
-                                     Password can't be  Empty
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-2 col-md-4">
-                                    <input [(ngModel)]="confirmNewPassword" type="password" class="form-control" placeholder="Confirm Password"  required formControlName="confirmPassword">
-                                </div>
-                                <div *ngIf="confirmPassword?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger erroMsg">
-                                    <div *ngIf="confirmPassword?.errors">
-                                        Password can't be  Empty
-                                    </div>
-                                  </div>
-                                  <div *ngIf="confirmNewPassword != newPassword &&  confirmNewPassword !=null && newPassword !=null && confirmNewPassword !=''  " class="alert alert-danger erroMsg">
-                                    New Password and Confirm Password are not match
-                                  </div>
-                            </div> 
-                            <div class="col-md-1"> 
-                                    <input type="checkbox" [(ngModel)]="privacyCheckNgModel" formControlName="privacyCheck" >
-                            </div>
-                            <div class="col-md-11">
-                                <div class="input-group mb-2 ">
-                                    <p style="color: black;">I accept the <b> Terms of Use</b> & <b>Privacy Policy</b></p>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-2">
-                        <button type="submit" class="btn btn-primary loingBtn" [disabled]="confirmNewPassword != newPassword  ||  confirmNewPassword == null || newPassword == null || !privacyCheckNgModel "   (click)="onNavigateSecondSide()">Next</button>
-                       </div>             
-                      </div>
-                      <div class="row">
-                        <div class="col-7" >
-                          <p style="text-align: right; margin-top: 8px;">If you already have an account ?</p>
-                        </div>
-                        <div class="col-5"  >
-                            <button pButton type="button" label="login"  (click)="navigateToLogin()" class="p-button-link"></button>
-                        </div>
-                      </div>
-                   </form>
-              </ng-container>
-
-            <ng-template #setUserPreview>
-                <ng-container *ngIf="isSecondSideFast == false ; else setUserPreview2">
-                    <div class="container">
-                        <div class="row justify-content-md-center mb-2">
-                          <div class="col-sm">
-                           Would you want to regester your account as ?
-                          </div>
-                        </div>
-                        <div class="row justify-content-md-center" >
-
-                            <div class="col-4 ">
-                                <p-radioButton name="groupname" (onClick)="onChange($event)" value="val1" [(ngModel)]="selectedValue"></p-radioButton>
-                                <label>Customer</label>
-                          </div>
-                          <div class="col-4 ">
-                                 <p-radioButton name="groupname" (onClick)="onChange($event)" value="val2" [(ngModel)]="selectedValue"></p-radioButton>
-                                 <label>Pharmacy</label>
-                        </div>
-                    </div>
-                      <div class="row justify-content-md-center" style="margin-top: 10px;" >
-                        <ng-container *ngIf="selectedValue == 'val1' ; else next">
-                            <div class="col-4 ">
-                                <button type="submit" class="btn btn-primary loingBtn"  (click)="onCustomerRegister()" >Register Now</button>
-                          </div> 
-                        </ng-container>
-                        <ng-template #next>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary loingBtn" (click)="onNavigateThirdSide()"  >Next</button>
-                            </div>
-                        </ng-template>
-                      </div>
+<div
+  class="container-fluid vh-100 d-flex flex-column justify-content-center bg"
+>
+  <div class="col-12 col-md-8 shadow mx-auto row fg">
+    <div class="col-md-4 leftRegister border-end my-3"></div>
+    <div class="col-md-8 rightRegister py-3 px-5">
+      <div class="card-body d-flex flex-column justify-content-center">
+        <h4 class="m-3 text-center">REGISTER</h4>
+        <ng-container *ngIf="isFirstSideFast == false; else setUserPreview">
+          <form [formGroup]="registrationForm">
+            <div class="form-group">
+              <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First Name"
+                      required
+                      formControlName="firstName"
+                    />
                   </div>
-                      <div class="row align-items-end" style="margin-top: 20vh;" >
-                        <div class="col-4" >
-                        <button type="submit" class="btn btn-primary loingBtn" (click)="onNavigateFirstSide()" >Back</button>
-                        </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Last Name"
+                      required
+                      formControlName="lastName"
+                    />
+                  </div>
+                </div>
+                <div class="input-group mb-2 col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="E-mail"
+                    required
+                    formControlName="email"
+                  />
+                </div>
+                <div *ngIf="email?.touched && email?.invalid">
+                  <div class="alert alert-danger px-3 py-1 fs-sm erroMsg">
+                    E-mail is not valid
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <input
+                      [(ngModel)]="newPassword"
+                      type="password"
+                      class="form-control"
+                      placeholder="New Password"
+                      required
+                      formControlName="password"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                      password?.invalid &&
+                      (password?.dirty || password?.touched)
+                    "
+                  >
+                    <div *ngIf="password?.errors">
+                      <div class="alert alert-danger px-3 py-1 fs-sm erroMsg">
+                        Password can't be Empty
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <input
+                      [(ngModel)]="confirmNewPassword"
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm Password"
+                      required
+                      formControlName="confirmPassword"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                      confirmPassword?.invalid &&
+                      (password?.dirty || password?.touched)
+                    "
+                  >
+                    <div *ngIf="confirmPassword?.errors">
+                      <div class="alert alert-danger px-3 py-1 fs-sm erroMsg">
+                        Password can't be Empty
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="
+                      confirmNewPassword != newPassword &&
+                      confirmNewPassword != null &&
+                      newPassword != null &&
+                      confirmNewPassword != ''
+                    "
+                  >
+                    <div class="alert alert-danger px-3 py-1 fs-sm erroMsg">
+                      Passwords should match
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="privacyCheckNgModel"
+                    formControlName="privacyCheck"
+                  />
+                </div>
+                <div class="col-md-11">
+                  <div class="input-group mb-2">
+                    <p style="color: black">
+                      I accept the <b> Terms of Use</b> &
+                      <b>Privacy Policy</b>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary loingBtn"
+                  [disabled]="
+                    confirmNewPassword != newPassword ||
+                    confirmNewPassword == null ||
+                    newPassword == null ||
+                    !privacyCheckNgModel
+                  "
+                  (click)="onNavigateSecondSide()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <p class="d-inline m-0">Already have an account?</p>
+              <p
+                pButton
+                type="button"
+                label="login"
+                (click)="navigateToLogin()"
+                class="p-button-link m-0"
+              ></p>
+            </div>
+          </form>
+        </ng-container>
+
+        <ng-template #setUserPreview>
+          <ng-container *ngIf="isSecondSideFast == false; else setUserPreview2">
+            <div class="container">
+              <div class="row justify-content-md-center mb-2">
+                <div class="col-sm">
+                  Would you want to regester your account as ?
+                </div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-4">
+                  <p-radioButton
+                    name="groupname"
+                    (onClick)="onChange($event)"
+                    value="val1"
+                    [(ngModel)]="selectedValue"
+                  ></p-radioButton>
+                  <label>Customer</label>
+                </div>
+                <div class="col-4">
+                  <p-radioButton
+                    name="groupname"
+                    (onClick)="onChange($event)"
+                    value="val2"
+                    [(ngModel)]="selectedValue"
+                  ></p-radioButton>
+                  <label>Pharmacy</label>
+                </div>
+              </div>
+              <div
+                class="row justify-content-md-center"
+                style="margin-top: 10px"
+              >
+                <ng-container *ngIf="selectedValue == 'val1'; else next">
+                  <div class="col-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary loingBtn"
+                      (click)="onCustomerRegister()"
+                    >
+                      Register Now
+                    </button>
                   </div>
                 </ng-container>
-                <ng-template #setUserPreview2>
-                    <div class="container">
-                        <div class="row justify-content-md-center mb-2">
-                          <div class="col-sm">
-                            <form [formGroup]="registrationForm" >
-                                <div class="form-group">
-                                    <div class="row justify-content-md-center">
-                                        
-                                        <div class="input-group mb-2  col-md-6">
-                                            <input type="text" class="form-control" placeholder="Pharmacy Name"  required formControlName="pharmacyName">
-                                        </div> 
-               
-                                        <div class="input-group mb-2  col-md-6">
-                                            <input type="text" class="form-control" placeholder="Pharmacy Registeration Number"  required formControlName="pharmacyRegisterationNumber">
-                                        </div> 
-
-                                        <div class="input-group mb-2  col-md-6">
-                                            <input type="text" class="form-control" placeholder="Mobile Number"  required formControlName="mobileNumber">
-                                        </div>       
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-primary loingBtn"  (click)="onPharmacyRegister()">Register Now</button>
-                                    </div>
-                                  </div>
-                               </form>
-                          </div>
-                        </div>
-                      
-                      </div>
-                      <div class="row align-items-end" style="margin-top: 20vh;" >
-                        <div class="col-4" >
-                        <button type="submit" class="btn btn-primary loingBtn" (click)="onNavigateSecondSide()">Back</button>
-                        </div>
+                <ng-template #next>
+                  <div class="col-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary loingBtn"
+                      (click)="onNavigateThirdSide()"
+                    >
+                      Next
+                    </button>
                   </div>
                 </ng-template>
-              </ng-template>
+              </div>
+            </div>
+            <div class="row align-items-end" style="margin-top: 20vh">
+              <div class="col-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary loingBtn"
+                  (click)="onNavigateFirstSide()"
+                >
+                  Back
+                </button>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #setUserPreview2>
+            <div class="container">
+              <div class="row justify-content-md-center mb-2">
+                <div class="col-sm">
+                  <form [formGroup]="registrationForm">
+                    <div class="form-group">
+                      <div class="row justify-content-md-center">
+                        <div class="input-group mb-2 col-md-6">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Pharmacy Name"
+                            required
+                            formControlName="pharmacyName"
+                          />
+                        </div>
 
-        </div>
-       
+                        <div class="input-group mb-2 col-md-6">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Pharmacy Registeration Number"
+                            required
+                            formControlName="pharmacyRegisterationNumber"
+                          />
+                        </div>
+
+                        <div class="input-group mb-2 col-md-6">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Mobile Number"
+                            required
+                            formControlName="mobileNumber"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-4">
+                        <button
+                          type="submit"
+                          class="btn btn-primary loingBtn"
+                          (click)="onPharmacyRegister()"
+                        >
+                          Register Now
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-end" style="margin-top: 20vh">
+              <div class="col-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary loingBtn"
+                  (click)="onNavigateSecondSide()"
+                >
+                  Back
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ng-template>
       </div>
     </div>
   </div>
-  
-<app-loading-ui
-[Title]="loadingTitle"
-[blockedDocument]="isBlock">
+</div>
+
+<app-loading-ui [Title]="loadingTitle" [blockedDocument]="isBlock">
 </app-loading-ui>
-
-

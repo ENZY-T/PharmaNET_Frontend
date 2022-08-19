@@ -1,0 +1,85 @@
+<div class="container-fluid onlineServices " style="padding-top: 10px;">
+    <div class="row align-items-center  justify-content-center pt-3 pb-3 ">
+
+      <div class="col-md-2 " >
+
+        <!-- <i class="pi pi-shopping-cart  mx-1 me-4" style="font-size: 25px;color:#52aef4ff"></i> -->
+        <img class="onlineServiceImages" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbNrksh1OUiMyaRIJEkMGgfqW0iYbB48_X8A&usqp=CAU" alt="Italian Trulli">      
+          <p class="deliveryText">"Bringing to your door step..."</p>
+      </div>
+  
+      <div class="col-md-2 ">
+        <!-- <i class="pi pi-slack  mx-1 me-4" style="font-size: 25px;color:#52aef4ff"></i> -->
+        <img class="onlineServiceImages"  src="https://img.freepik.com/free-vector/contract-billing-deal-terms-fulfillment-successful-transaction-money-transfer-rent-lease-payment-payer-cash-receiver-cartoon-characters_335657-2985.jpg?w=2000" alt="Italian Trulli">  
+
+        <p class="deliveryText">"We do the transaction you just relax..."</p>
+      </div>
+
+      <div class="col-md-2">
+        <!-- <i class="pi pi-map mx-1 me-4" style="font-size: 25px;color:#52aef4ff"></i> -->      
+        <img class="onlineServiceImages"   src="https://img.freepik.com/premium-vector/group-medicines_24877-71921.jpg" alt="Italian Trulli">      
+
+        <p class="deliveryText">"Wide range of Assortments..."</p>
+      </div>
+
+      <div class="col-md-2">
+        <!-- <i class="pi pi-credit-card mx-1 me-4" style="font-size: 25px;color:#52aef4ff"></i> -->
+        <img class="onlineServiceImages"  src="https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?w=2000" alt="Italian Trulli">   
+
+        <p class="deliveryText">"Always there for you..."</p>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <div class="container-fluid mt-4">
+    <div class="row justify-content-md-center">
+        <div class="col-md-5  left " style="background-image: url({{image1}});">
+            <div class="row">
+                <p class="prescription">UPLOAD YOUR PRESCRIPTIONS</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="prescriptionDescription">Order online and have your prescription medication delivered straight to your home.</p>
+                </div> 
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-5 " >
+                  <button pButton pRipple type="button" label="Upload Prescription" (click)="onUpload()" class="p-button-sm ms-3 p-button-rounded p-button-warning"></button>
+                </div>
+           </div>
+        </div>
+        
+        <div class="col-md-5 right"  style="background-image: url({{image2}});">
+
+            <div class="container">
+                <div class="row rowDown">
+                    <div class="col-md-12">
+                    <div class="row" >
+                      <div class="col-md-10 ">
+                        <h5>Weight Management & Slimming</h5>
+
+                      </div>
+                      
+                    </div>
+                    <div class="row align-items-center" >
+                        <div class="col-md-8 ">
+                            <p style="text-align: justify;">Enhance your metabolism, maintain a healthy appetite and minimize cravings with our effective weight management and slimming products.</p>
+                        </div>
+                        <div class="col-md-3 ms-4 mb-5 justify-content-end">
+                            <button pButton pRipple type="button"  (click)="onUploadShopNow()" label="Shop Now" class="p-button-sm py-1 px-2 p-button-rounded p-button-warning"></button>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <app-file-upload
+  [display]="display"
+  [heading]="heading"
+  (displayEmit)="display = $event"
+></app-file-upload>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
+import { medCard } from 'src/app/models/med-card';
 
 @Component({
   selector: 'app-medicine-card-prev',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicineCardPrevComponent implements OnInit {
   
-  ratingNumber: number = 3;
-  uploadedFiles: any[] = [];
-  name:String ='med1';
-  price:number=1000;
-
-  constructor() { }
+  @Input() ratingNumber?: number;
+  @Input() name?:String ;
+  @Input() price?:number;
+  @Input() image?:String;
+  constructor() {}
 
   ngOnInit(): void {
+
   }
   onAddRating(){
 

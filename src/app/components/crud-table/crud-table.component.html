@@ -1,0 +1,264 @@
+<p-toast></p-toast>
+
+<div class="card">
+  <p-table
+    #dt
+    [value]="products"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+    responsiveLayout="scroll"
+    [(selection)]="selectedProducts"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="caption">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <button
+            pButton
+            pRipple
+            label="New"
+            icon="pi pi-plus"
+            class="p-button-success me-2"
+            (click)="openNew()"
+          ></button>
+          <button
+            pButton
+            pRipple
+            label="Delete"
+            icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="deleteSelectedProducts()"
+            [disabled]="!selectedProducts || !selectedProducts.length"
+          ></button>
+        </div>
+        <h5 class="m-0 mb-2">{{ title }}</h5>
+
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search..."
+            (input)="handleSearch($event)"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="name">
+          Name <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th>Image</th>
+        <th pSortableColumn="price">
+          Price <p-sortIcon field="price"></p-sortIcon>
+        </th>
+        <th pSortableColumn="quantity">
+          Quantity <p-sortIcon field="quantity"></p-sortIcon>
+        </th>
+        <th pSortableColumn="category">
+          Category <p-sortIcon field="category"></p-sortIcon>
+        </th>
+        <th pSortableColumn="stockStatus">
+          Stock Status <p-sortIcon field="stockstatus"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="product"></p-tableCheckbox>
+        </td>
+        <td>{{ product.name }}</td>
+
+        <!-- Item Image -->
+        <td>
+          <img
+            [src]="product.image"
+            [alt]="'No Image'"
+            width="100"
+            class="shadow-4"
+          />
+        </td>
+
+        <td>{{ product.price | currency: "LKR" }}</td>
+
+        <td>{{ product.quantity }}</td>
+
+        <td>{{ product.category }}</td>
+
+        <!-- Stock Status -->
+        <td>
+          <p-tag
+            *ngIf="product.stockStatus === 'IN STOCK'"
+            [value]="product.stockStatus"
+            severity="success"
+          ></p-tag>
+          <p-tag
+            *ngIf="product.stockStatus === 'OUT OF STOCK'"
+            [value]="product.stockStatus"
+            severity="danger"
+          ></p-tag>
+        </td>
+
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success me-2"
+            (click)="editProduct(product)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="deleteProduct(product)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between fw-normal">
+        In total: {{ products ? products.length : 0 }} products.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Dialog -->
+<p-dialog
+  [(visible)]="productDialog"
+  [style]="{ width: '450px' }"
+  header="Product Details"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <!-- Image -->
+    <label
+      for="changeimage"
+      class="m-3 d-flex align-items-center justify-content-around"
+    >
+      <img
+        *ngIf="product.image !== ''"
+        [src]="product.image"
+        [alt]="'No Image'"
+        class="product-image m-0 me-2 cursor-pointer"
+        [(ngModel)]="product.image"
+      />
+      <div class="btn btn-sm btn-outline-secondary mt-2">
+        <i class="pi pi-upload"></i> Change
+      </div>
+      <input
+        id="changeimage"
+        hidden
+        type="file"
+        (change)="handleImageFileChange($event)"
+      />
+    </label>
+
+    <!-- Name -->
+    <div class="field mb-4">
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="product.name"
+          id="name"
+          required
+          autofocus
+        />
+        <label for="name">Name</label>
+      </span>
+      <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      >
+    </div>
+
+    <div class="field mb-4">
+      <label class="mb-1">Stock Status</label>
+      <div class="formgrid row flex justify-content-center">
+        <div class="field-radiobutton col d-flex justify-content-center">
+          <p-radioButton
+            id="instock"
+            name="stockStatus"
+            value="IN STOCK"
+            [(ngModel)]="product.stockStatus"
+          ></p-radioButton>
+          <label for="category1"> In Stock</label>
+        </div>
+        <div class="field-radiobutton col d-flex justify-content-center">
+          <p-radioButton
+            id="outofstock"
+            name="stockStatus"
+            value="OUT OF STOCK"
+            [(ngModel)]="product.stockStatus"
+          ></p-radioButton>
+          <label for="category2"> Out of Stock</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="formgrid grid mb-4">
+      <!-- Price -->
+      <div class="field col">
+        <label for="price">Price</label>
+        <p-inputNumber
+          id="price"
+          [(ngModel)]="product.price"
+          mode="currency"
+          currency="LKR"
+          locale="en-US"
+        ></p-inputNumber>
+      </div>
+
+      <!-- Quantity -->
+      <div class="field col">
+        <label for="quantity">Quantity</label>
+        <p-inputNumber
+          id="quantity"
+          [(ngModel)]="product.quantity"
+        ></p-inputNumber>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Cancel"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Save"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="saveProduct()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

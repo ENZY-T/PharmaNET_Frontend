@@ -1,59 +1,46 @@
-.cardConfig{
-    margin: 10px;
-    margin-left: 0px;
-    padding: 20px;
+.cardConfig {
+  margin: 10px;
+  margin-left: 0px;
+  padding: 20px;
 }
-.erroMsg{
-    height: 40px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
+.erroMsg {
+  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-.formGropClass{
-    margin-top: 10px;
+.formGropClass {
+  margin-top: 10px;
 }
-.heading{
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
+.heading {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.imgConfig{
-    margin: 10px;
-    margin-right: 0px;
-    padding: 20px;
+.imgConfig {
+  margin: 10px;
+  margin-right: 0px;
+  padding: 20px;
 }
-.loingBtn{
-    margin-top: 20px;
-    margin-left: 20%;
-    margin-right: 20%;
+.loingBtn {
+  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
-.loginSide{
-    margin-top: 20px;
+.loginSide {
+  margin-top: 20px;
 }
 
-.leftLogin{
-  
-    height: 65vh;
-    background-color: blue;
-    border-radius:  12px 0px 0px 12px;
-    background-image: url('https://thumbs.dreamstime.com/b/doctor-medical-background-24834402.jpg');
-
-}
-.rightLogin{
-   
-    height: 65vh;
-    background-color:rgba(124, 109, 109, 0.212);
-    border-radius:  0px 12px 12px 0px;
-    background-image: url("https://images.theconversation.com/files/256057/original/file-20190129-108364-17hlc1x.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
-
+.leftLogin {
+  background-image: url("https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-3875.jpg?w=740&t=st=1660647296~exp=1660647896~hmac=d9cc51328bac7e677c416da48516ee685c459dff7626ce341df90860afbc72b7");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-@media (max-width: 768px) { 
-    .rightLogin{
-        border-radius:  12px 12px 12px 12px;
-        margin: 10px;
-    }
- }
+.bg {
+  background-color: rgba(240, 255, 255, 0.5);
+}
 
-
+.fg {
+  background-color: white;
+}

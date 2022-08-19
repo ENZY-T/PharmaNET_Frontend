@@ -9,9 +9,11 @@ import { FormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { MedicineCardPrevComponent } from './medicine-card-prev/medicine-card-prev.component';
+import { PromotionsComponent } from './promotions/promotions.component';
 
 @NgModule({
-  declarations: [MedicineCardComponent, DashboardComponent, MedicineCardPrevComponent],
+  declarations: [MedicineCardComponent, DashboardComponent, MedicineCardPrevComponent, PromotionsComponent,PromotionsComponent
+  ],
   imports: [
     CommonModule,
     CardModule,
@@ -22,6 +24,7 @@ import { MedicineCardPrevComponent } from './medicine-card-prev/medicine-card-pr
     HttpClientModule
 
   ],
-  exports:[MedicineCardComponent,DashboardComponent,MedicineCardPrevComponent],
+  exports:[MedicineCardComponent,DashboardComponent,MedicineCardPrevComponent,PromotionsComponent
+  ],
 })
 export class HomeModule { }

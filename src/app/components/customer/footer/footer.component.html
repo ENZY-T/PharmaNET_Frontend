@@ -1,0 +1,171 @@
+<app-toast-ui
+  [isShowToast]="isShowToast"
+  [Title]="toastContent"
+  [isToastTypeSuccess]="isToastTypeSuccess"
+>
+</app-toast-ui>
+
+
+<footer class="footer-section">
+    <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="cta-text">
+                            <h4>Find us</h4>
+                            <p class="fontStyle">{{cutomerData[0].address}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                            <h4>Call us</h4>
+                            <p class="fontStyle">{{cutomerData[0].contactNumber}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <p class="fontStyle">{{cutomerData[0].email}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="https://i.ibb.co/QDy827D/ak-logo.png" class="img-fluid" alt="logo"></a>
+                        </div>
+                        <div class="footer-text">
+                            <p class="fontStyle" >The global pharmaceutical industry is expected to witness positive growth as the top pharma companies are at forefront of the fight against COVID-19.</p>
+                        </div>
+                        <div class="footer-social-icon">
+                            <h5 style="color: white;">Follow us</h5>
+                          
+                            <a href="index.html"><img src="assets/Logo.png" style="width: 100px;" class="img-fluid" alt="logo"></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                            <div class="footer-widget-heading">
+                                <h3>Categories</h3>
+                            </div>
+                            <ul style="list-style-type: none;"  *ngFor="let items of cutomerData[0].categories">
+                                <li><a href="#">{{items.item}}</a></li>
+                            </ul>
+                          </div>
+                          <div class="col-sm">
+                            <div class="footer-widget-heading">
+                                <h3>Brands</h3>
+                            </div>
+                            <ul style="list-style-type: none;"  *ngFor="let items of cutomerData[0].brands">
+                                <li><a href="#">{{items.item}}</a></li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      </div>
+
+                    <!-- <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">about</a></li>
+                            <li><a href="#">services</a></li>
+                            <li><a href="#">portfolio</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Expert Team</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Latest News</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Subscribe</h3>
+                        </div>
+                        <div class="footer-text mb-25">
+                            <p class="fontStyle">Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                        </div>
+                        <div class="subscribe-form">
+                            <form action="#">
+                                <input type="text" style="height: 40px;"  name="value" [(ngModel)]="value" placeholder="Email Address">
+                                <button pButton pRipple type="button" (click)="onSubsrcibe()" style="height: 40px;" label="Subscribe" ></button>
+                            </form>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" class="imgProperty">
+                              </div>
+                              <div class="col">
+                                  <img src="https://cdn-icons-png.flaticon.com/512/7891/7891194.png" class="imgProperty">
+                              </div>
+                              <div class="col">
+                                  <img src="https://cdn-icons-png.flaticon.com/512/1052/1052855.png" class="imgProperty">
+                              </div>
+  
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p class="fontStyle">Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">ENZY</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Policy</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li> -->

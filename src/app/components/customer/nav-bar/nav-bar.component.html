@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-end firstNav">
+    <div class="col-md-1 mt-1 d-flex flex-row">
+      <a href="/pharmacyProfile" class="badge badge-light firstNavItems"
+        ><p>My Account</p></a
+      >
+    </div>
+
+    <div class="col-md-1 mt-1 d-flex flex-row">
+      <a href="/location" class="badge badge-light firstNavItems">
+        <p>Branch Network</p>
+      </a>
+    </div>
+
+    <div class="col-md-1 ms-4 mt-1 d-flex flex-row">
+      <a  class="badge badge-light firstNavItems"
+        ><p>98765432100</p>
+      </a>
+    </div>
+
+    <div class="col-md-1 mt-1 d-flex flex-row">
+      <p-avatar
+        image="https://www.mockofun.com/wp-content/uploads/2019/12/circle-photo.jpg"
+        styleClass="mr-2"
+        size="small"
+        shape="circle"
+      ></p-avatar>
+    </div>
+  </div>
+  <div class="row secondNav justify-content-end">
+    <div class="col-md-4">
+      <p class="pharmacyName">ABC Pharmacy</p>
+    </div>
+    <div class="col-md-3">
+      <form class="form-inline">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+    </div>
+    <div class="col-md-2">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Upload Prescription"
+        (click)="onUpload()"
+        class="p-button-sm py-1 mt-1 p-button-rounded p-button-warning"
+      ></button>
+    </div>
+    <div class="col-md-1">
+      <a href="/registration" class="badge badge-light" style="text-decoration: none"
+        ><p class="firstNavItems mt-1">Sign in</p></a
+      >
+    </div>
+    <div class="col-md-1">
+      <a href="/cartList" class="badge badge-light mt-1">
+        <i class="pi pi-shopping-cart"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<app-file-upload
+  [display]="display"
+  [heading]="heading"
+  (displayEmit)="display = $event"
+></app-file-upload>

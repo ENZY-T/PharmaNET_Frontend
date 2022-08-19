@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { medCard } from '../models/med-card';
+import {MenuItem, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-test',
@@ -8,24 +10,16 @@ import { FormControl,FormGroup,Validators } from '@angular/forms';
 })
 export class TestComponent implements OnInit {
 
-  passwordLength:number =0;
+  value="";
 
-  loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(1)])
-  })
-
-  get username(){
-    return this.loginForm.get('username')
-  }
   
-  get password(){
-    return this.loginForm.get('password')
-  }
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+
   }
 
+  clearValue() {
+    this.value="";
+  }
 }
