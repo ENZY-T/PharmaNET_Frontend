@@ -21,7 +21,6 @@ export class PharmacyDashboardComponent implements OnInit {
   }
 
   getActivityOfTab(tab: string) {
-    console.log(tab);
     if (tab === this.selectedTab) {
       return 'active';
     } else {

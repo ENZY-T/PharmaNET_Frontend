@@ -2,6 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { emptyProduct, Product } from 'src/app/models/product';
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crud-table',
@@ -19,21 +25,19 @@ export class CrudTableComponent implements OnInit {
   product: Product = emptyProduct;
   selectedProducts: Product[] = [];
   submitted: boolean = false;
-  // categories: any[] = [
-  //   { label: 'IN STOCK', value: 'IN STOCK' },
-  //   { label: 'OUT OF STOCK', value: 'IN STOCK' },
-  // ];
 
   constructor(
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private domSanitizer: DomSanitizer,
+    private httpClient: HttpClient
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.unfilteredProducts = this.products;
+  }
 
   openNew() {
-    this.product = emptyProduct;
-
     this.submitted = false;
     this.productDialog = true;
   }
@@ -91,6 +95,7 @@ export class CrudTableComponent implements OnInit {
     if (this.product.name.trim()) {
       if (this.product.id) {
         this.products[this.findIndexById(this.product.id)] = this.product;
+
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -98,9 +103,10 @@ export class CrudTableComponent implements OnInit {
           life: 3000,
         });
       } else {
-        this.product.id = this.createId();
-        this.product.image = 'product-placeholder.svg';
-        this.products.push(this.product);
+        // If new product
+        this.product;
+        this.PostProduct();
+
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -127,17 +133,57 @@ export class CrudTableComponent implements OnInit {
     return index;
   }
 
-  createId(): string {
-    let id = '';
-    var chars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 5; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
+  handleSearch(event: any) {
+    this.products = this.unfilteredProducts.filter((item) =>
+      item.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
   }
 
-  handleSearch() {
-    this.products;
+  handleImageFileChange(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const url: SafeUrl = this.domSanitizer.bypassSecurityTrustUrl(
+        URL.createObjectURL(file)
+      );
+      this.product.imageFile = file;
+      this.product.image = url;
+    } else {
+      this.product.image = '';
+    }
+  }
+
+  PostProduct(url?: string) {
+    const nowTime = new Date();
+    const formData = new FormData();
+
+    formData.append('imageFile', this.product.imageFile ?? '');
+    formData.append('name', this.product.name);
+    formData.append('price', this.product.price.toString());
+    formData.append('quantity', this.product.quantity.toString());
+    formData.append('stockState', this.product.stockStatus);
+
+    const upload$ = this.httpClient.post(
+      'https://localhost/api/inventory/add',
+      formData
+    );
+
+    upload$.subscribe();
+  }
+
+  PutProduct() {
+    const formData = new FormData();
+
+    formData.append('imageFile', this.product.imageFile ?? '');
+    formData.append('name', this.product.name);
+    formData.append('price', this.product.price.toString());
+    formData.append('quantity', this.product.quantity.toString());
+    formData.append('stockState', this.product.stockStatus);
+
+    const upload$ = this.httpClient.put(
+      'https://localhost/api/inventory/add',
+      formData
+    );
+
+    upload$.subscribe();
   }
 }

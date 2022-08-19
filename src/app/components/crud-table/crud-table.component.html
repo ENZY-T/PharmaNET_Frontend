@@ -44,7 +44,12 @@
 
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
-          <input pInputText type="text" placeholder="Search..." />
+          <input
+            pInputText
+            type="text"
+            placeholder="Search..."
+            (input)="handleSearch($event)"
+          />
         </span>
       </div>
     </ng-template>
@@ -162,7 +167,12 @@
       <div class="btn btn-sm btn-outline-secondary mt-2">
         <i class="pi pi-upload"></i> Change
       </div>
-      <input id="changeimage" hidden type="file" />
+      <input
+        id="changeimage"
+        hidden
+        type="file"
+        (change)="handleImageFileChange($event)"
+      />
     </label>
 
     <!-- Name -->
