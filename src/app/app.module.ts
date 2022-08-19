@@ -62,7 +62,6 @@ import {StepsModule} from 'primeng/steps';
     ConfirmDialogModule,
     FormsModule,
     GalleriaModule,
-    PharmacyProfileModule,
     StepsModule
   ],
   providers: [],
