@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerServicesService } from 'src/app/services/customer-services.service';
 
 @Component({
   selector: 'app-prescription-upload',
@@ -7,6 +9,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./prescription-upload.component.scss']
 })
 export class PrescriptionUploadComponent implements OnInit {
+
+   
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
+
+  isShowToast:boolean =false;
+  toastContent:string="";
+  isToastTypeSuccess:boolean =true ;
+  
 
   display: boolean = false;
   selectedImage?: string='No File selected';
@@ -18,7 +29,7 @@ export class PrescriptionUploadComponent implements OnInit {
 
     name : new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
-    contactNumber : new FormControl(),
+    contactNumber : new FormControl(''),
    
   })
 
@@ -32,7 +43,7 @@ export class PrescriptionUploadComponent implements OnInit {
     return this.prescriptionUploadForm.get('contactNumber')
   }
 
-  constructor() { }
+  constructor( private router: Router,  private service:CustomerServicesService) { }
 
   ngOnInit(): void {
   }
@@ -42,12 +53,37 @@ export class PrescriptionUploadComponent implements OnInit {
       Name:this.name?.value,
       Email:this.email?.value,
       ContactNumber:this.contactNumber?.value,
-    
       File:this.selectedFile
      }
+     console.log(data);
+
+     this.service.uploadPrescription(data)
+     .subscribe(
+       (val) => {
+           this.isBlock=false;
+       },
+       response => {
+           if(response.status == 200){
+            this.isBlock=false;
+            this.toastFunction("Prescription Uploaded Succefully",true);
+            this.onClear();
+           }
+           else{
+             this.isBlock=false;
+             this.toastFunction("Prescription Upload Faild",false);
+           }
+       },
+       () => {
+           this.isBlock=false;
+       });
+
     }
     onUpload() {
       this.display = true;
+    }
+    onBack(){
+      this.router.navigateByUrl('/customerView');
+
     }
     onClear(){
       this.name?.reset();
@@ -66,5 +102,17 @@ export class PrescriptionUploadComponent implements OnInit {
       this.selectedImage =file[0].name;
       }
     
+    }
+
+    async toastFunction(title:string,isSuccess:boolean){
+      this.toastContent= title;
+      this.isToastTypeSuccess =isSuccess;
+      await this.delay(0);
+      this.isShowToast=true;
+      await this.delay(0);
+      this.isShowToast=false;
+    }
+    delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
     }
 }

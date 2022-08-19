@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  display: boolean = false;
-  heading:string = "Upload Prescription";
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onUpload() {
-    this.display = true;
+    this.router.navigateByUrl('/prescriptionUploadComponent');
   }
 
 }
