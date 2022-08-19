@@ -30,6 +30,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-profile.module';
 import { StepsModule } from 'primeng/steps';
 import { PrescriptionListComponent } from './components/prescription-list/prescription-list.component';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PrescriptionListComponent } from './components/prescription-list/prescr
     GalleriaModule,
     PharmacyProfileModule,
     StepsModule,
+    BadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

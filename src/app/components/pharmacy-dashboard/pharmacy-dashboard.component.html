@@ -112,7 +112,7 @@
             </li>
           </ul>
 
-          <h6
+          <!-- <h6
             class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
           >
             <span>Saved reports</span>
@@ -241,7 +241,7 @@
                 Year-end sale
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </nav>
 
@@ -261,10 +261,7 @@
 
           <!-- Inventory -->
           <div *ngSwitchCase="'inventory'">
-            <app-crud-table
-              title="Manage Inventory"
-              [products]="dummyProductArray"
-            ></app-crud-table>
+            <app-crud-table title="Manage Inventory"></app-crud-table>
           </div>
 
           <!-- Customer Inquiries -->

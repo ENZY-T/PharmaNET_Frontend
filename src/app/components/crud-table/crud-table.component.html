@@ -89,7 +89,7 @@
         <!-- Item Image -->
         <td>
           <img
-            [src]="product.image"
+            [src]="baseUrl + product.image"
             [alt]="'No Image'"
             width="100"
             class="shadow-4"
@@ -129,7 +129,7 @@
             pRipple
             icon="pi pi-trash"
             class="p-button-rounded p-button-warning"
-            (click)="deleteProduct(product)"
+            (click)="DeleteProduct(product)"
           ></button>
         </td>
       </tr>
@@ -153,19 +153,25 @@
 >
   <ng-template pTemplate="content">
     <!-- Image -->
+    <p>Image</p>
     <label
       for="changeimage"
-      class="m-3 d-flex align-items-center justify-content-around"
+      class="d-flex align-items-center justify-content-around border rounded-2 p-3 mb-5"
     >
       <img
         *ngIf="product.image !== ''"
-        [src]="product.image"
+        [src]="
+          product.image.toString().includes('blob')
+            ? product.image
+            : baseUrl + product.image
+        "
         [alt]="'No Image'"
         class="product-image m-0 me-2 cursor-pointer"
         [(ngModel)]="product.image"
       />
       <div class="btn btn-sm btn-outline-secondary mt-2">
-        <i class="pi pi-upload"></i> Change
+        <i class="pi pi-upload"></i>
+        {{ product === emptyProduct ? "Add" : "Change" }}
       </div>
       <input
         id="changeimage"
@@ -176,7 +182,7 @@
     </label>
 
     <!-- Name -->
-    <div class="field mb-4">
+    <div class="field mb-5">
       <span class="p-float-label">
         <input
           type="text"
@@ -191,6 +197,21 @@
       <small class="p-error" *ngIf="submitted && !product.name"
         >Name is required.</small
       >
+    </div>
+
+    <!-- Category -->
+    <div class="field mb-5">
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="product.category"
+          id="name"
+          required
+          autofocus
+        />
+        <label for="name">Category</label>
+      </span>
     </div>
 
     <div class="field mb-4">
