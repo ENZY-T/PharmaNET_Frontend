@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-pharmacy-details',
@@ -8,6 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./pharmacy-details.component.scss']
 })
 export class PharmacyDetailsComponent implements OnInit {
+
+  
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
 
   isShowToast:boolean =false;
   toastContent:string="";
@@ -45,17 +50,16 @@ export class PharmacyDetailsComponent implements OnInit {
   }
 
 
-  constructor( private router: Router) { }
+  constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
-    this.toastFunction("Pharmacy Owner Details added Succefully",true);
 
   }
   onUpload() {
     this.display = true;
   }
-  onSave(){
-    this.toastFunction("Pharmacy Details added Succefully",true);
+  async onSave(){
+    this.isBlock=true;
     let data={
       PharmacyName:this.pharmacyName?.value,
       LName:this.pharmacyAddress?.value,
@@ -64,7 +68,26 @@ export class PharmacyDetailsComponent implements OnInit {
       AboutCompany:this.aboutCompany?.value,
       File:this.selectedFile
      }
-     console.log(data);
+
+     this.service.pharmacyData(data)
+     .subscribe(
+       (val) => {
+           this.isBlock=false;
+       },
+       response => {
+           if(response.status == 200){
+            this.isBlock=false;
+            this.toastFunction("Pharmacy Details added Succefully",true);
+          //  this.router.navigateByUrl('/pharmacyDetails');
+           }
+           else{
+             this.isBlock=false;
+             this.toastFunction("Pharmacy Details added Faild",false);
+           }
+       },
+       () => {
+           this.isBlock=false;
+       });
   }
   onClear(){
     this.pharmacyName?.reset();

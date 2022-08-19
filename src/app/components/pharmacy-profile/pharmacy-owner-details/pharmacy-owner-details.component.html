@@ -18,7 +18,7 @@
                         <div class="col-md-6 mt-3">
                             <div class="input-group mb-2 col-md-4">
                                 <span class="p-float-label" style="width: 400px;">
-                                <input type="text" class="form-control" pInputText  required formControlName="firstName">
+                                <input type="text" [(ngModel)]="ngFirstName" class="form-control" pInputText  required   formControlName="firstName">
                                 <label for="float-input">First Name</label>
                             </span>
                             </div>
@@ -26,14 +26,14 @@
                         <div class="col-md-6 mt-3">
                             <div class="input-group mb-2 col-md-">
                                 <span class="p-float-label" style="width: 400px;">
-                                    <input type="text" class="form-control" pInputText   placeholder="Last Name"  required formControlName="lastName">
+                                    <input type="text" [(ngModel)]="ngLastName" class="form-control" pInputText   placeholder="Last Name"  required formControlName="lastName">
                                     <label for="float-input">Last Name</label>
                                 </span>
                             </div>
                         </div>
                         <div class="input-group mb-2  col-md-6 mt-3">
                             <span class="p-float-label" style="width: 800px;">
-                                <input type="text" pInputText   class="form-control" placeholder="E-mail"  required formControlName="email">
+                                <input type="text" pInputText [(ngModel)]="ngEmail"  class="form-control" placeholder="E-mail"  required formControlName="email">
                                 <label for="float-input">Email</label>
                             </span>
                         </div> 
@@ -42,18 +42,18 @@
                         </div>
                         <div class="input-group mb-2  col-md-6 mt-3">
                             <span class="p-float-label" style="width: 800px;">
-                            <input type="text"  pInputText   class="form-control" placeholder="Mobile Number"   formControlName="mobileNumber">
+                            <input type="text"  pInputText [(ngModel)]="ngMobileNumber"  class="form-control" placeholder="Mobile Number"   formControlName="mobileNumber">
                             <label for="float-input">Mobile Number</label>
                         </span>
                         </div> 
                         <div class="input-group mb-2  col-md-6 mt-3" >
                             <span class="p-float-label" style="width: 800px;">
-                            <input type="text"  pInputText   class="form-control" placeholder="Address"   formControlName="address">
+                            <input type="text"  pInputText [(ngModel)]="ngFirstName"  class="form-control" placeholder="Address"   formControlName="address">
                             <label for="float-input">Address</label>
                         </span>
                         </div> 
                         <div class="input-group mb-2  col-md-6 mt-3" >       
-                                <span class="me-4 mt-1" >Upload Profile</span>
+                                <span class="me-4 mt-1" >Upload Profile picture</span>
                                 <p-button label="Choose" icon="pi pi-plus" styleClass="p-button-sm" (click)="onUpload()"></p-button>
                                 <label class="mt-2 ms-2">{{selectedImage}}</label>
                             </div> 
@@ -82,3 +82,6 @@
 (displayEmit)="display=$event"
 (fileEmit)="onSelectFile($event)"
 ></app-file-upload>
+
+<app-loading-ui [Title]="loadingTitle" [blockedDocument]="isBlock">
+</app-loading-ui>

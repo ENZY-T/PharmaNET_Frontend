@@ -65,24 +65,16 @@
                             <div class="footer-widget-heading">
                                 <h3>Categories</h3>
                             </div>
-                            <ul style="list-style-type: none;" >
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">services</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">Contact</a></li>
+                            <ul style="list-style-type: none;"  *ngFor="let items of cutomerData[0].categories">
+                                <li><a href="#">{{items.item}}</a></li>
                             </ul>
                           </div>
                           <div class="col-sm">
                             <div class="footer-widget-heading">
                                 <h3>Brands</h3>
                             </div>
-                            <ul style="list-style-type: none;">
-                                <li><a href="#">Abraxane</a></li>
-                                <li><a href="#">Absorica</a></li>
-                                <li><a href="#">Acanya</a></li>
-                                <li><a href="#">Accupril</a></li>
-                                <li><a href="#">Ventolin </a></li>
+                            <ul style="list-style-type: none;"  *ngFor="let items of cutomerData[0].brands">
+                                <li><a href="#">{{items.item}}</a></li>
                             </ul>
                           </div>
                           

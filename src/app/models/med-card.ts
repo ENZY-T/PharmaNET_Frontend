@@ -5,6 +5,7 @@ export interface medCard {
     name:string,
     image:string,
     ratingNumber:number,
+    isSelect:boolean
 
   }
   
