@@ -1,7 +1,10 @@
+import { SafeUrl } from '@angular/platform-browser';
+
 export interface Product {
   id: string;
   name: string;
-  image: string;
+  image: string | SafeUrl;
+  imageFile?: File;
   category: string;
   stockStatus: 'IN STOCK' | 'OUT OF STOCK';
   price: number;
