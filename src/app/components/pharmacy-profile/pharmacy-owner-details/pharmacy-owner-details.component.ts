@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 })
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
+  
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
+
   isShowToast:boolean =false;
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
@@ -52,7 +56,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   onUpload() {
     this.display = true;
   }
-   onSaveAndNext(){
+  async onSaveAndNext(){
     let data={
       FName:this.firstName?.value,
       LName:this.lastName?.value,
@@ -62,10 +66,14 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       File:this.selectedFile
      }
      console.log(data);
-    
-     this.router.navigateByUrl('/pharmacyDetails');
+     
+      this.isBlock=true;
+      await this.delay(3000);
+      this.isBlock=false;
+      this.router.navigateByUrl('/pharmacyDetails');
 
   }
+
   onClear(){
     this.firstName?.reset();
     this.lastName?.reset();
@@ -75,7 +83,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.selectedImage =''
 
   }
-  
+
   onSelectFile(file:any){
     if(file == 'delete'){
     this.selectedFile =[];

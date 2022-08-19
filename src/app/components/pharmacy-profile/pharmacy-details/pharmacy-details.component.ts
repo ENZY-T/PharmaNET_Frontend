@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 })
 export class PharmacyDetailsComponent implements OnInit {
 
+  
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
+
   isShowToast:boolean =false;
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
@@ -54,8 +58,7 @@ export class PharmacyDetailsComponent implements OnInit {
   onUpload() {
     this.display = true;
   }
-  onSave(){
-    this.toastFunction("Pharmacy Details added Succefully",true);
+  async onSave(){
     let data={
       PharmacyName:this.pharmacyName?.value,
       LName:this.pharmacyAddress?.value,
@@ -65,6 +68,12 @@ export class PharmacyDetailsComponent implements OnInit {
       File:this.selectedFile
      }
      console.log(data);
+     this.isBlock=true;
+     await this.delay(3000);
+     this.isBlock=false;
+     this.router.navigateByUrl('/pharmacyDetails');
+     this.toastFunction("Pharmacy Details added Succefully",true);
+
   }
   onClear(){
     this.pharmacyName?.reset();

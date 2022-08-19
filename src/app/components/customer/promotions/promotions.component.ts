@@ -39,7 +39,6 @@ export class PromotionsComponent implements OnInit {
 
   ngOnInit(): void {
   
-
     this.medicineCards = [
       { id:0, name: 'Synthroid ', price:1000, prevPrice:1500, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:3 },
       { id:1, name: 'Crestor ', price:2000,prevPrice:2300, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/7/3/735334_1.jpg',ratingNumber:2 },
