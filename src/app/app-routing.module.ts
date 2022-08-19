@@ -15,14 +15,12 @@ import { MedicineCardPrevComponent } from './components/home/medicine-card-prev/
 import { PromotionsComponent } from './components/home/promotions/promotions.component';
 import { PharmacyProfilePrevComponent } from './components/pharmacy-profile/pharmacy-profile-prev/pharmacy-profile-prev.component';
 import { LocalizationComponent } from './modules/localization/localization.component';
-import { TestComponent } from './test/test.component';
 import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy-details/pharmacy-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignupComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'test', component: TestComponent },
   { path: 'changeLanguage', component: LocalizationComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'medicineCard', component: MedicineCardComponent },
