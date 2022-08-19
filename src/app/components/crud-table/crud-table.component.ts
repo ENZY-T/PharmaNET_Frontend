@@ -153,7 +153,6 @@ export class CrudTableComponent implements OnInit {
   }
 
   PostProduct(url?: string) {
-    const nowTime = new Date();
     const formData = new FormData();
 
     formData.append('imageFile', this.product.imageFile ?? '');
@@ -163,7 +162,7 @@ export class CrudTableComponent implements OnInit {
     formData.append('stockState', this.product.stockStatus);
 
     const upload$ = this.httpClient.post(
-      'https://localhost/api/inventory/add',
+      'https://localhost:5001/api/inventory',
       formData
     );
 
@@ -180,7 +179,7 @@ export class CrudTableComponent implements OnInit {
     formData.append('stockState', this.product.stockStatus);
 
     const upload$ = this.httpClient.put(
-      'https://localhost/api/inventory/add',
+      'https://localhost:5001/api/inventory',
       formData
     );
 

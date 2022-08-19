@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './components/auth/auth.module';
 import { LoadingUiModule } from './modules/loading-ui/loading-ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TestComponent } from './test/test.component';
 import { NavigationbarModule } from './modules/navigationbar/navigationbar.module';
 import { HomeModule } from './components/home/home.module';
 import { CustomerModule } from './components/customer/customer.module';
@@ -29,13 +28,15 @@ import { FormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
 import { GalleriaModule } from 'primeng/galleria';
 import { PharmacyProfileModule } from './components/pharmacy-profile/pharmacy-profile.module';
-import {StepsModule} from 'primeng/steps';
+import { StepsModule } from 'primeng/steps';
+import { PrescriptionListComponent } from './components/prescription-list/prescription-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     PharmacyDashboardComponent,
     CrudTableComponent,
+    PrescriptionListComponent,
   ],
   imports: [
     TagModule,
@@ -62,11 +63,11 @@ import {StepsModule} from 'primeng/steps';
     ConfirmDialogModule,
     FormsModule,
     GalleriaModule,
-    StepsModule
+    PharmacyProfileModule,
+    StepsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas : [CUSTOM_ELEMENTS_SCHEMA]
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

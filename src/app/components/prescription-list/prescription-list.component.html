@@ -1,0 +1,28 @@
+<p-table [columns]="cols" [value]="products" responsiveLayout="scroll">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{ col.header }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td>{{ rowData.name }}</td>
+
+      <!-- Prescription Image -->
+      <td>
+        <img
+          [src]="rowData.image"
+          [alt]="'No Image'"
+          width="100"
+          class="shadow-4"
+        />
+      </td>
+
+      <td>{{ rowData.email }}</td>
+
+      <td>{{ rowData.telephone }}</td>
+    </tr>
+  </ng-template>
+</p-table>
