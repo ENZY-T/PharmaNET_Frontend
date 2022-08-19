@@ -75,7 +75,7 @@ export class RegistrationComponent implements OnInit {
   onChange(e:any){
     console.log(this.selectedValue);
   }
-  onCustomerRegister(){
+ async onCustomerRegister(){
     console.log("on reg customer");
     this.isBlock=true;
     this.role ='customer';
@@ -91,14 +91,13 @@ export class RegistrationComponent implements OnInit {
      this.service.customerRegister(data)
      .subscribe(
       (val) => {
-        this.toastFunction("Customer registered successfully",true);
-
           console.log("POST call successful value returned in body", val);
-          this.isBlock=false;
+          this.onRegisterSuccess();
+
       },
       response => {
         this.toastFunction("Customer registered Faild",false);
-
+       
           console.log("POST call in error", response);
           this.isBlock=false;
       },
@@ -108,7 +107,14 @@ export class RegistrationComponent implements OnInit {
 
      
   }
-  onPharmacyRegister(){
+  async onRegisterSuccess(){
+    this.toastFunction("Customer registered successfully",true);
+    this.isBlock=false;
+    await this.delay(2000);
+    this.router.navigateByUrl('/customerView');
+  }
+  
+   onPharmacyRegister(){
     this.toastFunction("Pharmacy registered successfully",true);
 
     let data={

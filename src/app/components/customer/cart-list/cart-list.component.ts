@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { medCard } from 'src/app/models/med-card';
 
 
@@ -12,7 +13,7 @@ export class CartListComponent implements OnInit {
 
   selectedList: medCard[] = [];
   
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
 
@@ -26,6 +27,10 @@ export class CartListComponent implements OnInit {
       { id:5, name: 'Diskus ',   isSelect:false,  price:4000, prevPrice:4100, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:2 }
 
   ];
+
+  }
+  onBack(){
+    this.router.navigateByUrl('/customerView');
 
   }
 

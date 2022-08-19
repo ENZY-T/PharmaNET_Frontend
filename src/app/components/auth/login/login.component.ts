@@ -76,14 +76,14 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (val) => {
           console.log("POST call successful value returned in body", val);
+          this.onLoginSuccess();
         //  this.isBlock=false;
       },
       response => {
           console.log(response)
           console.log(response.status)
           if(response.status == 200){
-            this.toastFunction("Customer log successfully",true);
-            this.isBlock=false;
+            this.onLoginSuccess();
           }
           else{
             this.toastFunction("Customer login Faild",false);
@@ -100,7 +100,13 @@ export class LoginComponent implements OnInit {
    // this.toastFunction("Failed to add",false);
     this.router.navigateByUrl('/registration');
   }
-
+  async onLoginSuccess(){
+    this.toastFunction("Customer log successfully",true);
+    this.isBlock=false;
+    await this.delay(2000);
+    this.router.navigateByUrl('/customerView');
+  }
+  
  async toastFunction(title:string,isSuccess:boolean){
       this.toastContent= title;
       this.isToastTypeSuccess =isSuccess;
