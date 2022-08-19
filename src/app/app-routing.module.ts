@@ -16,6 +16,7 @@ import { PromotionsComponent } from './components/home/promotions/promotions.com
 import { PharmacyProfilePrevComponent } from './components/pharmacy-profile/pharmacy-profile-prev/pharmacy-profile-prev.component';
 import { LocalizationComponent } from './modules/localization/localization.component';
 import { TestComponent } from './test/test.component';
+import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy-details/pharmacy-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'prescriptionUpload', component: ImageUploadComponent },
   { path: 'pharma-dash', component: PharmacyDashboardComponent },
   { path: 'pharmacyProfile', component: PharmacyProfilePrevComponent },
+  { path: 'pharmacyDetails', component: PharmacyDetailsComponent },
 ];
 
 @NgModule({

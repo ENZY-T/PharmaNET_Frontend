@@ -3,12 +3,12 @@
 [Title]="toastContent"
 [isToastTypeSuccess]="isToastTypeSuccess">
 </app-toast-ui> 
-
+<h1 class="heading">Welcome to ENZY Pharmacy Platform</h1>
 <div class="container mt-5 mb-4">
   <div class="row justify-content-md-center">
       <div class="card cardStyle" style="width: 50vw;">
       <div class="card-body ">
-          <h3 class="heading">Pharmacy Details</h3>
+          <h3 class="headingDev">Pharmacy Details</h3>
           
           <form [formGroup]="registrationForm" >
               <div class="form-group ">
@@ -57,7 +57,9 @@
                   </div>
               </div>
               <div class="row justify-content-center">
-                <div class="col-4 mt-3 d-flex ">
+                <div class="col-6 mt-3 d-flex ">
+
+                    <button type="submit" class="btn btn-Secondary loingBtn me-2" (click)="onBack()" >Back</button>
                     <button type="submit" class="btn btn-primary loingBtn me-2" (click)="onSave()" >Save & Next</button>
                     <button type="submit" class="btn btn-warning loingBtn" (click)="onClear()" >Clear</button>
              </div>              

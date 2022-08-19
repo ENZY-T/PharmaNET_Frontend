@@ -1,17 +1,17 @@
 <div class="container about" >
     <div class="row justify-content-md-center mb-2">
       <div class="col-md-auto">
-       <h5 style="font-weight: bold;">ABC Pharmacy</h5>
+       <h5 style="font-weight: bold;">{{aboutCompany[0].name}}</h5>
       </div>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-8">
-        <p class="pharmacyContent">ABC Pharmacy Limited a 100% subsidiary of Sunshine Healthcare is one of the 1st branded retail Pharmaceutical Chains in Sri Lanka that has entered the market with a view of creating a difference in the retail pharmaceutical trade. Headed by a team of professionals, ABC has introduced an innovative concept centered on superior customer care, latest technology in data management, a wide product assortment, affordable prices and a host of value additions.</p>
+        <p class="pharmacyContent">{{aboutCompany[0].about}}</p>
         </div>
       </div>
       <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img class="d-block w-100" src="https://www.healthguard.lk/pub/media/Home/trans-subscribe3_1_.png"  alt="First slide">
+            <img class="d-block w-100" src="{{aboutCompany[0].image}}"  alt="First slide">
         </div>
  
   </div>

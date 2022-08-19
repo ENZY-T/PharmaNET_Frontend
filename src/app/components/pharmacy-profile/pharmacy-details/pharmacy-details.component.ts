@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pharmacy-details',
@@ -44,9 +45,11 @@ export class PharmacyDetailsComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
+    this.toastFunction("Pharmacy Owner Details added Succefully",true);
+
   }
   onUpload() {
     this.display = true;
@@ -64,7 +67,13 @@ export class PharmacyDetailsComponent implements OnInit {
      console.log(data);
   }
   onClear(){
-    
+    this.pharmacyName?.reset();
+    this.pharmacyAddress?.reset();
+    this.email?.reset();
+    this.contactNumber?.reset();
+    this.aboutCompany?.reset();
+    this.selectedImage =''
+
   }
   onSelectFile(file:any){
     if(file == 'delete'){
@@ -86,5 +95,9 @@ export class PharmacyDetailsComponent implements OnInit {
   }
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  onBack(){
+    this.router.navigateByUrl('/pharmacyProfile');
+
   }
 }
