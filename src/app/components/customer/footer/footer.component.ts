@@ -20,7 +20,21 @@ export class FooterComponent implements OnInit {
     this.cutomerData =[{
       'address':'1010 Avenue, sw 54321, chandigarh',
       'contactNumber':'98765432100',
-      'email':'abcmail@info.com'
+      'email':'abcmail@info.com',
+      'categories':[
+        {'id':1,'item':'Home'},
+        {'id':2,'item':'About'},
+        {'id':3,'item':'Services'},
+        {'id':4,'item':'Portfolio'},
+        {'id':5,'item':'Contact'}
+      ],
+      'brands':[
+        {'id':1,'item':'Abraxane'},
+        {'id':2,'item':'Camzyos'},
+        {'id':3,'item':'Entresto'},
+        {'id':4,'item':'Idamycin'},
+        {'id':5,'item':'Glucagon'}
+      ],
     }]
   }
  async toastFunction(title:string,isSuccess:boolean){

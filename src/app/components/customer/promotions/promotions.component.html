@@ -4,8 +4,8 @@
   [isToastTypeSuccess]="isToastTypeSuccess"
 >
 </app-toast-ui>
-
-<p-carousel
+<div style="margin-top: 30px;margin-bottom: 20px;">
+  <p-carousel
   [value]="medicineCards"
   styleClass="custom-carousel"
   [numVisible]="4"
@@ -15,14 +15,15 @@
   [responsiveOptions]="responsiveOptions"
 >
   <ng-template pTemplate="header">
-    <h5 class="heading mt-4 mb-6">Promotions</h5>
+    <h5 class="heading mt-4 mb-4 mb-6" >Promotions</h5>
 
     <!-- <h5 class="heading mt-2 mb-4">{{message}}</h5> -->
   </ng-template>
   <ng-template let-product pTemplate="item">
-    <div class="product-item mb-4">
+    <div class="product-item mb-4" style="margin-top: 20px;">
       <app-medicine-card-prev (childEvent)="onAdd($event)" [item]="product">
       </app-medicine-card-prev>
     </div>
   </ng-template>
 </p-carousel>
+</div>
