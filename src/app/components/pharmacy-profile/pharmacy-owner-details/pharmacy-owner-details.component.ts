@@ -23,6 +23,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   selectedFile?: any;
   selectedImage?: string='No File selected';
 
+  ngFirstName?:string;
+  ngLastName?:string;
+  ngEmail?:string;
+  ngMobileNumber?:string;
+  ngAddress?:string;
+
   registrationForm = new FormGroup({
 
     firstName : new FormControl(''),
@@ -53,6 +59,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+    this.ngFirstName ='Isuru';
   }
   onUpload() {
     this.display = true;
