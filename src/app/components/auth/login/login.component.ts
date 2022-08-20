@@ -113,12 +113,13 @@ export class LoginComponent implements OnInit {
     this.toastFunction("Customer log successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    if(res.role == "customer"){
-      this.router.navigateByUrl('/customerView');
-    }
-    else if(res.role == "pharmacyOwner"){
-      this.router.navigateByUrl('/pharma-dash');
-    }
+    this.router.navigateByUrl('/customerView');
+    // if(res.role == "customer"){
+    //   this.router.navigateByUrl('/customerView');
+    // }
+    // else if(res.role == "pharmacyOwner"){
+    //   this.router.navigateByUrl('/pharma-dash');
+    // }
   }
   
  async toastFunction(title:string,isSuccess:boolean){

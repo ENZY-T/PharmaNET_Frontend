@@ -59,26 +59,58 @@ export class PharmacyDetailsComponent implements OnInit {
     this.display = true;
   }
   async onSave(){
+    // ar ngName = "";
+    // var ngEmail ="";
+    // var ngTelephone ="";
+    // var ngAddress ="";
+    // var ngAbout ="";
+
+    // if(this.pharmacyName?.value){
+    //   ngName =this.pharmacyName?.value;
+    //  }
+    // if(this.email?.value){
+    //  ngEmail =this.email?.value;
+    // }
+    // if(this.contactNumber?.value){
+    //  ngTelephone =this.contactNumber?.value;
+    // }
+    // if(this.pharmacyAddress?.value){
+    //   ngAddress =this.pharmacyAddress?.value;
+    //  }
+    //  if(this.aboutCompany?.value){
+    //   ngAbout =this.aboutCompany?.value;
+    //  }
+  
+    // const formData = new FormData();
+ 
+    // formData.append('name', ngName);
+    // formData.append('email', ngEmail);
+    // formData.append('contact_Number', ngTelephone);
+    // formData.append('address', ngAddress);
+    // formData.append('about',ngAbout);
+
     this.isBlock=true;
     let data={
-      PharmacyName:this.pharmacyName?.value,
-      LName:this.pharmacyAddress?.value,
-      Email:this.email?.value,
-      ContactNumber:this.contactNumber?.value,
-      AboutCompany:this.aboutCompany?.value,
-      File:this.selectedFile
+      name:this.pharmacyName?.value,
+      address:this.pharmacyAddress?.value,
+      email:this.email?.value,
+      contact_Number:this.contactNumber?.value,
+      about:this.aboutCompany?.value,
+     // File:this.selectedFile
      }
 
      this.service.pharmacyData(data)
      .subscribe(
        (val) => {
            this.isBlock=false;
+           this.toastFunction("Pharmacy Details added Succefully",true);
+           this.router.navigateByUrl('/pharma-dash');
        },
        response => {
            if(response.status == 200){
             this.isBlock=false;
             this.toastFunction("Pharmacy Details added Succefully",true);
-          //  this.router.navigateByUrl('/pharmacyDetails');
+            this.router.navigateByUrl('/pharma-dash');
            }
            else{
              this.isBlock=false;

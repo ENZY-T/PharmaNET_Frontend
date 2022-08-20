@@ -33,6 +33,6 @@ export class AuthorizationsService {
   }
   pharmacyRegister(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}auth/pharmacyRegister`, data);
+    return this.http.post(`${this.baseURL}auth/register`, data);
   }
 }

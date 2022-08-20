@@ -68,19 +68,45 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     
     this.isBlock=true;
 
-    let data={
-      FName:this.firstName?.value,
-      LName:this.lastName?.value,
-      Email:this.email?.value,
-      MobileNumber:this.mobileNumber?.value,
-      Address:this.address?.value,
-      File:this.selectedFile.FileList[0]
-     }
+    var ngFName = "";
+    var ngLName = "";
+    var ngEmail ="";
+    var ngTelephone ="";
+    var ngAddress ="";
 
-     this.service.pharmacyOwnerData(data)
+    if(this.firstName?.value){
+     ngFName =this.firstName?.value;
+    }
+    if(this.lastName?.value){
+      ngLName =this.lastName?.value;
+     }
+    if(this.email?.value){
+     ngEmail =this.email?.value;
+    }
+    if(this.mobileNumber?.value){
+     ngTelephone =this.mobileNumber?.value;
+    }
+    if(this.address?.value){
+      ngAddress =this.address?.value;
+     }
+    
+    console.log(this.selectedFile);
+ 
+    const formData = new FormData();
+ 
+    formData.append('FName', ngFName);
+    formData.append('LName', ngFName);
+    formData.append('Email', ngEmail);
+    formData.append('Telephone', ngTelephone);
+    formData.append('Address', ngAddress);
+    formData.append('ProfilePicture',this.selectedFile);
+
+     this.service.pharmacyOwnerData(formData)
      .subscribe(
        (val) => {
            this.isBlock=false;
+           this.toastFunction("Pharmacy Owner Details added Succefully",true);
+           this.router.navigateByUrl('/pharmacyDetails');
        },
        response => {
            if(response.status == 200){
@@ -113,7 +139,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.selectedFile =[];
     this.selectedImage ='No File selected';
     }else{
-    this.selectedFile =file;
+    this.selectedFile =file[0];
     this.selectedImage =file[0].name;
     }
   

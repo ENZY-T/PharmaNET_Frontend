@@ -14,11 +14,11 @@ export class PharmacyProfileService {
 
   pharmacyOwnerData(data: any): Observable<any> {
     console.log(data);
-    return this.http.put(`${this.baseURL}/pharmacyOwnerData`, data);
+    return this.http.put(`${this.baseURL}User`, data);
   }
   pharmacyData(data: any): Observable<any> {
     console.log(data);
-    return this.http.put(`${this.baseURL}/pharmacyOwnerData`, data);
+    return this.http.post(`${this.baseURL}Pharmacy`, data);
   }
 
 }

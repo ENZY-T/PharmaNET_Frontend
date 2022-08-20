@@ -111,29 +111,34 @@ export class RegistrationComponent implements OnInit {
     this.toastFunction("Customer registered successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/customerView');
   }
-  
-   onPharmacyRegister(){
+  async onPharmacyRegisterSuccess(){
     this.toastFunction("Pharmacy registered successfully",true);
+    this.isBlock=false;
+    await this.delay(2000);
+    this.router.navigateByUrl('/pharmacyProfile');
+  }
+   onPharmacyRegister(){
 
+    this.isBlock=true;
+    this.role ='pharmacy';
     let data={
       FName:this.firstName?.value ,
       LName: this.lastName?.value,
       Email :this.email?.value,
       Password :this.password?.value,
-      mobileNumber:this.mobileNumber?.value,
-      pharmacy:this.pharmacyName?.value,
-      pharmacyRegisterationNumber:this.pharmacyRegisterationNumber?.value
-
+      confirmPassword :this.confirmPassword?.value,
+      role:this.role
      }
-  
+   console.log(data);
 
      this.service.pharmacyRegister(data)
      .subscribe(
       (val) => {
          // console.log("POST call successful value returned in body", val);
-          this.onRegisterSuccess();
+          this.onPharmacyRegisterSuccess();
+          this.isBlock=false;
 
       },
       response => {
@@ -171,9 +176,10 @@ export class RegistrationComponent implements OnInit {
     this.isSecondSideFast = false;
   }
   onNavigateThirdSide(){
-    
-    this.isSecondSideFast = true;
-    console.log( this.isSecondSideFast )
+    this.onPharmacyRegister();
+
+    // this.isSecondSideFast = true;
+     console.log(" this.isSecondSideFast" )
   }
   
   navigateToLogin(){
