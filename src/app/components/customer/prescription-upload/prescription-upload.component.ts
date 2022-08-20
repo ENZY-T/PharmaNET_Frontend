@@ -63,11 +63,11 @@ export class PrescriptionUploadComponent implements OnInit {
    if(this.email?.value){
     ngTelephone =this.email?.value;
    }
-   
+   console.log(this.selectedFile)
    formData.append('Name', ngName);
    formData.append('Email', ngEmail);
    formData.append('Telephone', ngTelephone);
-   formData.append('Prescription', this.selectedFile);
+   formData.append('Prescription',this.selectedFile[0]);
      console.log(formData);
      this.service.uploadPrescription(formData)
      .subscribe(
@@ -113,7 +113,7 @@ export class PrescriptionUploadComponent implements OnInit {
       this.selectedFile =[];
       this.selectedImage ='No File selected';
       }else{
-      this.selectedFile =file;
+      this.selectedFile =file[0];
       this.selectedImage =file[0].name;
       }
     

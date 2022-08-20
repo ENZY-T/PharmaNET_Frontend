@@ -59,7 +59,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
-    this.ngFirstName ='Isuru';
+   // this.ngFirstName ='Isuru';
   }
   onUpload() {
     this.display = true;
@@ -74,7 +74,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
       Email:this.email?.value,
       MobileNumber:this.mobileNumber?.value,
       Address:this.address?.value,
-      File:this.selectedFile
+      File:this.selectedFile.FileList[0]
      }
 
      this.service.pharmacyOwnerData(data)
