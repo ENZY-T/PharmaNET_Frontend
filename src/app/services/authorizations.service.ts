@@ -15,24 +15,24 @@ export class AuthorizationsService {
 
   userLogin(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}/login`, data);
+    return this.http.post(`${this.baseURL}auth/login`, data);
   }
   
   userSignUp(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}/signUp`, data);
+    return this.http.post(`${this.baseURL}auth/signUp`, data);
   }
   register(data: any): Observable<any> {
  
-    return this.http.post(`${this.baseURL}/register`, data);
+    return this.http.post(`${this.baseURL}auth/register`, data);
   }
 
   customerRegister(data: any): Observable<any> {
     //console.log(data);
-    return this.http.post(`${this.baseURL}/register`, data);
+    return this.http.post(`${this.baseURL}auth/register`, data);
   }
   pharmacyRegister(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}/pharmacyRegister`, data);
+    return this.http.post(`${this.baseURL}auth/pharmacyRegister`, data);
   }
 }

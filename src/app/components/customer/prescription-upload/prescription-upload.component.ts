@@ -49,26 +49,41 @@ export class PrescriptionUploadComponent implements OnInit {
   }
  async onSave(){
    // this.isBlock=true;
-    let data={
-      Name:this.name?.value,
-      Email:this.email?.value,
-      ContactNumber:this.contactNumber?.value,
-      File:this.selectedFile
-     }
-     console.log(data);
-
-     this.service.uploadPrescription(data)
+   const formData = new FormData();
+    
+   var ngName = "";
+   var ngEmail ="";
+   var ngTelephone ="";
+   if(this.name?.value){
+    ngName =this.name?.value;
+   }
+   if(this.contactNumber?.value){
+    ngEmail =this.contactNumber?.value;
+   }
+   if(this.email?.value){
+    ngTelephone =this.email?.value;
+   }
+   
+   formData.append('Name', ngName);
+   formData.append('Email', ngEmail);
+   formData.append('Telephone', ngTelephone);
+   formData.append('Prescription', this.selectedFile);
+     console.log(formData);
+     this.service.uploadPrescription(formData)
      .subscribe(
        (val) => {
+          console.log(val);
            this.isBlock=false;
        },
        response => {
+        console.log(response);
            if(response.status == 200){
             this.isBlock=false;
             this.toastFunction("Prescription Uploaded Succefully",true);
             this.onClear();
            }
            else{
+            
              this.isBlock=false;
              this.toastFunction("Prescription Upload Faild",false);
            }

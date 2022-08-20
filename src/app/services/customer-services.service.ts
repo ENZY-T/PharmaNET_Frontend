@@ -15,7 +15,7 @@ export class CustomerServicesService {
 
   uploadPrescription(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}/uploadPrescription`, data);
+    return this.http.post(`${this.baseURL}Prescriptions`, data);
   }
 
 
