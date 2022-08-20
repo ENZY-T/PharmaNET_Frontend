@@ -1,6 +1,7 @@
+import { prescriptionViewItem } from './../../models/presctiptionItem';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GlobalData } from 'src/app/GlobalData';
 
 @Component({
   selector: 'app-prescription-list',
@@ -8,19 +9,20 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./prescription-list.component.scss'],
 })
 export class PrescriptionListComponent implements OnInit {
-  products: Product[] = [];
+  globalData = GlobalData;
+  products: prescriptionViewItem[] = [];
 
   cols: any[] = [];
 
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
-    this.fetchData('https://localhost:5001/api/prescriptions');
+    this.fetchData(this.globalData.baseUrl + 'api/prescriptions');
 
     this.cols = [
       { field: 'name', header: 'Name' },
+      { field: 'prescriptionUrl', header: 'Prescription' },
       { field: 'email', header: 'Email' },
-      { field: 'prescription', header: 'Prescription' },
       { field: 'telephone', header: 'Telephone' },
     ];
   }
@@ -28,7 +30,7 @@ export class PrescriptionListComponent implements OnInit {
   fetchData(url: string) {
     this.httpClient.get(url).subscribe(
       (val) => {
-        this.products = val as Product[];
+        this.products = val as prescriptionViewItem[];
       },
       (error) => {
         //Add Toast(error + status code)

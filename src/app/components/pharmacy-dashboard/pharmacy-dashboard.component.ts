@@ -9,6 +9,7 @@ import { of } from 'rxjs';
   styleUrls: ['./pharmacy-dashboard.component.scss'],
 })
 export class PharmacyDashboardComponent implements OnInit {
+  requestCount: number = 0;
   dummyProductArray: Product[] = [dummyProduct, dummyProduct2];
   selectedTab: string = 'inventory';
 

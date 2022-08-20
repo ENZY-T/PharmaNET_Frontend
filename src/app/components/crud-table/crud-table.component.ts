@@ -1,3 +1,4 @@
+import { GlobalData } from './../../GlobalData';
 import { Component, OnInit, Input } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
@@ -17,8 +18,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CrudTableComponent implements OnInit {
   @Input() title: string = '';
-  @Input() products: Product[] = [];
+  products: Product[] = [];
 
+  baseUrl = GlobalData.baseUrl;
+  emptyProduct = emptyProduct;
   unfilteredProducts: Product[] = [];
 
   productDialog: boolean = false;
@@ -34,10 +37,12 @@ export class CrudTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fetchData();
     this.unfilteredProducts = this.products;
   }
 
   openNew() {
+    this.product = emptyProduct;
     this.submitted = false;
     this.productDialog = true;
   }
@@ -62,26 +67,9 @@ export class CrudTableComponent implements OnInit {
   }
 
   editProduct(product: Product) {
+    console.log(product);
     this.product = { ...product };
     this.productDialog = true;
-  }
-
-  deleteProduct(product: Product) {
-    this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ' + product.name + '?',
-      header: 'Confirm',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.products = this.products.filter((val) => val.id !== product.id);
-        this.product = emptyProduct;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Successful',
-          detail: 'Product Deleted',
-          life: 3000,
-        });
-      },
-    });
   }
 
   hideDialog() {
@@ -94,25 +82,12 @@ export class CrudTableComponent implements OnInit {
 
     if (this.product.name.trim()) {
       if (this.product.id) {
-        this.products[this.findIndexById(this.product.id)] = this.product;
-
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Successful',
-          detail: 'Product Updated',
-          life: 3000,
-        });
+        //If Edit
+        this.PutProduct();
       } else {
         // If new product
         this.product;
         this.PostProduct();
-
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Successful',
-          detail: 'Product Created',
-          life: 3000,
-        });
       }
 
       this.products = [...this.products];
@@ -153,36 +128,114 @@ export class CrudTableComponent implements OnInit {
   }
 
   PostProduct(url?: string) {
+    console.log(this.product);
     const formData = new FormData();
 
-    formData.append('imageFile', this.product.imageFile ?? '');
+    formData.append('image', this.product.imageFile ?? '');
     formData.append('name', this.product.name);
     formData.append('price', this.product.price.toString());
     formData.append('quantity', this.product.quantity.toString());
-    formData.append('stockState', this.product.stockStatus);
+    formData.append('stockStatus', this.product.stockStatus);
+    formData.append('category', this.product.category);
 
-    const upload$ = this.httpClient.post(
-      'https://localhost:5001/api/inventory',
-      formData
-    );
-
-    upload$.subscribe();
+    this.httpClient
+      .post('https://localhost:5001/api/inventory', formData)
+      .subscribe(
+        (val) => {},
+        (error) => {
+          this.messageService.add({
+            severity: 'danger',
+            summary: 'Error',
+            detail: 'Product Create Failed',
+            life: 3000,
+          });
+        },
+        () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'Product Created',
+            life: 3000,
+          });
+          this.fetchData();
+        }
+      );
   }
 
   PutProduct() {
     const formData = new FormData();
 
-    formData.append('imageFile', this.product.imageFile ?? '');
+    formData.append('image', this.product.imageFile ?? '');
     formData.append('name', this.product.name);
     formData.append('price', this.product.price.toString());
     formData.append('quantity', this.product.quantity.toString());
-    formData.append('stockState', this.product.stockStatus);
+    formData.append('stockStatus', this.product.stockStatus);
+    formData.append('category', this.product.category);
 
-    const upload$ = this.httpClient.put(
-      'https://localhost:5001/api/inventory',
-      formData
+    this.httpClient
+      .put(GlobalData.baseUrl + 'api/inventory/' + this.product.id, formData)
+      .subscribe(
+        (val) => {},
+        (error) => {
+          this.messageService.add({
+            severity: 'danger',
+            summary: 'Error',
+            detail: 'Product Create Failed',
+            life: 3000,
+          });
+        },
+        () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successfully Edited',
+            detail: 'Product Edited',
+            life: 3000,
+          });
+          this.fetchData();
+        }
+      );
+  }
+
+  DeleteProduct(product: Product) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + product.name + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.httpClient
+          .delete(GlobalData.baseUrl + 'api/inventory/' + product.id)
+          .subscribe(
+            (val) => {},
+            (error) => {
+              this.messageService.add({
+                severity: 'danger',
+                summary: 'Error',
+                detail: 'Product Create Failed',
+                life: 3000,
+              });
+            },
+            () => {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Successfully Edited',
+                detail: 'Product Edited',
+                life: 3000,
+              });
+              this.fetchData();
+            }
+          );
+      },
+    });
+  }
+
+  fetchData() {
+    this.httpClient.get(GlobalData.baseUrl + 'api/inventory').subscribe(
+      (val) => {
+        this.products = val as Product[];
+      },
+      (error) => {
+        //Toast Error(error + statusCode)
+      }
     );
-
-    upload$.subscribe();
   }
 }
