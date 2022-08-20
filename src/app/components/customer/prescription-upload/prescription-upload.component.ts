@@ -48,8 +48,7 @@ export class PrescriptionUploadComponent implements OnInit {
   ngOnInit(): void {
   }
  async onSave(){
-   // this.isBlock=true;
-   const formData = new FormData();
+   this.isBlock=true;
     
    var ngName = "";
    var ngEmail ="";
@@ -63,17 +62,23 @@ export class PrescriptionUploadComponent implements OnInit {
    if(this.email?.value){
     ngTelephone =this.email?.value;
    }
-   console.log(this.selectedFile)
+   
+   console.log(this.selectedFile);
+
+   const formData = new FormData();
+
    formData.append('Name', ngName);
    formData.append('Email', ngEmail);
    formData.append('Telephone', ngTelephone);
-   formData.append('Prescription',this.selectedFile[0]);
+   formData.append('Prescription',this.selectedFile);
      console.log(formData);
      this.service.uploadPrescription(formData)
      .subscribe(
        (val) => {
           console.log(val);
            this.isBlock=false;
+           this.toastFunction("Prescription Uploaded Succefully",true);
+           this.onClear();
        },
        response => {
         console.log(response);
