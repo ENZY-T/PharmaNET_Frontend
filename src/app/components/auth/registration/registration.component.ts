@@ -99,7 +99,7 @@ export class RegistrationComponent implements OnInit {
     this.toastFunction("User registered successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/CutomerView');
   }
   // async onPharmacyRegisterSuccess(){
   //   this.toastFunction("Pharmacy registered successfully",true);

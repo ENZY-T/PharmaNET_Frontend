@@ -49,9 +49,7 @@ export class LoginComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.removeFromLocalStorage();
 
-  //  this.isBlock=true;
-  //  await this.delay(4000);
-  //  this.isBlock=false;
+    this.router.navigateByUrl('/customerView');
 
   }
 
@@ -113,13 +111,7 @@ export class LoginComponent implements OnInit {
     this.toastFunction("Customer log successfully",true);
     this.isBlock=false;
     await this.delay(2000);
-    this.router.navigateByUrl('/customerView');
-    // if(res.role == "customer"){
-    //   this.router.navigateByUrl('/customerView');
-    // }
-    // else if(res.role == "pharmacyOwner"){
-    //   this.router.navigateByUrl('/pharma-dash');
-    // }
+    this.router.navigateByUrl('/landing');
   }
   
  async toastFunction(title:string,isSuccess:boolean){

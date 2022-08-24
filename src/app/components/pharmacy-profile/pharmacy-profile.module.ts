@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { PharmacyProfilePrevComponent } from './pharmacy-profile-prev/pharmacy-profile-prev.component';
 import { PharmacyDetailsComponent } from './pharmacy-details/pharmacy-details.component';
 import { PharmacyOwnerDetailsComponent } from './pharmacy-owner-details/pharmacy-owner-details.component';
 import {InputTextModule} from 'primeng/inputtext';
@@ -14,7 +13,7 @@ import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
 
 
 @NgModule({
-  declarations: [PharmacyProfilePrevComponent,PharmacyDetailsComponent, PharmacyOwnerDetailsComponent],
+  declarations: [PharmacyDetailsComponent, PharmacyOwnerDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,6 +26,6 @@ import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
     ToastUiModule,
     LoadingUiModule
   ],
-  exports:[PharmacyProfilePrevComponent,PharmacyDetailsComponent]
+  exports:[PharmacyDetailsComponent]
 })
 export class PharmacyProfileModule { }

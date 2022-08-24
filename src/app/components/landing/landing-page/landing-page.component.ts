@@ -12,4 +12,8 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickCreatePharmacy(){
+    console.log("Navigate to create pharmcay");
+  }
 }
+
