@@ -13,7 +13,7 @@
     <div class="col-md-8 rightRegister py-3 px-5">
       <div class="card-body d-flex flex-column justify-content-center">
         <h4 class="m-3 text-center">REGISTER</h4>
-        <ng-container *ngIf="isFirstSideFast == false; else setUserPreview">
+
           <form [formGroup]="registrationForm">
             <div class="form-group">
               <div class="row justify-content-md-center">
@@ -141,9 +141,9 @@
                     newPassword == null ||
                     !privacyCheckNgModel
                   "
-                  (click)="onNavigateSecondSide()"
+                  (click)="onRegister()"
                 >
-                  Next
+                 Register
                 </button>
               </div>
             </div>
@@ -158,9 +158,8 @@
               ></p>
             </div>
           </form>
-        </ng-container>
 
-        <ng-template #setUserPreview>
+        <!-- <ng-template #setUserPreview>
           <ng-container *ngIf="isSecondSideFast == false; else setUserPreview2">
             <div class="container">
               <div class="row justify-content-md-center mb-2">
@@ -293,7 +292,7 @@
               </div>
             </div>
           </ng-template>
-        </ng-template>
+        </ng-template> -->
       </div>
     </div>
   </div>

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
 import { CartListComponent } from './components/customer/cart-list/cart-list.component';
 import { CustomerViewComponent } from './components/customer/customer-view/customer-view.component';
 import { ImageUploadComponent } from './components/customer/image-upload/image-upload.component';
@@ -22,7 +21,6 @@ import { LandingPageComponent } from './components/landing/landing-page/landing-
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'signUp', component: SignupComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'changeLanguage', component: LocalizationComponent },
   { path: 'dashboard', component: DashboardComponent },

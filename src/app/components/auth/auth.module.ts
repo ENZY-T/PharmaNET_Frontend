@@ -5,7 +5,6 @@ import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component';
 import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
  import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { ToastModule } from 'primeng/toast';
@@ -21,7 +20,7 @@ export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
 }
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, RegistrationComponent],
+  declarations: [LoginComponent, RegistrationComponent],
   imports: [
     CommonModule,
     ButtonModule,

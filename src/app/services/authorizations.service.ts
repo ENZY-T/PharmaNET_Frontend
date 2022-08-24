@@ -22,17 +22,17 @@ export class AuthorizationsService {
     console.log(data);
     return this.http.post(`${this.baseURL}auth/signUp`, data);
   }
-  register(data: any): Observable<any> {
+  // register(data: any): Observable<any> {
  
-    return this.http.post(`${this.baseURL}auth/register`, data);
-  }
+  //   return this.http.post(`${this.baseURL}auth/register`, data);
+  // }
 
-  customerRegister(data: any): Observable<any> {
+  userRegister(data: any): Observable<any> {
     //console.log(data);
     return this.http.post(`${this.baseURL}auth/register`, data);
   }
-  pharmacyRegister(data: any): Observable<any> {
-    console.log(data);
-    return this.http.post(`${this.baseURL}auth/register`, data);
-  }
+  // pharmacyRegister(data: any): Observable<any> {
+  //   console.log(data);
+  //   return this.http.post(`${this.baseURL}auth/register`, data);
+  // }
 }
