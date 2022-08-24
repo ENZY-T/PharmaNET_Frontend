@@ -49,7 +49,10 @@ export class LoginComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.removeFromLocalStorage();
 
-    this.router.navigateByUrl('/customerView');
+    let userLogData =localStorage.getItem("UserLog");
+    if(userLogData == "true"){
+      this.router.navigateByUrl('/customerView');//
+    }
 
   }
 
@@ -111,6 +114,7 @@ export class LoginComponent implements OnInit {
     this.toastFunction("Customer log successfully",true);
     this.isBlock=false;
     await this.delay(2000);
+    localStorage.setItem("UserLog","true");//set local storage user log true
     this.router.navigateByUrl('/landing');
   }
   
