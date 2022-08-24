@@ -31,6 +31,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import { PrescriptionUploadComponent } from './prescription-upload/prescription-upload.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
+import {BadgeModule} from 'primeng/badge';
 
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent, PrescriptionUploadComponent],
@@ -55,7 +56,8 @@ import { InputTextModule } from 'primeng/inputtext';
   DialogModule,
   GalleriaModule,
   InputTextareaModule,
-  InputTextModule
+  InputTextModule,
+  BadgeModule
   
   
 ],
