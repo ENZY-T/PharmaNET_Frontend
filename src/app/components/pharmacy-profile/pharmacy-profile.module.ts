@@ -11,6 +11,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
 import { AddCardComponent } from './add-card/add-card.component';
+import { MedCardModule } from 'src/app/modules/med-card/med-card.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AddCardComponent } from './add-card/add-card.component';
     ButtonModule,
     InputTextareaModule,
     ToastUiModule,
-    LoadingUiModule
+    LoadingUiModule,
+    MedCardModule
   ],
   exports:[PharmacyDetailsComponent]
 })

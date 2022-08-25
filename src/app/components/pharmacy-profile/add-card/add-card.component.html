@@ -75,11 +75,12 @@
 
       </div>
       <div class="col-sm">
-        One of three columns
+        <div class="product-item mb-4" style="margin-top: 20px;" *ngFor="let product of medicineCards">
+             <app-med-card (childEvent)="onAdd($event)" [item]="product">
+            </app-med-card> 
+          </div>
       </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
+    
     </div>
   </div>
 
