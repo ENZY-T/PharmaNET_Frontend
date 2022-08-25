@@ -1,3 +1,4 @@
+import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { medCard } from 'src/app/models/med-card';
@@ -43,20 +44,12 @@ export class AddCardComponent implements OnInit {
   heading:string = "Upload Profile";
   selectedFile?: any;
   selectedImage?: string='No File selected';
-
+  image?: string='';
 
   constructor() { }
 
   ngOnInit(): void {
-    this.medicineCards = [
-      { id:0, name: 'Synthroid', discount:20, isSelect:false,  price:1000, prevPrice:1500, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:3 },
-      { id:1, name: 'Crestor',   discount:35,   isSelect:false,  price:2000,prevPrice:2300, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/7/3/735334_1.jpg',ratingNumber:2 },
-      { id:2, name: 'Ventolin',  discount:34,  isSelect:false,  price:3000,prevPrice:3400, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/1/8/183804_1.jpg',ratingNumber:3 },
-      { id:3, name: 'Nexium',    discount:12,   isSelect:false,  price:4000,prevPrice:4200, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:2 },
-      { id:4, name: 'Solostar',  discount:28,  isSelect:false,  price:3000, prevPrice:3600,image:'https://www.healthguard.lk/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/1/8/183804_1.jpg',ratingNumber:3 },
-      { id:5, name: 'Diskus ',   discount:10,  isSelect:false,  price:4000, prevPrice:4100, image:'https://www.healthguard.lk/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/e/r/ervenin_presoil_1.jpg',ratingNumber:2 }
 
-  ];
   }
 
   onSelectFile(file:any){
@@ -66,6 +59,13 @@ export class AddCardComponent implements OnInit {
     }else{
     this.selectedFile =file[0];
     this.selectedImage =file[0].name;
+    
+    var reader =new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload=(event:any)=>{
+        this.image = event.target.result;
+        console.log(this.image);
+      }
     }
   
   }
@@ -83,7 +83,7 @@ export class AddCardComponent implements OnInit {
       ratingNumber:this.rating?.value,
       discount:this.discount?.value,
       isSelect:false,
-      Image:"",
+      image:this.image,
       File:this.selectedFile
      }
     
@@ -104,6 +104,6 @@ export class AddCardComponent implements OnInit {
     this.selectedImage =''
   }
   onAdd(event:any){
-    
+
   }
 }
