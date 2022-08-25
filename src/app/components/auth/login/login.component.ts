@@ -117,7 +117,13 @@ export class LoginComponent implements OnInit {
     this.isBlock=false;
     await this.delay(2000);
     localStorage.setItem("UserLog","true");//set local storage user log true
-    this.router.navigateByUrl('/landing');
+    this.router.navigateByUrl('/landing');//this must be remove
+    if(res.user == "user"){
+      this.router.navigateByUrl('/landing');
+    }
+    else if(res.user =="pharmacy"){
+      this.router.navigateByUrl('/pharma-dash');
+    }
   }
   
  async toastFunction(title:string,isSuccess:boolean){

@@ -113,7 +113,7 @@
             <li class="nav-item">
               <a
                 class="nav-link {{ getActivityOfTab('pharmacyProfile') }}"
-                (click)="changeTab('pharmacyProfile')"
+               
               >
                 <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,8 @@
                     d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
                   ></path>
                 </svg> -->
-                My Account
+                <p-panelMenu [model]="items" [style]="{'width':'100%'}"></p-panelMenu>
+
               </a>
             </li>
           </ul>
@@ -295,6 +296,16 @@
           <div *ngSwitchCase="'prescriptionrequests'">
             <app-prescription-list></app-prescription-list>
           </div>
+            <!-- Pharmacy Profile -->
+            <div *ngSwitchCase="'pharmacyProfile'">
+              <app-pharmacy-details></app-pharmacy-details>
+            </div>
+            <div *ngSwitchCase="'pharmacyOwner'">
+              <app-pharmacy-owner-details></app-pharmacy-owner-details>
+            </div>
+            <div *ngSwitchCase="'promotions'">
+              <app-add-card></app-add-card>
+            </div>
         </div>
       </main>
     </div>

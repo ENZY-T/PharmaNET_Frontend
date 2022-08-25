@@ -29,6 +29,6 @@ import { MedCardModule } from 'src/app/modules/med-card/med-card.module';
     LoadingUiModule,
     MedCardModule
   ],
-  exports:[PharmacyDetailsComponent]
+  exports:[PharmacyDetailsComponent, PharmacyOwnerDetailsComponent, AddCardComponent]
 })
 export class PharmacyProfileModule { }
