@@ -27,7 +27,7 @@ export class PharmacyDashboardComponent implements OnInit {
           icon: 'pi pi-pw pi-file',
           items: [
                   
-              {label: 'Owner', icon: 'pi pi-fw pi-user-plus', command: () => {
+            {label: 'Owner', icon: 'pi pi-fw pi-user-plus', command: () => {
                 this.changeTab('pharmacyOwner');
             }},
             {label: 'Pharmacy', icon: 'pi pi-fw pi-user-plus', command: () => {
@@ -36,12 +36,11 @@ export class PharmacyDashboardComponent implements OnInit {
           {label: 'Promotions', icon: 'pi pi-fw pi-user-plus', command: () => {
             this.changeTab('promotions');
           }},
-             
           ]
       }
   ];
-
   }
+  
   onClick(){
     console.log("click");
   }
