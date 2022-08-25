@@ -50,8 +50,9 @@ export class LoginComponent implements OnInit {
     this.removeFromLocalStorage();
 
     let userLogData =localStorage.getItem("UserLog");
+    console.log(userLogData);
     if(userLogData == "true"){
-      this.router.navigateByUrl('/customerView');//
+      this.router.navigateByUrl('/pharmacyOwnerProfile');//
     }
 
   }
@@ -75,6 +76,7 @@ export class LoginComponent implements OnInit {
     console.log(name);
   }
   async onLogin(){
+   
     this.isBlock=true;
     let data={
      email:this.username?.value,

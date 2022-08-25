@@ -10,10 +10,11 @@ import { ButtonModule } from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
+import { AddCardComponent } from './add-card/add-card.component';
 
 
 @NgModule({
-  declarations: [PharmacyDetailsComponent, PharmacyOwnerDetailsComponent],
+  declarations: [PharmacyDetailsComponent, PharmacyOwnerDetailsComponent, AddCardComponent],
   imports: [
     CommonModule,
     FormsModule,

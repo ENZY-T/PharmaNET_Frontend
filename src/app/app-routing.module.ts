@@ -16,6 +16,7 @@ import { PharmacyDetailsComponent } from './components/pharmacy-profile/pharmacy
 import { PrescriptionUploadComponent } from './components/customer/prescription-upload/prescription-upload.component';
 import { LandingPageComponent } from './components/landing/landing-page/landing-page.component';
 import { PharmacyOwnerDetailsComponent } from './components/pharmacy-profile/pharmacy-owner-details/pharmacy-owner-details.component';
+import { AddCardComponent } from './components/pharmacy-profile/add-card/add-card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'pharmacyDetails', component: PharmacyDetailsComponent },
   { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
   { path: 'landing', component: LandingPageComponent },
+  { path: 'addCard', component: AddCardComponent },
 
   
 ];
