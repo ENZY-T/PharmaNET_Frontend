@@ -28,12 +28,12 @@ export class PharmacyDashboardComponent implements OnInit {
           items: [
                   
             {label: 'Owner', icon: 'pi pi-fw pi-user-plus', command: () => {
-                this.changeTab('pharmacyOwner');
+                this.changeTab('pharmacyOwner'),this.onNavigatePharmacyOwner();
             }},
-            {label: 'Pharmacy', icon: 'pi pi-fw pi-user-plus', command: () => {
-              this.changeTab('pharmacyProfile');
+            {label: 'Pharmacy', icon: 'pi pi-money-bill', command: () => {
+              this.changeTab('pharmacyProfile') ,this.onNavigatePharmacy();
           }},
-          {label: 'Promotions', icon: 'pi pi-fw pi-user-plus', command: () => {
+          {label: 'Promotions', icon: 'pi pi-wallet', command: () => {
             this.changeTab('promotions');
           }},
           ]
@@ -41,6 +41,15 @@ export class PharmacyDashboardComponent implements OnInit {
   ];
   }
   
+  onNavigatePharmacyOwner(){
+    localStorage.setItem("navOwner","true");
+  }
+
+    
+  onNavigatePharmacy(){
+    localStorage.setItem("navPharmacy","true");
+  }
+
   onClick(){
     console.log("click");
   }

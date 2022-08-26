@@ -10,7 +10,8 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
 })
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
-  
+  saveBtn:String ="Save & Next";
+
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
 
@@ -59,6 +60,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+
+    let isNavigateFromInventy =localStorage.getItem("navOwner");
+    if(isNavigateFromInventy =="true"){
+      this.saveBtn ="Save";
+    }
+
    // this.ngFirstName ='Isuru';
   }
   onUpload() {
@@ -68,6 +75,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     
     this.isBlock=true;
 
+    
     var ngFName = "";
     var ngLName = "";
     var ngEmail ="";
@@ -106,13 +114,13 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
        (val) => {
            this.isBlock=false;
            this.toastFunction("Pharmacy Owner Details added Succefully",true);
-           this.router.navigateByUrl('/pharmacyDetails');
+           this.onCheckInventy();
        },
        response => {
            if(response.status == 200){
             this.isBlock=false;
             this.toastFunction("Pharmacy Owner Details added Succefully",true);
-            this.router.navigateByUrl('/pharmacyDetails');
+            this.onCheckInventy();
            }
            else{
              this.toastFunction("Customer login Faild",false);
@@ -124,6 +132,15 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
        });
   }
 
+  onCheckInventy(){
+    let isNavigateFromInventy =localStorage.getItem("navOwner");
+    if(isNavigateFromInventy =="true"){
+    
+    }else{
+      this.router.navigateByUrl('/pharmacyDetails');
+    }
+  }
+  
   onClear(){
     this.firstName?.reset();
     this.lastName?.reset();

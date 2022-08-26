@@ -10,6 +10,7 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
 })
 export class PharmacyDetailsComponent implements OnInit {
 
+  saveBtn:String ="Save & Next";
   
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
@@ -53,6 +54,10 @@ export class PharmacyDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+    let isNavigateFromInventy =localStorage.getItem("navPharmacy");
+    if(isNavigateFromInventy =="true"){
+      this.saveBtn ="Save";
+    }
 
   }
   onUpload() {
@@ -104,13 +109,13 @@ export class PharmacyDetailsComponent implements OnInit {
        (val) => {
            this.isBlock=false;
            this.toastFunction("Pharmacy Details added Succefully",true);
-           this.router.navigateByUrl('/pharma-dash');
+           this.onCheckInventy();
        },
        response => {
            if(response.status == 200){
             this.isBlock=false;
-            this.toastFunction("Pharmacy Details added Succefully",true);
-            this.router.navigateByUrl('/pharma-dash');
+            this.onCheckInventy();
+           
            }
            else{
              this.isBlock=false;
@@ -120,6 +125,14 @@ export class PharmacyDetailsComponent implements OnInit {
        () => {
            this.isBlock=false;
        });
+  }
+  onCheckInventy(){
+    let isNavigateFromInventy =localStorage.getItem("navPharmacy");
+    if(isNavigateFromInventy =="true"){
+    
+    }else{
+      this.router.navigateByUrl('/pharma-dash');
+    }
   }
   onClear(){
     this.pharmacyName?.reset();
