@@ -14,7 +14,7 @@ export class AuthorizationsService {
 
 
   userLogin(data: any): Observable<any> {
-    console.log(data);
+   
     return this.http.post(`${this.baseURL}auth/login`, data);
   }
   

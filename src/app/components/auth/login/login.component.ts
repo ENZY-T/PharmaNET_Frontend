@@ -51,24 +51,13 @@ export class LoginComponent implements OnInit {
 
     let userLogData =localStorage.getItem("UserLog");
     console.log(userLogData);
-    if(userLogData == "true"){
-      this.router.navigateByUrl('/pharmacyOwnerProfile');//
-    }
+    // if(userLogData == "true"){
+    //   this.router.navigateByUrl('/pharmacyOwnerProfile');//
+    // }
 
   }
 
-  addToLocalStorage(){
-    console.log("Add");
 
-    var user ="";
-    if(this.username?.value){
-      user =this.username?.value;
-    }
-
-    localStorage.setItem("UserName",user);
-    let name =localStorage.getItem("UserName");
-    console.log(name);
-  }
   removeFromLocalStorage(){
     console.log("Remove");
     localStorage.removeItem("UserName");
@@ -85,7 +74,7 @@ export class LoginComponent implements OnInit {
     this.service.userLogin(data)
     .subscribe(
       (val) => {
-        //  console.log("POST call successful value returned in body", val);
+          console.log(val);
           this.onLoginSuccess(val);
        
       },
@@ -112,20 +101,26 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/registration');
   }
   async onLoginSuccess(res:any){
-    this.addToLocalStorage();
+    this.addToLocalStorage(res);
     this.toastFunction("Customer log successfully",true);
     this.isBlock=false;
-    await this.delay(2000);
+    await this.delay(100);
     localStorage.setItem("UserLog","true");//set local storage user log true
     this.router.navigateByUrl('/landing');//this must be remove
-    if(res.user == "user"){
-      this.router.navigateByUrl('/landing');
-    }
-    else if(res.user =="pharmacy"){
-      this.router.navigateByUrl('/pharma-dash');
-    }
+    // if(res.user == "user"){
+    //   this.router.navigateByUrl('/landing');
+    // }
+    // else if(res.user =="pharmacy"){
+    //   this.router.navigateByUrl('/pharma-dash');
+    // }
   }
   
+  addToLocalStorage(val:any){
+    var fullName=val.fName +" " +val.lName;
+    localStorage.setItem("UserFullName",fullName);
+    localStorage.setItem("UserName",val.email);
+  }
+
  async toastFunction(title:string,isSuccess:boolean){
       this.toastContent= title;
       this.isToastTypeSuccess =isSuccess;

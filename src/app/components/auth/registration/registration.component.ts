@@ -79,8 +79,11 @@ export class RegistrationComponent implements OnInit {
      this.service.userRegister(data)
      .subscribe(
       (val) => {
-        //  console.log("POST call successful value returned in body", val);
-          this.onRegisterSuccess();
+          console.log(val);
+          console.log(val.fName);
+          console.log(val.role);
+          console.log(val.email);
+          this.onRegisterSuccess(val);
 
       },
       response => {
@@ -95,80 +98,18 @@ export class RegistrationComponent implements OnInit {
 
      
   }
-  async onRegisterSuccess(){
+  async onRegisterSuccess(val:any){
+    this.addToLocalStorage(val);
     this.toastFunction("User registered successfully",true);
     this.isBlock=false;
-    await this.delay(2000);
-    this.router.navigateByUrl('/CutomerView');
+    await this.delay(100);
+    this.router.navigateByUrl('/landing');
   }
-  // async onPharmacyRegisterSuccess(){
-  //   this.toastFunction("Pharmacy registered successfully",true);
-  //   this.isBlock=false;
-  //   await this.delay(2000);
-  //   this.router.navigateByUrl('/pharmacyProfile');
-  // }
-  //  onPharmacyRegister(){
-
-  //   this.isBlock=true;
-  //   this.role ='pharmacy';
-  //   let data={
-  //     FName:this.firstName?.value ,
-  //     LName: this.lastName?.value,
-  //     Email :this.email?.value,
-  //     Password :this.password?.value,
-  //     confirmPassword :this.confirmPassword?.value,
-  //     role:this.role
-  //    }
-  //  console.log(data);
-
-  //    this.service.pharmacyRegister(data)
-  //    .subscribe(
-  //     (val) => {
-  //        // console.log("POST call successful value returned in body", val);
-  //         this.onPharmacyRegisterSuccess();
-  //         this.isBlock=false;
-
-  //     },
-  //     response => {
-  //       this.toastFunction("Pharmacy Owner registered Faild",false);
-       
-  //        // console.log("POST call in error", response);
-  //         this.isBlock=false;
-  //     },
-  //     () => {
-  //        // console.log("The POST observable is now completed.");
-  //     });
-
-  // }
-
-  // onRegister(){
-  //   let data={
-      
-  //     name:this.firstName?.value +" " +this.lastName?.value,
-  //     email:this.email?.value,
-  //     mobileNumber:this.mobileNumber?.value,
-  //     password:this.password?.value,
-  //     pharmacy:this.pharmacyName?.value
-  //    }
-  
-  //    this.service.register(data)
-  //    .subscribe(res => {
-  //         console.log(res.st);
-  //    });
-  // }
-  // onNavigateFirstSide(){
-  //   this.isFirstSideFast = false;
-  // }
-  // onNavigateSecondSide(){
-  //   this.isFirstSideFast = true;
-  //   this.isSecondSideFast = false;
-  // }
-  // onNavigateThirdSide(){
-  //   this.onPharmacyRegister();
-
-  //   // this.isSecondSideFast = true;
-  //    console.log(" this.isSecondSideFast" )
-  // }
+  addToLocalStorage(val:any){
+    var fullName=val.fName +" " +val.lName;
+    localStorage.setItem("UserFullName",fullName);
+    localStorage.setItem("UserName",val.email);
+  }
   
   navigateToLogin(){
     this.router.navigateByUrl('/login');

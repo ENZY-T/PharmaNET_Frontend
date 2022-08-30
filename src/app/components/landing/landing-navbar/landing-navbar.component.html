@@ -8,15 +8,24 @@
         <li class="nav-item active">
           <a class="nav-link" href="/landing">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLogOrReg == false ">
+
           <a class="nav-link" href="/login">Login</a>
         </li>
+        <li class="nav-item" *ngIf="isLogOrReg">
+
+          <a class="nav-link" (click)="onLogOut()">Logout</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="/registration">Register</a>
           </li>
       
       </ul>
    
+    </div>
+    <div *ngIf="isLogOrReg">
+      Hello {{user}},
     </div>
   </nav>
 

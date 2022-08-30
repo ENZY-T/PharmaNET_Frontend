@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingNavbarComponent implements OnInit {
 
+  isLogOrReg:boolean=false;
+  user:String="";
   constructor() { }
 
   ngOnInit(): void {
+    let currentUser =localStorage.getItem("UserFullName");
+    if(currentUser){
+      this.isLogOrReg =true;
+      this.user =currentUser;
+
+    }
   }
 
+   onLogOut(){
+    console.log("click");
+    this.isLogOrReg =false;
+    localStorage.removeItem("UserName");
+    localStorage.removeItem("UserFullName");
+   }
 }
