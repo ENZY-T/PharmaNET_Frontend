@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
   
   
   async navigateToSignUp(){
-  //  this.remove();
+   //  this.remove();
    // this.toastFunction("Failed to add",false);
     this.router.navigateByUrl('/registration');
   }

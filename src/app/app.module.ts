@@ -32,8 +32,8 @@ import { StepsModule } from 'primeng/steps';
 import { PrescriptionListComponent } from './components/prescription-list/prescription-list.component';
 import { BadgeModule } from 'primeng/badge';
 import { LandingModule } from './components/landing/landing.module';
-import {MenuItem} from 'primeng/api';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import { ErrorsModule } from './components/errors/errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     PharmacyDashboardComponent,
     CrudTableComponent,
     PrescriptionListComponent,
+    
   ],
   imports: [
     TagModule,
@@ -71,7 +72,8 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     StepsModule,
     BadgeModule,
     LandingModule,
-    PanelMenuModule
+    PanelMenuModule,
+    ErrorsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

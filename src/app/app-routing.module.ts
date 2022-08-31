@@ -17,9 +17,11 @@ import { PrescriptionUploadComponent } from './components/customer/prescription-
 import { LandingPageComponent } from './components/landing/landing-page/landing-page.component';
 import { PharmacyOwnerDetailsComponent } from './components/pharmacy-profile/pharmacy-owner-details/pharmacy-owner-details.component';
 import { AddCardComponent } from './components/pharmacy-profile/add-card/add-card.component';
+import { PageNotFoundComponent } from './components/errors/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
+ 
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'changeLanguage', component: LocalizationComponent },
@@ -37,6 +39,7 @@ const routes: Routes = [
   { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'addCard', component: AddCardComponent },
+  { path: '**', component: PageNotFoundComponent }
 
   
 ];
