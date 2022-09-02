@@ -5,6 +5,8 @@ import { AuthorizationsService } from 'src/app/services/authorizations.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import jwt_decode from 'jwt-decode';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -74,12 +76,19 @@ export class LoginComponent implements OnInit {
     this.service.userLogin(data)
     .subscribe(
       (val) => {
+        console.log("val");
           console.log(val);
           this.onLoginSuccess(val);
        
       },
       response => {
-         console.log(response)
+         console.log(response.error.text);
+
+         const tokenInfo = this.getDecodedAccessToken(response.error.text); // decode token
+         const expireDate = tokenInfo.exp; // get token expiration dateTime
+         console.log(tokenInfo);
+         console.log(tokenInfo.role );
+         console.log("response.body");
        //   console.log(response.status)
           if(response.status == 200){
             this.onLoginSuccess(response);
@@ -94,7 +103,14 @@ export class LoginComponent implements OnInit {
       });
    }
   
-  
+  getDecodedAccessToken(token: string): any {
+  try {
+    return jwt_decode(token);
+  } catch(Error) {
+    return null;
+  }
+}
+
   async navigateToSignUp(){
    //  this.remove();
    // this.toastFunction("Failed to add",false);
