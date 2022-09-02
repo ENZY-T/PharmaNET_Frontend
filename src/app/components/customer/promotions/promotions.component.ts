@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { medCard } from 'src/app/models/med-card';
 
 @Component({
@@ -17,7 +18,7 @@ export class PromotionsComponent implements OnInit {
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
@@ -81,5 +82,9 @@ export class PromotionsComponent implements OnInit {
     }
     this.medicineCards[index] = item;
     console.log(this.medicineCards);
+  }
+
+  onViewAllPromotions(){
+    this.router.navigateByUrl('/allPromotions');
   }
 }

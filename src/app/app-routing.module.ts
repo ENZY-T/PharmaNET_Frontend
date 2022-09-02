@@ -18,6 +18,7 @@ import { LandingPageComponent } from './components/landing/landing-page/landing-
 import { PharmacyOwnerDetailsComponent } from './components/pharmacy-profile/pharmacy-owner-details/pharmacy-owner-details.component';
 import { AddCardComponent } from './components/pharmacy-profile/add-card/add-card.component';
 import { PageNotFoundComponent } from './components/errors/page-not-found/page-not-found.component';
+import { AllPromotionsComponent } from './components/customer/all-promotions/all-promotions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'addCard', component: AddCardComponent },
+  { path: 'allPromotions', component: AllPromotionsComponent},
   { path: '**', component: PageNotFoundComponent }
 
   

@@ -16,14 +16,19 @@
 >
   <ng-template pTemplate="header">
     <h5 class="heading mt-4 mb-4 mb-6" >Promotions</h5>
-
-
   </ng-template>
   <ng-template let-product pTemplate="item">
-    <div class="product-item mb-4" style="margin-top: 20px;">
+    <div class="product-item mb-4" style="margin-top: 20px; margin-left: 75px;">
       <app-medicine-card-prev (childEvent)="onAdd($event)" [item]="product">
       </app-medicine-card-prev>
     </div>
   </ng-template>
 </p-carousel>
+<div class="row mt-3 mb-4 justify-content-md-center">
+
+  <div class="col-md-1 ">
+      <button pButton pRipple type="button" label="View All" (click)="onViewAllPromotions()"  class="p-button-raised p-button-sm"></button>
+   </div>
+</div>
+
 </div>
