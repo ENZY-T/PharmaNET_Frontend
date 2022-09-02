@@ -99,17 +99,17 @@ export class RegistrationComponent implements OnInit {
      
   }
   async onRegisterSuccess(val:any){
-    this.addToLocalStorage(val);
+  //  this.addToLocalStorage(val);
     this.toastFunction("User registered successfully",true);
     this.isBlock=false;
     await this.delay(100);
-    this.router.navigateByUrl('/landing');
+    this.router.navigateByUrl('/login');
   }
-  addToLocalStorage(val:any){
-    var fullName=val.fName +" " +val.lName;
-    localStorage.setItem("UserFullName",fullName);
-    localStorage.setItem("UserName",val.email);
-  }
+  // addToLocalStorage(val:any){
+  //   var fullName=val.fName +" " +val.lName;
+  //   localStorage.setItem("UserFullName",fullName);
+  //   localStorage.setItem("UserName",val.email);
+  // }
   
   navigateToLogin(){
     this.router.navigateByUrl('/login');

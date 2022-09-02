@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
        
       },
       response => {
-       //   console.log(response)
+         console.log(response)
        //   console.log(response.status)
           if(response.status == 200){
             this.onLoginSuccess(response);
@@ -102,10 +102,10 @@ export class LoginComponent implements OnInit {
   }
   async onLoginSuccess(res:any){
     this.addToLocalStorage(res);
-    this.toastFunction("Customer log successfully",true);
+    this.toastFunction("User log successfully",true);
     this.isBlock=false;
     await this.delay(100);
-    localStorage.setItem("UserLog","true");//set local storage user log true
+    
     this.router.navigateByUrl('/landing');//this must be remove
     // if(res.user == "user"){
     //   this.router.navigateByUrl('/landing');
@@ -119,6 +119,8 @@ export class LoginComponent implements OnInit {
     var fullName=val.fName +" " +val.lName;
     localStorage.setItem("UserFullName",fullName);
     localStorage.setItem("UserName",val.email);
+    localStorage.setItem("Role",val.role);
+    localStorage.setItem("UserLog","true");//set local storage user log true
   }
 
  async toastFunction(title:string,isSuccess:boolean){
