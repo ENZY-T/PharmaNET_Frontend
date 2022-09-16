@@ -19,6 +19,7 @@ import { PharmacyOwnerDetailsComponent } from './components/pharmacy-profile/pha
 import { AddCardComponent } from './components/pharmacy-profile/add-card/add-card.component';
 import { PageNotFoundComponent } from './components/errors/page-not-found/page-not-found.component';
 import { AllPromotionsComponent } from './components/customer/all-promotions/all-promotions.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -30,7 +31,12 @@ const routes: Routes = [
   { path: 'medicineCard', component: MedicineCardComponent },
   { path: 'medicineCardPrev', component: MedicineCardPrevComponent },
   { path: 'promotions', component: PromotionsComponent },
-  { path: 'customerView', component: CustomerViewComponent },
+ 
+  { path: 'customerView',
+   component: CustomerViewComponent,
+   canActivate:[AuthGuard]
+   },
+ 
   { path: 'customerViewNavigationbar', component: NavBarComponent },
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },

@@ -12,7 +12,6 @@ export class AuthorizationsService {
 
   constructor(private http:HttpClient) { }
 
-
   userLogin(data: any): Observable<any> {
    
     return this.http.post(`${this.baseURL}auth/login`, data);
@@ -22,17 +21,13 @@ export class AuthorizationsService {
     console.log(data);
     return this.http.post(`${this.baseURL}auth/signUp`, data);
   }
-  // register(data: any): Observable<any> {
- 
-  //   return this.http.post(`${this.baseURL}auth/register`, data);
-  // }
+
 
   userRegister(data: any): Observable<any> {
-    //console.log(data);
     return this.http.post(`${this.baseURL}auth/register`, data);
   }
-  // pharmacyRegister(data: any): Observable<any> {
-  //   console.log(data);
-  //   return this.http.post(`${this.baseURL}auth/register`, data);
-  // }
+ 
+  loginAuth(){
+    return !!localStorage.getItem('token');
+  }
 }

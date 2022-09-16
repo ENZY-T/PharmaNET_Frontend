@@ -34,6 +34,7 @@ import { BadgeModule } from 'primeng/badge';
 import { LandingModule } from './components/landing/landing.module';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { ErrorsModule } from './components/errors/errors/errors.module';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { ErrorsModule } from './components/errors/errors/errors.module';
     PanelMenuModule,
     ErrorsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
