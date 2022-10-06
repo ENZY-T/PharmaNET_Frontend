@@ -5,6 +5,9 @@ import { LandingNavbarComponent } from './landing-navbar/landing-navbar.componen
 import { FooterComponent } from './footer/footer.component';
 import { LandingBodyComponent } from './landing-body/landing-body.component';
 import { ButtonModule } from 'primeng/button';
+import { PharmacyCardModule } from 'src/app/modules/pharmacy-card/pharmacy-card.module';
+import { PharmacyListComponent } from './pharmacy-list/pharmacy-list.component';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -14,13 +17,17 @@ import { ButtonModule } from 'primeng/button';
     LandingNavbarComponent,
     FooterComponent,
     LandingBodyComponent,
+    PharmacyListComponent,
     
     
   ],
   imports: [
     CommonModule,
-    ButtonModule
-  ],
+    ButtonModule,
+    PharmacyCardModule,
+    CarouselModule,
+    
+    ],
   exports:[LandingNavbarComponent,LandingPageComponent]
 })
 export class LandingModule { }

@@ -1,4 +1,4 @@
-<div class="card"  style="width: 14rem;padding-bottom: 20px;" pBadge value="{{item.discount}} %" severity="danger" size="xlarge" styleClass="mr-2">
+<div class="card"  style="width: 14rem;padding-bottom: 20px;"  severity="danger" size="xlarge" styleClass="mr-2">
     <div class="card-columns">
       <img class="card-img-top" src="{{ item.image }}" alt="Card image cap" />
       <div class="card-body">
@@ -8,15 +8,7 @@
               <p class="medName">{{ item.name }}</p>
             </div>
           </div>
-          <div class="row rowStyle">
-            <div class="col-sm ms-4">
-              <p-rating
-                [readonly]="true"
-                [cancel]="false"
-                [(ngModel)]="item.ratingNumber"
-              ></p-rating>
-            </div>
-          </div>
+
           <div class="row rowStyle">
             <div class="col-sm">
               <p class="medPrice">LKR : {{ item.price }}</p>
@@ -36,7 +28,7 @@
                 pButton
                 pRipple
                 type="button"
-                (click)="addToCart(item)"
+                
                 label="Add to Cart"
                 class="p-button-outlined py-1 px-2 p-button-rounded btnStyle"
               ></button>
@@ -47,11 +39,14 @@
                 pButton
                 pRipple
                 type="button"
-                (click)="addToCart(item)"
+                
                 label="Selected"
                 class="p-button-outlined py-1 px-2  p-button-rounded p-button-danger btnStyleSelectedItem"
               ></button>
               </ng-template>
+              
+              
+  
             </div>
           </div>
         </div>
