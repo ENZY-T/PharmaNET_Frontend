@@ -9,4 +9,13 @@ export interface medCard {
     discount:number,
 
   }
+  export interface pharmacyCard {
+    id:number,
+    name:string,
+    telephoneNumber:string,
+    address:string,
+    image:string,
+    ratingNumber:number,
+    isSelect:boolean,
+  }
   

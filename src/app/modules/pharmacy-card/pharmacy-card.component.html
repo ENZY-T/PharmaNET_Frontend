@@ -1,56 +1,64 @@
-<div class="card"  style="width: 14rem;padding-bottom: 20px;"  severity="danger" size="xlarge" styleClass="mr-2">
-    <div class="card-columns">
-      <img class="card-img-top" src="{{ item.image }}" alt="Card image cap" />
-      <div class="card-body">
-        <div class="container">
-          <div class="row rowStyle">
-            <div class="col-sm">
-              <p class="medName">{{ item.name }}</p>
-            </div>
+<div class="card"  style="width: 14rem;padding-bottom: 20px;" severity="danger" size="xlarge" styleClass="mr-2">
+  <div class="card-columns">
+    <img class="card-img-top" src="{{ item.image }}" alt="Card image cap" />
+    <div class="card-body">
+      <div class="container">
+        <div class="row rowStyle">
+          <div class="col-sm">
+            <p class="medName">{{ item.name }}</p>
           </div>
+        </div>
+        <div class="row rowStyle">
+          <div class="col-sm ms-4">
+            <p-rating
+              [readonly]="true"
+              [cancel]="false"
+              [(ngModel)]="item.ratingNumber"
 
-          <div class="row rowStyle">
-            <div class="col-sm">
-              <p class="medPrice">LKR : {{ item.price }}</p>
-              <p></p>
-            </div>
+            ></p-rating>
           </div>
-          <div class="row rowStyle">
-            <div class="col-sm">
-              <p class="medPriceRemove">LKR : {{ item.prevPrice }}</p>
-              <p></p>
-            </div>
+        </div>
+        <div class="row rowStyle">
+          <div class="col-sm">
+            <p class="medPrice">Tel: {{ item.telephoneNumber }}</p>
+            <p></p>
           </div>
-          <div class="row rowStyle">
-            <div class="col">
-              <ng-container *ngIf="item.isSelect == false; else setSelected">
-                <button
-                pButton
-                pRipple
-                type="button"
-                
-                label="Add to Cart"
-                class="p-button-outlined py-1 px-2 p-button-rounded btnStyle"
-              ></button>
-  
-              </ng-container>
-              <ng-template #setSelected>
-                <button
-                pButton
-                pRipple
-                type="button"
-                
-                label="Selected"
-                class="p-button-outlined py-1 px-2  p-button-rounded p-button-danger btnStyleSelectedItem"
-              ></button>
-              </ng-template>
-              
-              
-  
-            </div>
+        </div>
+        <div class="row rowStyle">
+          <div class="col-sm">
+            <p class="medPriceRemove">{{ item.address }}</p>
+            <p></p>
+          </div>
+        </div>
+        <div class="row rowStyle">
+          <div class="col">
+            <ng-container *ngIf="item.isSelect == false; else setSelected">
+              <button
+              pButton
+              pRipple
+              type="button"
+            
+              label="Select"
+              class="p-button-outlined py-1 px-3 btnClass p-button-rounded btnStyle"
+            ></button>
+
+            </ng-container>
+            <ng-template #setSelected>
+              <button
+              pButton
+              pRipple
+              type="button"
+             
+              label="Selected"
+              class="p-button-outlined py-1  p-button-rounded p-button-danger btnStyleSelectedItem"
+            ></button>
+            </ng-template>
+            
+            
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
