@@ -11,6 +11,8 @@ import { AuthorizationsService } from 'src/app/services/authorizations.service';
 export class RegistrationComponent implements OnInit {
 
   selectedValue: String = 'val1';
+  role?: String;
+
 
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
@@ -24,7 +26,7 @@ export class RegistrationComponent implements OnInit {
   privacyCheckNgModel:boolean =false;
   isFirstSideFast:boolean =false;
   isSecondSideFast:boolean =false;
-  role?:String;
+
   registrationForm = new FormGroup({
 
     firstName : new FormControl(''),
@@ -33,6 +35,7 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(1)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(1)]),
     privacyCheck : new FormControl(),
+    role1 : new FormControl(''),
 
   })
 
@@ -54,6 +57,10 @@ export class RegistrationComponent implements OnInit {
   get privacyCheck(){
     return this.registrationForm.get('privacyCheck')
   }
+  get role1(){
+    return this.registrationForm.get('role1')
+  }
+
  
   constructor(private service:AuthorizationsService,private router: Router) { }
 
@@ -66,15 +73,17 @@ export class RegistrationComponent implements OnInit {
  async onRegister(){
     console.log("on reg customer");
     this.isBlock=true;
-    this.role ='customer';
+
     let data={
       FName:this.firstName?.value ,
       LName: this.lastName?.value,
       Email :this.email?.value,
       Password :this.password?.value,
       confirmPassword :this.confirmPassword?.value,
-      role:this.role
+      role:this.role1?.value
      }
+     //
+     console.log(data);
   
      this.service.userRegister(data)
      .subscribe(
@@ -103,7 +112,13 @@ export class RegistrationComponent implements OnInit {
     this.toastFunction("User registered successfully",true);
     this.isBlock=false;
     await this.delay(100);
-    this.router.navigateByUrl('/login');
+  //  this.router.navigateByUrl('/landing');//this must be remove
+    if(val.role == "Patient"){
+     this.router.navigateByUrl('/landing');
+    }
+    else if(val.role =="Pharmacy"){
+      this.router.navigateByUrl('/pharmacyOwnerProfile');
+     }
   }
   // addToLocalStorage(val:any){
   //   var fullName=val.fName +" " +val.lName;

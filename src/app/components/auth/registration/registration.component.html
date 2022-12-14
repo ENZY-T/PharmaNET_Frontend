@@ -113,6 +113,26 @@
                     </div>
                   </div>
                 </div>
+           
+
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <label  class="radio-inline " >
+                      <input   formControlName="role1" type="radio" [(ngModel)]="role" name="gender" value="Patient"> Patient
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-2 col-md-4">
+                    <label  class="radio-inline">
+                      <input    formControlName="role1" type="radio" [(ngModel)]="role" name="gender" value="Pharmacy"> Pharmacy
+                    </label>
+                  </div>
+                </div>
+          
+            
+
+
                 <div class="col-md-1">
                   <input
                     type="checkbox"
@@ -120,6 +140,8 @@
                     formControlName="privacyCheck"
                   />
                 </div>
+             
+           
                 <div class="col-md-11">
                   <div class="input-group mb-2">
                     <p style="color: black">

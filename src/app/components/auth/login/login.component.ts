@@ -132,12 +132,12 @@ export class LoginComponent implements OnInit {
     await this.delay(100);
     
     this.router.navigateByUrl('/landing');//this must be remove
-    // if(res.user == "user"){
-    //   this.router.navigateByUrl('/landing');
-    // }
-    // else if(res.user =="pharmacy"){
-    //   this.router.navigateByUrl('/pharma-dash');
-    // }
+    if(res.user == "user"){
+     this.router.navigateByUrl('/landing');
+    }
+    else if(res.user =="pharmacy"){
+      this.router.navigateByUrl('/pharma-dash');
+     }
   }
   
   addToLocalStorage(val:any){
