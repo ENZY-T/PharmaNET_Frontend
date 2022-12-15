@@ -24,11 +24,15 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   selectedFile?: any;
   selectedImage?: string='No File selected';
 
-  ngFirstName?:string;
+  ngFirstName:string='';
   ngLastName?:string;
   ngEmail?:string;
   ngMobileNumber?:string;
   ngAddress?:string;
+
+  fName?:string='';
+  lName?:string;
+  ownerEmail?:string;
 
   registrationForm = new FormGroup({
 
@@ -60,7 +64,11 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
-
+    let fName = localStorage.getItem("FName");
+    console.log(fName);
+    this.ngFirstName = "fName";
+  //   this.lName=localStorage.getItem("LName");
+  //  this.ownerEmail=localStorage.getItem("Email");
     let isNavigateFromInventy =localStorage.getItem("navOwner");
     if(isNavigateFromInventy =="true"){
       this.saveBtn ="Save";

@@ -85,8 +85,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (val) => {
         console.log("val");
-          console.log(val);
-          this.onLoginSuccess(val);
+          console.log(val[1]);
+          this.onLoginSuccess(val[1]);
        
       },
       response => {
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
          console.log("response.body");
        //   console.log(response.status)
           if(response.status == 200){
-            this.onLoginSuccess(response);
+           // this.onLoginSuccess(response);
           }
           else{
             this.toastFunction("Customer login Faild",false);
@@ -131,17 +131,19 @@ export class LoginComponent implements OnInit {
     this.isBlock=false;
     await this.delay(100);
     
-    this.router.navigateByUrl('/landing');//this must be remove
-    if(res.user == "user"){
+    //this.router.navigateByUrl('/landing');//this must be remove
+    if(res.role == "Patient"){
      this.router.navigateByUrl('/landing');
     }
-    else if(res.user =="pharmacy"){
+    else if(res.role =="Pharmacy"){
       this.router.navigateByUrl('/pharma-dash');
      }
   }
   
   addToLocalStorage(val:any){
     var fullName=val.fName +" " +val.lName;
+    localStorage.setItem("FName",val.fName);
+    localStorage.setItem("LName",val.lName);
     localStorage.setItem("UserFullName",fullName);
     localStorage.setItem("UserName",val.email);
     localStorage.setItem("Role",val.role);
