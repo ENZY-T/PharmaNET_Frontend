@@ -22,5 +22,8 @@ export class PharmacyListComponent implements OnInit {
 
   ];
   }
+  greet(event:any){
+    console.log(event);
+  }
 
 }

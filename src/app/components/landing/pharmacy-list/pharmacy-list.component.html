@@ -13,7 +13,7 @@
   </ng-template>
   <ng-template let-product pTemplate="item">
     <div class="product-item mb-4" style="margin-top: 20px; margin-left: 75px;">
-        <app-pharmacy-card [item]="product"></app-pharmacy-card>
+        <app-pharmacy-card [item]="product" (childEvent)="greet($event)" ></app-pharmacy-card>
 
     </div>
   </ng-template>

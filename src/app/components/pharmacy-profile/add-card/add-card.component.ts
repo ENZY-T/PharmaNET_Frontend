@@ -11,7 +11,7 @@ import { medCard } from 'src/app/models/med-card';
 export class AddCardComponent implements OnInit {
 
   medicineCards: any[] = [];
-  
+  userEmail:string="lakshanisuru170@gmail.com";
 
   cardForm = new FormGroup({
 
@@ -87,11 +87,15 @@ export class AddCardComponent implements OnInit {
       File:this.selectedFile
      }
     
-     console.log(data);
-    
+     console.log("data");
+     
 
      this.medicineCards.push(data);
-     console.log(this.medicineCards);
+     let newData={
+      array:this.medicineCards,
+      email:this.userEmail,
+     }
+     console.log(newData);
      this.onClear();
   } 
   
