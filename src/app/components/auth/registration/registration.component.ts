@@ -85,6 +85,7 @@ export class RegistrationComponent implements OnInit {
      //
      console.log(data);
   
+     
      this.service.userRegister(data)
      .subscribe(
       (val) => {
