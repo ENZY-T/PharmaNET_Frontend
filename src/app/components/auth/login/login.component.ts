@@ -85,8 +85,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (val) => {
         console.log("val");
-          console.log(val[1]);
-          this.onLoginSuccess(val[1]);
+          console.log(val);
+          this.onLoginSuccess(val);
        
       },
       response => {
