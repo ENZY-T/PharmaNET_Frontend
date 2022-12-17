@@ -66,12 +66,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   ngOnInit(): void {
     let fName = localStorage.getItem("FName");
     console.log(fName);
-    this.ngFirstName = "fName";
+   // this.ngFirstName = "fName";
   //   this.lName=localStorage.getItem("LName");
   //  this.ownerEmail=localStorage.getItem("Email");
     let isNavigateFromInventy =localStorage.getItem("navOwner");
     if(isNavigateFromInventy =="true"){
-      this.saveBtn ="Save";
+     // this.saveBtn ="Save";
     }
 
    // this.ngFirstName ='Isuru';
@@ -141,12 +141,8 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   }
 
   onCheckInventy(){
-    let isNavigateFromInventy =localStorage.getItem("navOwner");
-    if(isNavigateFromInventy =="true"){
+    this.router.navigateByUrl('/pharmacyDetails');
     
-    }else{
-      this.router.navigateByUrl('/pharmacyDetails');
-    }
   }
   
   onClear(){

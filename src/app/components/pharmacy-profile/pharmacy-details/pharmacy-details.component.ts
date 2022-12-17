@@ -56,7 +56,7 @@ export class PharmacyDetailsComponent implements OnInit {
   ngOnInit(): void {
     let isNavigateFromInventy =localStorage.getItem("navPharmacy");
     if(isNavigateFromInventy =="true"){
-      this.saveBtn ="Save";
+   //   this.saveBtn ="Save";
     }
 
   }
@@ -127,12 +127,7 @@ export class PharmacyDetailsComponent implements OnInit {
        });
   }
   onCheckInventy(){
-    let isNavigateFromInventy =localStorage.getItem("navPharmacy");
-    if(isNavigateFromInventy =="true"){
-    
-    }else{
-      this.router.navigateByUrl('/pharma-dash');
-    }
+    this.router.navigateByUrl('/pharma-dash');
   }
   onClear(){
     this.pharmacyName?.reset();
