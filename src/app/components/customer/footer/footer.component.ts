@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerServicesService } from 'src/app/services/customer-services.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,9 +15,43 @@ export class FooterComponent implements OnInit {
   isToastTypeSuccess:boolean =true ;
 
   cutomerData:any[]=[];
-  constructor() { }
+  getData:any[]=[];
+  dataAddress:string="";
+  dataEmail:string="";
+  dataContact:string="";
+  constructor(private service:CustomerServicesService) { }
 
   ngOnInit(): void {
+    let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+    console.log(pharmacyEmail);
+    let data={
+      name: "string",
+      email: pharmacyEmail
+    }
+
+    this.service.getSelectedPharmacy(data)
+    .subscribe(
+     (val) => {
+         console.log("Footer");
+         console.log(val);
+         this.dataAddress=val.address;
+         this.dataContact=val.contact_Number;
+         this.dataEmail=val.email
+
+
+        
+
+     },
+     response => {
+      // this.toastFunction("User registered Faild",false);
+      
+       //  console.log("POST call in error", response);
+      //   this.isBlock=false;
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
     this.cutomerData =[{
       'address':'1010 Avenue, sw 54321, chandigarh',
       'contactNumber':'98765432100',
