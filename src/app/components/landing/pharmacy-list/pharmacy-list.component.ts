@@ -30,9 +30,10 @@ export class PharmacyListComponent implements OnInit {
   }
   greet(event:any){
     console.log(event);
-    console.log(event.email);
-    localStorage.setItem("UserFullName","Isuru lakshan ketawala");
-    localStorage.setItem("SelectedPharmcayEmail",event.email);
+   // console.log(event.email);
+ 
+
+    localStorage.setItem("SelectedPharmcyEmail",event.email);
     this.router.navigateByUrl('/customerView');
   }
   async onGetPharmacy(){

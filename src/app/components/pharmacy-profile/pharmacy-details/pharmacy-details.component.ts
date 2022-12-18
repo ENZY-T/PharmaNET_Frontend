@@ -10,7 +10,7 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
 })
 export class PharmacyDetailsComponent implements OnInit {
 
-  saveBtn:String ="Save & Next";
+  saveBtn:String ="Save";
   
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
@@ -101,7 +101,7 @@ export class PharmacyDetailsComponent implements OnInit {
       email:this.email?.value,
       contact_Number:this.contactNumber?.value,
       about:this.aboutCompany?.value,
-      File:this.selectedFile
+      image:this.selectedFile
      }
      console.log(data);
      this.service.pharmacyData(data)
@@ -112,7 +112,7 @@ export class PharmacyDetailsComponent implements OnInit {
            this.onCheckInventy();
        },
        response => {
-           if(response.status == 200){
+           if(response.status == 201){
             this.isBlock=false;
             this.onCheckInventy();
            
@@ -127,7 +127,7 @@ export class PharmacyDetailsComponent implements OnInit {
        });
   }
   onCheckInventy(){
-    this.router.navigateByUrl('/pharma-dash');
+  //  this.router.navigateByUrl('/pharma-dash');
   }
   onClear(){
     this.pharmacyName?.reset();

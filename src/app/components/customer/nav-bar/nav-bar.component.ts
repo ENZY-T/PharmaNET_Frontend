@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomerServicesService } from 'src/app/services/customer-services.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,10 +9,41 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  dataName:string="";
 
+  constructor( private router: Router,private service:CustomerServicesService) { }
   ngOnInit(): void {
-  }
+    console.log("Test");
+    
+    let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+    console.log(pharmacyEmail);
+    let data={
+      name: "string",
+      email: pharmacyEmail
+    }
+
+    this.service.getSelectedPharmacy(data)
+    .subscribe(
+     (val) => {
+         console.log(val);
+        
+       this.dataName =val.name;
+
+     },
+     response => {
+      // this.toastFunction("User registered Faild",false);
+      
+       //  console.log("POST call in error", response);
+      //   this.isBlock=false;
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
+  
+    
+ }
+
 
   onUpload() {
     this.router.navigateByUrl('/prescriptionUploadComponent');

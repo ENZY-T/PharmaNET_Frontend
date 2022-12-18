@@ -17,6 +17,9 @@ export class CustomerServicesService {
     console.log(data);
     return this.http.post(`${this.baseURL}Prescriptions`, data);
   }
-
+  getSelectedPharmacy(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
+  }
 
 }

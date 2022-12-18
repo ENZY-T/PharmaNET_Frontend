@@ -109,7 +109,7 @@ export class RegistrationComponent implements OnInit {
      
   }
   async onRegisterSuccess(val:any){
-  //  this.addToLocalStorage(val);
+    this.addToLocalStorage(val);
     this.toastFunction("User registered successfully",true);
     this.isBlock=false;
     await this.delay(100);
@@ -118,7 +118,7 @@ export class RegistrationComponent implements OnInit {
      this.router.navigateByUrl('/landing');
     }
     else if(val.role =="Pharmacy"){
-      this.router.navigateByUrl('/pharmacyOwnerProfile');
+      this.router.navigateByUrl('/pharma-dash');
      }
   }
   // addToLocalStorage(val:any){
@@ -143,4 +143,15 @@ export class RegistrationComponent implements OnInit {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
+
+  addToLocalStorage(val:any){
+    var fullName=val.fName +" " +val.lName;
+    localStorage.setItem("FName",val.fName);
+    localStorage.setItem("LName",val.lName);
+    localStorage.setItem("UserFullName",fullName);
+    localStorage.setItem("UserName",val.email);
+    localStorage.setItem("Role",val.role);
+    localStorage.setItem("UserLog","true");//set local storage user log true
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutComapany } from 'src/app/models/aboutCompany';
+import { CustomerServicesService } from 'src/app/services/customer-services.service';
 
 @Component({
   selector: 'app-about-pharmacy',
@@ -9,16 +10,50 @@ import { AboutComapany } from 'src/app/models/aboutCompany';
 export class AboutPharmacyComponent implements OnInit {
 
   aboutCompany: AboutComapany[] = [];
-  constructor() { }
+  dataName:string="";
+  dataAbout:string="";
+  dataImage?:string;
+  constructor(private service:CustomerServicesService) { }
 
   ngOnInit(): void {
-    this.aboutCompany = [
+    console.log("Test");
+    let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+    console.log(pharmacyEmail);
+    let data={
+      name: "string",
+      email: pharmacyEmail
+    }
+
+    this.service.getSelectedPharmacy(data)
+    .subscribe(
+     (val) => {
+         console.log(val.about);
+         this.dataName=val.name;
+         this.dataAbout=val.about;
+         console.log(this.dataName);
+
+     },
+     response => {
+      // this.toastFunction("User registered Faild",false);
+      
+       //  console.log("POST call in error", response);
+      //   this.isBlock=false;
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
+     this.aboutCompany = [
       {
-          name: 'ABC Pharmacy',
-          about: 'ABC Pharmacy Limited a 100% subsidiary of Sunshine Healthcare is one of the 1st branded retail Pharmaceutical Chains in Sri Lanka that has entered the market with a view of creating a difference in the retail pharmaceutical trade. Headed by a team of professionals, ABC has introduced an innovative concept centered on superior customer care, latest technology in data management, a wide product assortment, affordable prices and a host of value additions.',
+          name:this.dataName,
+          about: this.dataAbout,
           image: 'https://www.healthguard.lk/pub/media/Home/trans-subscribe3_1_.png'
       }
     ]
-  }
+    
+ }
+
+   
+  
 
 }

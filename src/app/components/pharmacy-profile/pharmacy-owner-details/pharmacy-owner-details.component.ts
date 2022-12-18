@@ -10,7 +10,7 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
 })
 export class PharmacyOwnerDetailsComponent implements OnInit {
 
-  saveBtn:String ="Save & Next";
+  saveBtn:String ="Save";
 
   loadingTitle:String="Loading...";
   isBlock:boolean =false;
@@ -141,7 +141,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   }
 
   onCheckInventy(){
-    this.router.navigateByUrl('/pharmacyDetails');
+  //  this.router.navigateByUrl('/pharmacyDetails');
     
   }
   
