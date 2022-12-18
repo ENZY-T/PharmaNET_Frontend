@@ -19,3 +19,13 @@ export interface medCard {
     isSelect:boolean,
   }
   
+  export interface pharmacyCardsData {
+    id:number,
+    name:string,
+    telephoneNumber:string,
+    address:string,
+    image:string,
+    email:string,
+    ratingNumber:number,
+    isSelect:boolean,
+  }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { pharmacyCard } from 'src/app/models/med-card';
+import { pharmacyCard,pharmacyCardsData } from 'src/app/models/med-card';
 import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pharmacy-list',
@@ -8,9 +10,10 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
   styleUrls: ['./pharmacy-list.component.scss']
 })
 export class PharmacyListComponent implements OnInit {
-  pharmacyCard: pharmacyCard[] = [];
+ // pharmacyCard: pharmacyCard[] = [];
+  pharmacyCard: pharmacyCardsData[] = [];
 
-  constructor(private service:PharmacyProfileService) { }
+  constructor(private service:PharmacyProfileService, private router: Router) { }
 
   ngOnInit(): void {
    this.onGetPharmacy();
@@ -22,11 +25,15 @@ export class PharmacyListComponent implements OnInit {
   //     { id:3, name: 'Kekirawa Osusala', telephoneNumber:"0773129150",address:"Colombo 07",      isSelect:false,  image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAEooit3rXX1evnjr0amW2dYAR1h6rmFsOwg&usqp=CAU',ratingNumber:2 },
   //     { id:4, name: 'Tharaka Pharmacy', telephoneNumber:"0714623151",address:"Gampaha",   isSelect:false,  image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXYAUQREesAKns30lZmLZUp3M_w5zfhHJb-w&usqp=CAU',ratingNumber:3 },
   //     { id:5, name: 'Chamee Pharmacy', telephoneNumber:"0754624591",address:"Moratuwa",  isSelect:false,  image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjb4qAm48sZVo8ReHNqJ1P81GzrM4NEiuFGg&usqp=CAU',ratingNumber:2 }
-
   // ];
+
   }
   greet(event:any){
     console.log(event);
+    console.log(event.email);
+    localStorage.setItem("UserFullName","Isuru lakshan ketawala");
+    localStorage.setItem("SelectedPharmcayEmail",event.email);
+    this.router.navigateByUrl('/customerView');
   }
   async onGetPharmacy(){
     console.log("asking...");
@@ -36,7 +43,8 @@ export class PharmacyListComponent implements OnInit {
         console.log("response");
         console.log(val);
         this.pharmacyCard =val;
-         
+     
+      
          
 
       },)

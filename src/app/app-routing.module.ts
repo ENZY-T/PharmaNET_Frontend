@@ -33,8 +33,7 @@ const routes: Routes = [
   { path: 'promotions', component: PromotionsComponent },
  
   { path: 'customerView',
-   component: CustomerViewComponent,
-   canActivate:[AuthGuard]
+   component: CustomerViewComponent
    },
  
   { path: 'customerViewNavigationbar', component: NavBarComponent },

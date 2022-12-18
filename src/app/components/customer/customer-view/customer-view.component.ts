@@ -15,7 +15,10 @@ export class CustomerViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.toastFunction("Successfully Added",true);
+    console.log("selectedPharmcayEmail");
+    
+    let userLogData =localStorage.getItem("SelectedPharmcayEmail");
+    console.log(userLogData);
 
   }
   async toastFunction(title:string,isSuccess:boolean){
