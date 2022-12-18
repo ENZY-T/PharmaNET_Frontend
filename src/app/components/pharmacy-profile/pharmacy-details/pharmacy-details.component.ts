@@ -101,9 +101,9 @@ export class PharmacyDetailsComponent implements OnInit {
       email:this.email?.value,
       contact_Number:this.contactNumber?.value,
       about:this.aboutCompany?.value,
-     // File:this.selectedFile
+      File:this.selectedFile
      }
-
+     console.log(data);
      this.service.pharmacyData(data)
      .subscribe(
        (val) => {

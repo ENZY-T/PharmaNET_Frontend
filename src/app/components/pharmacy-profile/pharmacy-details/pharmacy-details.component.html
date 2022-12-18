@@ -3,14 +3,12 @@
 [Title]="toastContent"
 [isToastTypeSuccess]="isToastTypeSuccess">
 </app-toast-ui> 
-
 <h1 class="heading">Welcome to ENZY Pharmacy Platform</h1>
 <div class="container mt-5 mb-4">
   <div class="row justify-content-md-center">
       <div class="card cardStyle" style="width: 50vw;">
       <div class="card-body ">
           <h3 class="headingDev">Pharmacy Details</h3>
-          
           <form [formGroup]="registrationForm" >
               <div class="form-group ">
                   <div class="row justify-content-md-center">
@@ -19,15 +17,12 @@
                               <input type="text" class="form-control" pInputText  required formControlName="pharmacyName">
                               <label for="float-input">Pharmacy Name</label>
                           </span>
-                        
                       </div>
                       <div class="input-group mb-2  col-md-6 mt-3">
-                         
                               <span class="p-float-label" style="width: 800px;">
                                   <input type="text" class="form-control" pInputText   placeholder="Pharmacy Address"  required formControlName="pharmacyAddress">
                                   <label for="float-input">Pharmacy Address</label>
                               </span>
-                        
                       </div>
                       <div class="input-group mb-2  col-md-6 mt-3">
                           <span class="p-float-label" style="width: 800px;">
@@ -69,15 +64,12 @@
        </div>
   </div>
 </div>
-
 </div>
-
 <app-file-upload 
 [display]="display"
 [heading]="heading"
 (displayEmit)="display=$event"
 (fileEmit)="onSelectFile($event)"
 ></app-file-upload>
-
 <app-loading-ui [Title]="loadingTitle" [blockedDocument]="isBlock">
 </app-loading-ui>
