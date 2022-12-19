@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
+import { FormBuilder } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pharmacy-details',
@@ -9,6 +11,8 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
   styleUrls: ['./pharmacy-details.component.scss']
 })
 export class PharmacyDetailsComponent implements OnInit {
+
+
 
   saveBtn:String ="Save";
   
@@ -23,6 +27,12 @@ export class PharmacyDetailsComponent implements OnInit {
   heading:string = "Upload Profile";
   selectedFile?: any;
   selectedImage?: string='No File selected';
+  
+  loadName:String ="";
+  loadAddress:String ="";
+  loadEmail:String ="";
+  loadNumber:String ="";
+  loadAbout:String ="";
 
   registrationForm = new FormGroup({
 
@@ -54,46 +64,56 @@ export class PharmacyDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+    let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+    console.log(pharmacyEmail);
+    let data={
+      name: "string",
+      email: pharmacyEmail
+    }
+
+    this.service.getSelectedPharmacy(data)
+    .subscribe(
+     (val) => {
+         console.log("pharmay data");
+         console.log(val);
+        // this.dataAddress=val.address;
+        this.loadName =val.name;
+        this.loadAddress =val.address;
+        this.loadEmail =val.email;
+        this.loadNumber =val.contact_Number;
+        this.loadAbout =val.about;
+
+        console.log(val.address);
+        
+
+     },
+     response => {
+      // this.toastFunction("User registered Faild",false);
+      
+       //  console.log("POST call in error", response);
+      //   this.isBlock=false;
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
+
     let isNavigateFromInventy =localStorage.getItem("navPharmacy");
     if(isNavigateFromInventy =="true"){
    //   this.saveBtn ="Save";
     }
 
   }
+  submitForm() {
+   
+  
+  }
+
   onUpload() {
     this.display = true;
   }
   async onSave(){
-    // ar ngName = "";
-    // var ngEmail ="";
-    // var ngTelephone ="";
-    // var ngAddress ="";
-    // var ngAbout ="";
-
-    // if(this.pharmacyName?.value){
-    //   ngName =this.pharmacyName?.value;
-    //  }
-    // if(this.email?.value){
-    //  ngEmail =this.email?.value;
-    // }
-    // if(this.contactNumber?.value){
-    //  ngTelephone =this.contactNumber?.value;
-    // }
-    // if(this.pharmacyAddress?.value){
-    //   ngAddress =this.pharmacyAddress?.value;
-    //  }
-    //  if(this.aboutCompany?.value){
-    //   ngAbout =this.aboutCompany?.value;
-    //  }
   
-    // const formData = new FormData();
- 
-    // formData.append('name', ngName);
-    // formData.append('email', ngEmail);
-    // formData.append('contact_Number', ngTelephone);
-    // formData.append('address', ngAddress);
-    // formData.append('about',ngAbout);
-
     this.isBlock=true;
     let data={
       name:this.pharmacyName?.value,
@@ -103,12 +123,23 @@ export class PharmacyDetailsComponent implements OnInit {
       about:this.aboutCompany?.value,
       image:this.selectedFile
      }
-     console.log(data);
-     this.service.pharmacyData(data)
+     var formData: any = new FormData();
+     formData.append('name', this.pharmacyName?.value);
+     formData.append('address', this.pharmacyAddress?.value);
+     formData.append('email', this.email?.value);
+     formData.append('contact_Number', this.contactNumber?.value);
+     formData.append('about', this.aboutCompany?.value);
+     formData.append('image', this.selectedFile);
+
+     console.log("formData");
+     console.log(formData);
+
+     this.service.pharmacyDataPost(formData)
      .subscribe(
        (val) => {
            this.isBlock=false;
            this.toastFunction("Pharmacy Details added Succefully",true);
+           console.log("p d g");
            this.onCheckInventy();
        },
        response => {
@@ -126,6 +157,7 @@ export class PharmacyDetailsComponent implements OnInit {
            this.isBlock=false;
        });
   }
+
   onCheckInventy(){
   //  this.router.navigateByUrl('/pharma-dash');
   }

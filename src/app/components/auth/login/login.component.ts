@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   isToastTypeSuccess:boolean =true ;
 
   loginForm = new FormGroup({
-    username: new FormControl('isuru123@gmail.com', [Validators.required, Validators.email]),
-    password: new FormControl('Isu@123', [Validators.required, Validators.minLength(1)])
+    username: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(1)])
   })
 
   get username(){
@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem("UserName");
     let name =localStorage.getItem("UserName");
     console.log(name);
+    localStorage.removeItem("SelectedPharmcyEmail");
   }
 
   onLogin(){
@@ -148,6 +149,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("UserName",val.email);
     localStorage.setItem("Role",val.role);
     localStorage.setItem("UserLog","true");//set local storage user log true
+    localStorage.setItem("SelectedPharmcyEmail",val.email);
   }
 
  async toastFunction(title:string,isSuccess:boolean){

@@ -14,19 +14,19 @@
                   <div class="row justify-content-md-center">
                       <div class="input-group mb-2  col-md-6  mt-3">
                               <span class="p-float-label" style="width: 800px;">
-                              <input type="text" class="form-control" pInputText  required formControlName="pharmacyName">
+                              <input type="text" class="form-control" pInputText [(ngModel)]="loadName" required formControlName="pharmacyName">
                               <label for="float-input">Pharmacy Name</label>
                           </span>
                       </div>
                       <div class="input-group mb-2  col-md-6 mt-3">
                               <span class="p-float-label" style="width: 800px;">
-                                  <input type="text" class="form-control" pInputText   placeholder="Pharmacy Address"  required formControlName="pharmacyAddress">
+                                  <input type="text" class="form-control" pInputText [(ngModel)]="loadAddress"   placeholder="Pharmacy Address"  required formControlName="pharmacyAddress">
                                   <label for="float-input">Pharmacy Address</label>
                               </span>
                       </div>
                       <div class="input-group mb-2  col-md-6 mt-3">
                           <span class="p-float-label" style="width: 800px;">
-                              <input type="text" pInputText   class="form-control" placeholder="E-mail"  required formControlName="email">
+                              <input type="text" pInputText   class="form-control" [(ngModel)]="loadEmail"  placeholder="E-mail"  required formControlName="email">
                               <label for="float-input">Email</label>
                           </span>
                       </div> 
@@ -35,13 +35,13 @@
                       </div>
                       <div class="input-group mb-2  col-md-6 mt-3">
                           <span class="p-float-label" style="width: 800px;">
-                          <input type="text"  pInputText   class="form-control" placeholder="Contact Number"   formControlName="contactNumber">
+                          <input type="text"  pInputText   class="form-control" [(ngModel)]="loadNumber"  placeholder="Contact Number"   formControlName="contactNumber">
                           <label for="float-input">Contact Number</label>
                       </span>
                       </div> 
                       <div class="input-group mb-2  col-md-6 mt-3" >
                           <span class="p-float-label" >
-                            <textarea id="float-input"  rows="5" style="width: 40vw;" pInputText   class="form-control" placeholder="About Company"   formControlName="aboutCompany" [autoResize]="true" pInputTextarea></textarea>
+                            <textarea id="float-input"  rows="5" style="width: 40vw;" [(ngModel)]="loadAbout"  pInputText   class="form-control" placeholder="About Company"   formControlName="aboutCompany" [autoResize]="true" pInputTextarea></textarea>
                           <label for="float-input">About Company</label>
                       </span>
                       </div> 

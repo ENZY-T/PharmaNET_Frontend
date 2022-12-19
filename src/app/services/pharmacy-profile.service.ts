@@ -16,13 +16,17 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.put(`${this.baseURL}User`, data);
   }
-  pharmacyData(data: any): Observable<any> {
+  pharmacyDataPost(data: any): Observable<any> {
     console.log(data);
     return this.http.post(`${this.baseURL}Pharmacy`, data);
   }
   getAllPharmacyData(): Observable<any> {
     console.log("Call");
     return this.http.get(`${this.baseURL}Pharmacy`);
+  }
+  getSelectedPharmacy(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
   }
 
 }

@@ -152,6 +152,7 @@ export class RegistrationComponent implements OnInit {
     localStorage.setItem("UserName",val.email);
     localStorage.setItem("Role",val.role);
     localStorage.setItem("UserLog","true");//set local storage user log true
+    localStorage.setItem("SelectedPharmcyEmail",val.email);
   }
 
 }
