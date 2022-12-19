@@ -82,6 +82,7 @@ export class LoginComponent implements OnInit {
      email:this.username?.value,
      password:this.password?.value
     }
+    
     this.service.userLogin(data)
     .subscribe(
       (val) => {
@@ -146,7 +147,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("FName",val.fName);
     localStorage.setItem("LName",val.lName);
     localStorage.setItem("UserFullName",fullName);
+    
     localStorage.setItem("UserName",val.email);
+    
     localStorage.setItem("Role",val.role);
     localStorage.setItem("UserLog","true");//set local storage user log true
     localStorage.setItem("SelectedPharmcyEmail",val.email);

@@ -14,7 +14,7 @@ export class PharmacyProfileService {
 
   pharmacyOwnerData(data: any): Observable<any> {
     console.log(data);
-    return this.http.put(`${this.baseURL}User`, data);
+    return this.http.post(`${this.baseURL}User`, data);
   }
   pharmacyDataPost(data: any): Observable<any> {
     console.log(data);
@@ -28,5 +28,8 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
   }
-
+  getSelectedPharmacyOwner(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
+  }
 }

@@ -27,12 +27,20 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   ngFirstName:string='';
   ngLastName?:string;
   ngEmail?:string;
+  
   ngMobileNumber?:string;
   ngAddress?:string;
 
   fName?:string='';
   lName?:string;
   ownerEmail?:string;
+
+  loadName:String ="";
+  loadAddress:String ="";
+  loadEmail:String ="";
+  loadNumber:String ="";
+  loadAbout:String ="";
+
 
   registrationForm = new FormGroup({
 
@@ -64,6 +72,52 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+    let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+
+     
+     this.ngFirstName = JSON.parse(localStorage.getItem('FName') || '{}');
+     this.ngLastName = JSON.parse(localStorage.getItem('LName') || '{}');
+     this.ngAddress = JSON.parse(localStorage.getItem('UserName') || '{}');
+     console.log( "this.ngFirstName" );
+    console.log( this.ngFirstName );
+    let data={
+      name: "string",
+      email: pharmacyEmail
+    }
+
+    this.service.getSelectedPharmacyOwner(data)
+    .subscribe(
+     (val) => {
+         console.log("pharmay data");
+         console.log(val);
+        // this.dataAddress=val.address;
+        this.loadName =val.name;
+        this.loadAddress =val.address;
+        this.loadEmail =val.email;
+        this.loadNumber =val.contact_Number;
+        this.loadAbout =val.about;
+
+        console.log(val.address);
+        
+
+     },
+     response => {
+      // this.toastFunction("User registered Faild",false);
+      
+       //  console.log("POST call in error", response);
+      //   this.isBlock=false;
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
+
+
+  
+
+
+
+    
     let fName = localStorage.getItem("FName");
     console.log(fName);
    // this.ngFirstName = "fName";

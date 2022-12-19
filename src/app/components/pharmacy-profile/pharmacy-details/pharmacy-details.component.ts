@@ -104,10 +104,7 @@ export class PharmacyDetailsComponent implements OnInit {
     }
 
   }
-  submitForm() {
-   
-  
-  }
+
 
   onUpload() {
     this.display = true;
