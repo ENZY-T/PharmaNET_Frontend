@@ -44,7 +44,7 @@ export class PharmacyProfileService {
 
   getOwnerInventry(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}getOwnerInventry`, data);
+    return this.http.post(`${this.baseURL}Inventory/getOwnerInventory`, data);
   }
   getOwnerPrescriptionsList(data: any): Observable<any> {
     console.log(data);

@@ -39,7 +39,7 @@ export class CrudTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchData();
+    this.getOwnerInventry();
     this.unfilteredProducts = this.products;
   }
 
@@ -144,7 +144,7 @@ export class CrudTableComponent implements OnInit {
     formData.append('email', user?? '');
     
     this.httpClient
-      .post('https://localhost:5001/api/inventory', formData)
+      .post('https://localhost:5001/api/Inventory', formData)
       .subscribe(
         (val) => {},
         (error) => {
@@ -162,7 +162,7 @@ export class CrudTableComponent implements OnInit {
             detail: 'Product Created',
             life: 3000,
           });
-          this.fetchData();
+          this.getOwnerInventry();
         }
       );
   }
@@ -196,7 +196,7 @@ export class CrudTableComponent implements OnInit {
             detail: 'Product Edited',
             life: 3000,
           });
-          this.fetchData();
+          this.getOwnerInventry();
         }
       );
   }
@@ -226,30 +226,33 @@ export class CrudTableComponent implements OnInit {
                 detail: 'Product Edited',
                 life: 3000,
               });
-              this.fetchData();
+              this.getOwnerInventry();
             }
           );
       },
     });
   }
 
-  fetchData() {
-    this.httpClient.get(GlobalData.baseUrl + 'api/inventory').subscribe(
-      (val) => {
-        this.products = val as Product[];
-      },
-      (error) => {
-        //Toast Error(error + statusCode)
-      }
-    );
+  // fetchData() {
+  //   this.httpClient.get(GlobalData.baseUrl + 'api/inventory').subscribe(
+  //     (val) => {
+  //       this.products = val as Product[];
+  //     },
+  //     (error) => {
+  //       //Toast Error(error + statusCode)
+  //     }
+  //   );
 
     
-  }
+  // }
 
   
   getOwnerInventry() {
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
-    this.service.getOwnerInventry(pharmacyOwnerEmail)
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+   
+    var formData: any = new FormData();
+    formData.append('email', pharmacyOwnerEmail);
+    this.service.getOwnerInventry(formData)
     .subscribe(
       (val) => {
         console.log("inventry received");
@@ -258,12 +261,14 @@ export class CrudTableComponent implements OnInit {
  
       },
       response => {
-         console.log(response.error.text);
+         console.log(response);
 
          console.log("response.body");
        //   console.log(response.status)
-          if(response.status == 201){
-           // this.onLoginSuccess(response);
+          if(response.status == 200){
+            console.log("inventry received");
+            console.log(response);
+            this.products =response;
           }
           else{
            
