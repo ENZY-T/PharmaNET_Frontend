@@ -11,6 +11,18 @@ export interface Product {
   quantity: number;
 }
 
+export interface MedCards {
+  id: string;
+  discount:string;
+  name: string;
+  email:string;
+  image: string | SafeUrl;
+  imageFile?: File;
+  prevPrice: string;
+  price: string;
+  ratingNumber: string;
+}
+
 export const emptyProduct: Product = {
   id: '',
   name: '',

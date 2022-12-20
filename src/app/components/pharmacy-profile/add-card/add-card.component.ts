@@ -2,6 +2,7 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { medCard } from 'src/app/models/med-card';
+import { MedCards } from 'src/app/models/product';
 import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.servic
 })
 export class AddCardComponent implements OnInit {
 
-  medicineCards: any[] = [];
+  medicineCards: MedCards[] = [];
   userEmail?:string;
 
   cardForm = new FormGroup({

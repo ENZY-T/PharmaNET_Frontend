@@ -18,7 +18,7 @@ export class PrescriptionListComponent implements OnInit {
   constructor(private httpClient: HttpClient,private service:PharmacyProfileService) {}
 
   ngOnInit() {
-    this.fetchData(this.globalData.baseUrl + 'api/prescriptions');
+    this.getPrescriptions();
 
     this.cols = [
       { field: 'name', header: 'Name' },
@@ -28,21 +28,26 @@ export class PrescriptionListComponent implements OnInit {
     ];
   }
 
-  fetchData(url: string) {
-    this.httpClient.get(url).subscribe(
-      (val) => {
-        this.products = val as prescriptionViewItem[];
-      },
-      (error) => {
-        //Add Toast(error + status code)
-      }
-    );
-  }
+  // fetchData(url: string) {
+  //   this.httpClient.get(url).subscribe(
+  //     (val) => {
+  //       this.products = val as prescriptionViewItem[];
+  //     },
+  //     (error) => {
+  //       //Add Toast(error + status code)
+  //     }
+  //   );
+  // }
 
 
-  getMedCardsArray(){
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
-    this.service.getMedCards(pharmacyOwnerEmail)
+  getPrescriptions(){
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+
+    const formData = new FormData();
+
+    formData.append('email', pharmacyOwnerEmail ?? '');
+    
+    this.service.getOwnerPrescriptionsList(formData)
     .subscribe(
       (val) => {
         console.log("owner prescriptions received");
