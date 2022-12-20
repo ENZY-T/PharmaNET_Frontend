@@ -2,6 +2,7 @@ import { prescriptionViewItem } from './../../models/presctiptionItem';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GlobalData } from 'src/app/GlobalData';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-prescription-list',
@@ -14,7 +15,7 @@ export class PrescriptionListComponent implements OnInit {
 
   cols: any[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private service:PharmacyProfileService) {}
 
   ngOnInit() {
     this.fetchData(this.globalData.baseUrl + 'api/prescriptions');
@@ -37,4 +38,37 @@ export class PrescriptionListComponent implements OnInit {
       }
     );
   }
+
+
+  getMedCardsArray(){
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
+    this.service.getMedCards(pharmacyOwnerEmail)
+    .subscribe(
+      (val) => {
+        console.log("owner prescriptions received");
+        console.log(val);
+        this.products =val;
+ 
+      },
+      response => {
+         console.log(response.error.text);
+
+      
+         console.log("response.body");
+       //   console.log(response.status)
+          if(response.status == 201){
+           // this.onLoginSuccess(response);
+          }
+          else{
+           
+            
+          }
+      },
+      () => {
+        // console.log("The POST observable is now completed.");
+      });
+
+
+  }
+
 }

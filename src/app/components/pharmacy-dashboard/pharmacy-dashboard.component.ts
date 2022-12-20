@@ -2,6 +2,7 @@ import { dummyProduct2 } from '../../models/product';
 import { Product, dummyProduct } from '../../models/product';
 import { Component, OnInit, Type } from '@angular/core';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class PharmacyDashboardComponent implements OnInit {
 
   items: any[]=[];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
 
@@ -45,7 +46,12 @@ export class PharmacyDashboardComponent implements OnInit {
     localStorage.setItem("navOwner","true");
   }
 
-    
+  onNavCustomerPrev()
+  {
+    localStorage.setItem("isOwnerNavCustomerView","True");
+    this.router.navigateByUrl('/customerView');
+  }
+
   onNavigatePharmacy(){
     localStorage.setItem("navPharmacy","true");
   }

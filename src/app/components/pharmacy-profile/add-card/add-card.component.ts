@@ -2,6 +2,7 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { medCard } from 'src/app/models/med-card';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-add-card',
@@ -11,7 +12,7 @@ import { medCard } from 'src/app/models/med-card';
 export class AddCardComponent implements OnInit {
 
   medicineCards: any[] = [];
-  userEmail:string="lakshanisuru170@gmail.com";
+  userEmail?:string;
 
   cardForm = new FormGroup({
 
@@ -40,16 +41,22 @@ export class AddCardComponent implements OnInit {
     return this.cardForm.get('rating')
   }
 
-   display: boolean = false;
+  display: boolean = false;
   heading:string = "Upload Profile";
   selectedFile?: any;
   selectedImage?: string='No File selected';
   image?: string='';
 
-  constructor() { }
+  loadingTitle:String="Loading...";
+  isBlock:boolean =false;
+  
+  isShowToast:boolean =false;
+  toastContent:string="";
+  isToastTypeSuccess:boolean =true ;
+
+  constructor(private service:PharmacyProfileService) { }
 
   ngOnInit(): void {
-
   }
 
   onSelectFile(file:any){
@@ -73,32 +80,109 @@ export class AddCardComponent implements OnInit {
     this.display = true;
   }
   onSave(){
-
-
-    
+    let user =localStorage.getItem("UserName");
+  
     let data={
       name:this.itemName?.value,
       price:this.newPrice?.value,
       prevPrice:this.oldPrice?.value,
       ratingNumber:this.rating?.value,
       discount:this.discount?.value,
-      isSelect:false,
-      image:this.image,
-      File:this.selectedFile
+      image:this.selectedFile,
+      email:user
      }
-    
-     console.log("data");
+     const formData = new FormData();
+
+     formData.append('name', this.itemName?.value ?? '');
+     formData.append('price', this.newPrice?.value ?? '');
+     formData.append('prevPrice',this.oldPrice?.value ?? '');
+     formData.append('ratingNumber', this.rating?.value ?? '');
+     formData.append('discount',this.discount?.value?? '');
+     formData.append('image', this.selectedFile ?? '');
+     formData.append('email', user?? '');
+
+     //array push
+    // this.medicineCards.push(data);
+     console.log(formData);
+
+     this.service.saveMedCards(formData)
+     .subscribe(
+       (val) => {
+         console.log("medCards");
+         console.log(val);
+         this.toastFunction("Card Added successfully",true);
+         this.isBlock=false;
+        
+          
+       },
+       response => {
+          console.log(response.error.text);
+ 
+       
+          console.log("response.body");
+        //   console.log(response.status)
+           if(response.status == 201){
+            // this.onLoginSuccess(response);
+           }
+           else{
+             this.toastFunction("Card Added Faild",false);
+             this.isBlock=false;
+           }
+       },
+       () => {
+         // console.log("The POST observable is now completed.");
+       });
+
+
      
 
-     this.medicineCards.push(data);
-     let newData={
-      array:this.medicineCards,
-      email:this.userEmail,
-     }
-     console.log(newData);
      this.onClear();
   } 
   
+  getMedCardsArray(){
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
+    this.service.getMedCards(pharmacyOwnerEmail)
+    .subscribe(
+      (val) => {
+        console.log("medCards received");
+        console.log(val);
+        this.medicineCards =val;
+        this.isBlock=false;
+       
+         
+      },
+      response => {
+         console.log(response.error.text);
+
+      
+         console.log("response.body");
+       //   console.log(response.status)
+          if(response.status == 201){
+           // this.onLoginSuccess(response);
+          }
+          else{
+           
+            this.isBlock=false;
+          }
+      },
+      () => {
+        // console.log("The POST observable is now completed.");
+      });
+
+
+  }
+  async toastFunction(title:string,isSuccess:boolean){
+    this.toastContent= title;
+    this.isToastTypeSuccess =isSuccess;
+    await this.delay(0);
+    this.isShowToast=true;
+    await this.delay(0);
+    this.isShowToast=false;
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
   onClear(){
     this.itemName?.reset();
     this.newPrice?.reset();

@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
 
     let userLogData =localStorage.getItem("UserLog");
     console.log(userLogData);
-    // if(userLogData == "true"){
-    //   this.router.navigateByUrl('/pharmacyOwnerProfile');//
-    // }
+   
 
   }
 

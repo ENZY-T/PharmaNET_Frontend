@@ -9,6 +9,7 @@ import {
   SafeUrl,
 } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-crud-table',
@@ -33,7 +34,8 @@ export class CrudTableComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private domSanitizer: DomSanitizer,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private service:PharmacyProfileService
   ) {}
 
   ngOnInit() {
@@ -129,6 +131,8 @@ export class CrudTableComponent implements OnInit {
 
   PostProduct(url?: string) {
     console.log(this.product);
+    let user =localStorage.getItem("UserName");
+
     const formData = new FormData();
 
     formData.append('image', this.product.imageFile ?? '');
@@ -137,7 +141,8 @@ export class CrudTableComponent implements OnInit {
     formData.append('quantity', this.product.quantity.toString());
     formData.append('stockStatus', this.product.stockStatus);
     formData.append('category', this.product.category);
-
+    formData.append('email', user?? '');
+    
     this.httpClient
       .post('https://localhost:5001/api/inventory', formData)
       .subscribe(
@@ -237,5 +242,38 @@ export class CrudTableComponent implements OnInit {
         //Toast Error(error + statusCode)
       }
     );
+
+    
+  }
+
+  
+  getOwnerInventry() {
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
+    this.service.getOwnerInventry(pharmacyOwnerEmail)
+    .subscribe(
+      (val) => {
+        console.log("inventry received");
+        console.log(val);
+        this.products =val;
+ 
+      },
+      response => {
+         console.log(response.error.text);
+
+         console.log("response.body");
+       //   console.log(response.status)
+          if(response.status == 201){
+           // this.onLoginSuccess(response);
+          }
+          else{
+           
+           
+          }
+      },
+      () => {
+        // console.log("The POST observable is now completed.");
+      });
+
+    
   }
 }

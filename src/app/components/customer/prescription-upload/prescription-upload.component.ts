@@ -65,12 +65,16 @@ export class PrescriptionUploadComponent implements OnInit {
    
    console.log(this.selectedFile);
 
+   let name =localStorage.getItem("SelectedPharmcyEmail");
    const formData = new FormData();
+   console.log(name);
 
    formData.append('Name', ngName);
    formData.append('Email', ngEmail);
    formData.append('Telephone', ngTelephone);
    formData.append('Prescription',this.selectedFile);
+   formData.append('OwnerEmail',name?? '');
+
      console.log(formData);
      this.service.uploadPrescription(formData)
      .subscribe(
@@ -82,7 +86,7 @@ export class PrescriptionUploadComponent implements OnInit {
        },
        response => {
         console.log(response);
-           if(response.status == 200){
+           if(response.status == 201){
             this.isBlock=false;
             this.toastFunction("Prescription Uploaded Succefully",true);
             this.onClear();

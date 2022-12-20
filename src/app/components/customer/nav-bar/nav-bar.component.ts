@@ -10,9 +10,11 @@ import { CustomerServicesService } from 'src/app/services/customer-services.serv
 export class NavBarComponent implements OnInit {
 
   dataName:string="";
+  isPrevOk:boolean =false;
 
   constructor( private router: Router,private service:CustomerServicesService) { }
   ngOnInit(): void {
+    this.onPrevDashboardLink();
     console.log("Test");
     
     let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
@@ -43,8 +45,27 @@ export class NavBarComponent implements OnInit {
   
     
  }
+ onPrevDashboardLink()
+ {
+  let isTrue = localStorage.getItem("isOwnerNavCustomerView");
+  if(isTrue == "True")
+  {
+    this.isPrevOk = true;
+    console.log(this.isPrevOk);
+  }
+  else{
+    console.log(this.isPrevOk);
+  }
+ }
 
 
+ onNavigateToDashboard()
+ {
+  localStorage.removeItem("isOwnerNavCustomerView");
+  this.router.navigateByUrl('/pharma-dash');
+  
+
+ }
   onUpload() {
     this.router.navigateByUrl('/prescriptionUploadComponent');
   }

@@ -32,4 +32,22 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
   }
+  //save pharmacy medCards
+  saveMedCards(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}saveMedCard`, data);
+  }
+  getMedCards(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}getMedCards`, data);
+  }
+
+  getOwnerInventry(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}getOwnerInventry`, data);
+  }
+  getOwnerPrescriptionsList(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}getOwnerInventry`, data);
+  }
 }
