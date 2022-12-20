@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { PharmacyCardModule } from 'src/app/modules/pharmacy-card/pharmacy-card.module';
 import { PharmacyListComponent } from './pharmacy-list/pharmacy-list.component';
 import { CarouselModule } from 'primeng/carousel';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,12 +21,14 @@ import { CarouselModule } from 'primeng/carousel';
     PharmacyListComponent,
     
     
+    
   ],
   imports: [
     CommonModule,
     ButtonModule,
     PharmacyCardModule,
     CarouselModule,
+    FormsModule
     
     ],
   exports:[LandingNavbarComponent,LandingPageComponent]

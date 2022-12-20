@@ -10,6 +10,26 @@
 >
   <ng-template pTemplate="header">
     <h2 class="heading mt-4 mb-4 mb-6" >Pharmacies</h2>
+
+
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-md">
+        </div>
+        <div class="col-md">
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  [(ngModel)]="searchText"  />
+            
+            <button type="button" class="btn btn-outline-primary"   (click)="onSearch()">search</button>
+          </div>
+        </div>
+        <div class="col-md">
+        </div>
+      </div>
+    </div>
+
+
+
   </ng-template>
   <ng-template let-product pTemplate="item">
     <div class="product-item mb-4" style="margin-top: 20px; margin-left: 75px;">

@@ -50,4 +50,9 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.post(`${this.baseURL}getOwnerInventry`, data);
   }
+
+  getMedicineIncludePharmacy(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}getMedicineIcludePharmacy`, data);
+  }
 }
