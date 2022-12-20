@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorizationsService } from 'src/app/services/authorizations.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private services:AuthorizationsService) { }
 
   ngOnInit(): void {
+    this.getLocation();
   }
 
+  getLocation(){
+    this.services.getLocationService().then(resp=>{
+      console.log(resp.lng);
+      console.log(resp.lat);
+    })
+  }
 }

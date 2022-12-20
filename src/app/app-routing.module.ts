@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'customerView',
    component: CustomerViewComponent
    },
- 
+   { path: 'geoLocation', component: DashboardComponent },
   { path: 'customerViewNavigationbar', component: NavBarComponent },
   { path: 'cartList', component: CartListComponent },
   { path: 'location', component: LocationComponent },
