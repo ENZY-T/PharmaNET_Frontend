@@ -35,11 +35,11 @@ export class PharmacyProfileService {
   //save pharmacy medCards
   saveMedCards(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}saveMedCard`, data);
+    return this.http.post(`${this.baseURL}Cards`, data);
   }
   getMedCards(data: any): Observable<any> {
     console.log(data);
-    return this.http.post(`${this.baseURL}getMedCards`, data);
+    return this.http.post(`${this.baseURL}Cards/PharmacyCards`, data);
   }
 
   getOwnerInventry(data: any): Observable<any> {

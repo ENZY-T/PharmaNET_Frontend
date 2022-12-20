@@ -33,6 +33,9 @@ export class PharmacyDetailsComponent implements OnInit {
   loadEmail:String ="";
   loadNumber:String ="";
   loadAbout:String ="";
+  latitude:String ="";
+  longitude:String ="";
+
 
   registrationForm = new FormGroup({
 
@@ -105,10 +108,22 @@ export class PharmacyDetailsComponent implements OnInit {
 
   }
 
+    
+ 
+
 
   onUpload() {
     this.display = true;
   }
+
+  onDisplayLocation(location:any){
+   
+    this.latitude=location.latitude;
+    this.longitude=location.longitude;
+    console.log(this.latitude);
+    console.log(this.longitude);
+  }
+  
   async onSave(){
   
     this.isBlock=true;
@@ -127,9 +142,11 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
      formData.append('image', this.selectedFile);
+     formData.append('latitude',this.latitude);
+     formData.append('longitude',this.longitude);
 
-     console.log("formData");
-     console.log(formData);
+     //console.log("formData");
+    // console.log(formData);
 
      this.service.pharmacyDataPost(formData)
      .subscribe(

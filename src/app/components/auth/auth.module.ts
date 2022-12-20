@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule ,TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RegistrationComponent } from './registration/registration.component';
+import { LocalizationModule } from 'src/app/modules/localization/localization.module';
 export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
 }
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http:HttpClient){
     ToastModule,
     ReactiveFormsModule,
     RadioButtonModule,
+    LocalizationModule,
   
 
     TranslateModule.forRoot(

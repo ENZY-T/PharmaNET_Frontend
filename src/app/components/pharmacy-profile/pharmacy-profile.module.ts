@@ -12,6 +12,7 @@ import { ToastUiModule } from 'src/app/modules/toast-ui/toast-ui.module';
 import { LoadingUiModule } from 'src/app/modules/loading-ui/loading-ui.module';
 import { AddCardComponent } from './add-card/add-card.component';
 import { MedCardModule } from 'src/app/modules/med-card/med-card.module';
+import { LocalizationModule } from 'src/app/modules/localization/localization.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MedCardModule } from 'src/app/modules/med-card/med-card.module';
     InputTextareaModule,
     ToastUiModule,
     LoadingUiModule,
-    MedCardModule
+    MedCardModule,
+    LocalizationModule
   ],
   exports:[PharmacyDetailsComponent, PharmacyOwnerDetailsComponent, AddCardComponent]
 })

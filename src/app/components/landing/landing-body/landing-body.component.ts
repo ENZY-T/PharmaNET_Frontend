@@ -16,10 +16,9 @@ export class LandingBodyComponent implements OnInit {
   onLogin(){
     this.router.navigateByUrl('/registration');
   }
+  
   onDisplayLocation(location:any){
-    console.log("location");
     console.log(location);
-    
   }
  
 }

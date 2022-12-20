@@ -26,7 +26,9 @@ export class RegistrationComponent implements OnInit {
   privacyCheckNgModel:boolean =false;
   isFirstSideFast:boolean =false;
   isSecondSideFast:boolean =false;
-
+  latitude:string ="";
+  longitude:string ="";
+  
   registrationForm = new FormGroup({
 
     firstName : new FormControl(''),
@@ -70,6 +72,19 @@ export class RegistrationComponent implements OnInit {
   onChange(e:any){
     console.log(this.selectedValue);
   }
+
+  onDisplayLocation(location:any){
+    console.log("this.latitude");
+    this.latitude=location.latitude;
+    this.longitude=location.longitude;
+  
+    console.log(this.latitude);
+    console.log(this.longitude);
+
+    localStorage.setItem("latitude",this.latitude);
+    localStorage.setItem("longitude",this.longitude)
+  }
+
  async onRegister(){
     console.log("on reg customer");
     this.isBlock=true;

@@ -57,6 +57,7 @@ export class AddCardComponent implements OnInit {
   constructor(private service:PharmacyProfileService) { }
 
   ngOnInit(): void {
+    this.getMedCardsArray();
   }
 
   onSelectFile(file:any){
@@ -80,6 +81,8 @@ export class AddCardComponent implements OnInit {
     this.display = true;
   }
   onSave(){
+    this.isBlock=true;
+
     let user =localStorage.getItem("UserName");
   
     let data={
@@ -91,6 +94,8 @@ export class AddCardComponent implements OnInit {
       image:this.selectedFile,
       email:user
      }
+     console.log(data);
+
      const formData = new FormData();
 
      formData.append('name', this.itemName?.value ?? '');
@@ -109,6 +114,7 @@ export class AddCardComponent implements OnInit {
      .subscribe(
        (val) => {
          console.log("medCards");
+         this.getMedCardsArray();
          console.log(val);
          this.toastFunction("Card Added successfully",true);
          this.isBlock=false;
@@ -116,13 +122,13 @@ export class AddCardComponent implements OnInit {
           
        },
        response => {
-          console.log(response.error.text);
- 
        
           console.log("response.body");
-        //   console.log(response.status)
+           console.log(response.status);
+
            if(response.status == 201){
-            // this.onLoginSuccess(response);
+            this.toastFunction("Card Added Successfully",false);
+
            }
            else{
              this.toastFunction("Card Added Faild",false);
@@ -140,8 +146,11 @@ export class AddCardComponent implements OnInit {
   } 
   
   getMedCardsArray(){
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");;
-    this.service.getMedCards(pharmacyOwnerEmail)
+    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+    let data={
+      email:pharmacyOwnerEmail
+    }
+    this.service.getMedCards(data)
     .subscribe(
       (val) => {
         console.log("medCards received");
@@ -152,16 +161,14 @@ export class AddCardComponent implements OnInit {
          
       },
       response => {
-         console.log(response.error.text);
 
-      
          console.log("response.body");
        //   console.log(response.status)
-          if(response.status == 201){
-           // this.onLoginSuccess(response);
+          if(response.status == 200){
+            console.log("200");
           }
           else{
-           
+            console.log("Erro");
             this.isBlock=false;
           }
       },
