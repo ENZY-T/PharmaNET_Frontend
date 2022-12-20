@@ -1,6 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from 'src/app/models/localization';
+import { AuthorizationsService } from 'src/app/services/authorizations.service';
 
 @Component({
   selector: 'app-localization',
@@ -9,41 +10,27 @@ import { Language } from 'src/app/models/localization';
 })
 export class LocalizationComponent implements OnInit {
 
-  currentLaguage:string='';
-  currentLaguage1?:Language;
-  heading:string='Select Language';
-  
-  languageArry: Language[]=[
-    {id:'en',name:'English'},
-    {id:'de',name:'German'},
-    {id:'it',name:'Itali'},
-    {id:'ja',name:'Japanese'}
+  longitude?:string;
+  latitude?:string;
+
+  @Output() public childEvent = new EventEmitter();
+
+  constructor(private services:AuthorizationsService) { }
+
+  ngOnInit(): void {
+    this.services.getLocationService().then(resp=>{
+      
+      this.latitude=resp.lat;
+      this.longitude=resp.lng;
+      let locationVal={
+        latitude:this.latitude,
+        longitude:this.longitude
+      }
+      this.childEvent.emit(locationVal);
+    })
     
-  ];
-
-  constructor(public translate:TranslateService){
-
-    translate.setDefaultLang('English');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang?.match(/en|de/) ? browserLang :'English');
-  
-   }
-
-   ngOnInit(): void {
+   
   }
 
-
-   onSet(val:any){
-      console.log(val.lan.name);
-      this.heading = val.lan.name;
-      let lan=val.lan;
-
-      for(let i =0;i<this.languageArry.length;i++){
-        if(this.languageArry[i].name == lan.name){
-          this.currentLaguage =this.languageArry[i].id;
-          this.translate.use(this.currentLaguage);
-        }
-       }
-   }  
-
+ 
 }

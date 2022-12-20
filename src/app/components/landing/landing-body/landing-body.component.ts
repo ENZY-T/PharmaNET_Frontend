@@ -11,8 +11,15 @@ export class LandingBodyComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
   }
   onLogin(){
     this.router.navigateByUrl('/registration');
   }
+  onDisplayLocation(location:any){
+    console.log("location");
+    console.log(location);
+    
+  }
+ 
 }

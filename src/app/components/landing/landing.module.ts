@@ -9,6 +9,7 @@ import { PharmacyCardModule } from 'src/app/modules/pharmacy-card/pharmacy-card.
 import { PharmacyListComponent } from './pharmacy-list/pharmacy-list.component';
 import { CarouselModule } from 'primeng/carousel';
 import { FormsModule } from '@angular/forms';
+import { LocalizationModule } from 'src/app/modules/localization/localization.module';
 
 
 
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     PharmacyCardModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    LocalizationModule
     
     ],
   exports:[LandingNavbarComponent,LandingPageComponent]
