@@ -33,7 +33,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import {BadgeModule} from 'primeng/badge';
 import { AllPromotionsComponent } from './all-promotions/all-promotions.component';
-
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent, PrescriptionUploadComponent, AllPromotionsComponent],
   imports: [

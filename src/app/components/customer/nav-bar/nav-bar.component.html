@@ -1,3 +1,91 @@
+<p-dialog  [(visible)]="display" [style]="{width: '50vw'}">
+  <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 ms-5">
+            <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="Selected Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+                <ng-template let-product pTemplate="item">
+
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                            <div class="col-md-3 image-container imageStyle">
+                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
+                           </div>
+                          </div>
+                          <div class="col">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p class="mb-2">{{product.name}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">${{product.price}}</p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">{{product.category }} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">${{product.quantity}}</p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                    
+                                        <p  class="mb-2">{{product.stockStatus }}</p>
+                                   
+                                </div>
+                              </div>
+                          </div>
+                       
+                        </div>
+                      </div>
+<!-- 
+                    <div class="row align-items-end">
+                        <div class="col-md-3 image-container imageStyle">
+                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
+                        </div>
+                        <div class="col-md-4 ms-2">
+                            <h5 class="mb-2">{{product.name}}</h5>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">Price: ${{product.price}}</h5>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">Category: {{product.category }}</h5>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">{{product.stockStatus }}</h5>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <h6 class="mb-2 ">Quantity: {{product.quantity }}</h6>
+                            </div>
+                        </div>
+                    </div> -->
+                </ng-template>
+            </p-orderList>
+            </div>
+        </div>
+        <div class="row mt-3 mb-4 justify-content-md-center">
+            <div class="col-md-1 ">
+            </div>
+            <div class="col-md-1 ">
+                <button pButton pRipple type="button" label="Back"  (click)="onBack()" class="p-button-raised p-button-sm"></button>
+             </div>
+         </div>
+    </div>
+    
+</p-dialog>
+
 <div class="container-fluid">
   <div class="row justify-content-md-end firstNav">
     <ng-container *ngIf="isPrevOk == true">
@@ -41,12 +129,7 @@
     </div>
     <div class="col-md-3">
       <form class="form-inline">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
+        <button class="btn btn-outline-success my-2 my-sm-0"   (click)="onSearch()" >Search</button>
       </form>
     </div>
     <div class="col-md-2">
