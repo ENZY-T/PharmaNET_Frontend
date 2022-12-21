@@ -64,7 +64,7 @@ export class AllPromotionsComponent implements OnInit {
 
 
   getMedCardsArray(){
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+    let pharmacyOwnerEmail =localStorage.getItem("SelectedPharmcyEmail");
     let data={
       email:pharmacyOwnerEmail
     }

@@ -27,6 +27,7 @@ export class PharmacyListComponent implements OnInit {
  
 
     localStorage.setItem("SelectedPharmcyEmail",event.email);
+    
     this.router.navigateByUrl('/customerView');
   }
   async onGetPharmacy(){

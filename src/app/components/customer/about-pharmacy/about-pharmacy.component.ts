@@ -12,7 +12,8 @@ export class AboutPharmacyComponent implements OnInit {
   aboutCompany: AboutComapany[] = [];
   dataName:string="";
   dataAbout:string="";
-  dataImage?:string;
+  dataImage:string="";
+
   constructor(private service:CustomerServicesService) { }
 
   ngOnInit(): void {
@@ -30,7 +31,11 @@ export class AboutPharmacyComponent implements OnInit {
          console.log(val.about);
          this.dataName=val.name;
          this.dataAbout=val.about;
-         console.log(this.dataName);
+         this.dataImage =val.image;
+         console.log("this.dataImage");
+         console.log(this.dataImage);
+         console.log("val");
+         console.log(val);
 
      },
      response => {
@@ -47,7 +52,7 @@ export class AboutPharmacyComponent implements OnInit {
       {
           name:this.dataName,
           about: this.dataAbout,
-          image: 'https://www.healthguard.lk/pub/media/Home/trans-subscribe3_1_.png'
+          image:"https://localhost:5001"+ this.dataImage,
       }
     ]
     
