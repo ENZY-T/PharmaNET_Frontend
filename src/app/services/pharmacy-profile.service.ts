@@ -29,7 +29,7 @@ export class PharmacyProfileService {
     return this.http.post(`${this.baseURL}User/PharmacyDetails`, data);
   }
   getSelectedPharmacyOwner(data: any): Observable<any> {
-    console.log(data);
+    console.log("Owners");
     return this.http.post(`${this.baseURL}User/PharmacyOwners`, data);
   }
   //save pharmacy medCards
