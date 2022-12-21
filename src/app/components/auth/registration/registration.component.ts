@@ -160,13 +160,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   addToLocalStorage(val:any){
+    console.log(val);
     var fullName=val.fName +" " +val.lName;
-    
     localStorage.setItem("FName",val.fName);
     localStorage.setItem("LName",val.lName);
-    localStorage.setItem("UserName",val.email);
-
     localStorage.setItem("UserFullName",fullName);
+    
+    localStorage.setItem("UserName",val.email);
+    
     localStorage.setItem("Role",val.role);
     localStorage.setItem("UserLog","true");//set local storage user log true
     localStorage.setItem("SelectedPharmcyEmail",val.email);

@@ -25,6 +25,9 @@ export class PrescriptionUploadComponent implements OnInit {
 
   heading:string = "Upload Prescription";
 
+  loadName:string|null="";
+  loadEmail:string|null="";
+
   prescriptionUploadForm = new FormGroup({
 
     name : new FormControl(''),
@@ -46,6 +49,10 @@ export class PrescriptionUploadComponent implements OnInit {
   constructor( private router: Router,  private service:CustomerServicesService) { }
 
   ngOnInit(): void {
+    let name =localStorage.getItem("UserFullName");
+    let email =localStorage.getItem("UserName");
+    this.loadName =name;
+    this.loadEmail =email;
   }
  async onSave(){
    this.isBlock=true;

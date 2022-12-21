@@ -15,7 +15,7 @@
         <div class="row justify-content-md-center">
             <div class="input-group mb-2  col-md-6  mt-3">
                     <span class="p-float-label" style="width: 800px;">
-                    <input type="text" class="form-control" pInputText  required formControlName="name">
+                    <input type="text" class="form-control" pInputText [(ngModel)]="loadName"  required formControlName="name">
                     <label for="float-input">Name</label>
                 </span>
               
@@ -24,7 +24,7 @@
             <div class="col-md-6 mt-3">
                 <div class="input-group mb-2 col-md-4">
                     <span class="p-float-label" style="width: 400px;">
-                        <input type="text" pInputText   class="form-control" placeholder="E-mail"  required formControlName="email">
+                        <input type="text" pInputText [(ngModel)]="loadEmail"  class="form-control" placeholder="E-mail"  required formControlName="email">
                         <label for="float-input">Email</label>
                  </span>
                 </div>

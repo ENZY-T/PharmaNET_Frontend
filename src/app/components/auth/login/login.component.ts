@@ -141,6 +141,7 @@ export class LoginComponent implements OnInit {
   }
   
   addToLocalStorage(val:any){
+    console.log(val);
     var fullName=val.fName +" " +val.lName;
     localStorage.setItem("FName",val.fName);
     localStorage.setItem("LName",val.lName);
