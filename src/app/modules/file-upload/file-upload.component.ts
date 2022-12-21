@@ -41,7 +41,7 @@ export class FileUploadComponent implements OnInit {
     this.fileEmit.emit(this.selectedFile);
     this.onClose();
     this.currentImage =this.baseImage;
-    this.toastFunction("File Selected successfully",true);
+   // this.toastFunction("File Selected successfully",true);
 
 
   }

@@ -72,13 +72,12 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   constructor( private router: Router,    private service:PharmacyProfileService ) { }
 
   ngOnInit(): void {
+    console.log( "--------------owner" );
     let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
-
-     
-     this.ngFirstName = JSON.parse(localStorage.getItem('FName') || '{}');
-     this.ngLastName = JSON.parse(localStorage.getItem('LName') || '{}');
-     this.ngAddress = JSON.parse(localStorage.getItem('UserName') || '{}');
-     console.log( "this.ngFirstName" );
+    //  this.ngFirstName = JSON.parse(localStorage.getItem('FName') || '{}');
+    //  this.ngLastName = JSON.parse(localStorage.getItem('LName') || '{}');
+    //  this.ngAddress = JSON.parse(localStorage.getItem('UserName') || '{}');
+    
     console.log( this.ngFirstName );
     let data={
       name: "string",
@@ -91,10 +90,13 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
          console.log("pharmay data");
          console.log(val);
         // this.dataAddress=val.address;
-        this.loadName =val.name;
+        this.ngFirstName =val.fName;
+        this.ngLastName =val.lName;
+        this.ngEmail =val.email;
+
         this.loadAddress =val.address;
-        this.loadEmail =val.email;
-        this.loadNumber =val.contact_Number;
+
+        this.ngMobileNumber =val.phoneNumber;
         this.loadAbout =val.about;
 
         console.log(val.address);
@@ -110,11 +112,6 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
      () => {
         // console.log("The POST observable is now completed.");
      });
-
-
-
-  
-
 
 
     

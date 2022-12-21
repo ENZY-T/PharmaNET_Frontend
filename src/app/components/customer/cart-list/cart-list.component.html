@@ -1,26 +1,75 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-md-6 ms-5">
-            <p-orderList [value]="selectedList" [listStyle]="{'max-height':'30rem'}" header="Selected Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+            <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="Selected Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
                 <ng-template let-product pTemplate="item">
 
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                            <div class="col-md-3 image-container imageStyle">
+                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
+                           </div>
+                          </div>
+                          <div class="col">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p class="mb-2">{{product.name}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">${{product.price}}</p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">{{product.category }} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="col-md-4 ms-2">
+                                        <p  class="mb-2">${{product.quantity}}</p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                    
+                                        <p  class="mb-2">{{product.stockStatus }}</p>
+                                   
+                                </div>
+                              </div>
+                          </div>
+                       
+                        </div>
+                      </div>
+<!-- 
                     <div class="row align-items-end">
                         <div class="col-md-3 image-container imageStyle">
                                 <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
                         </div>
                         <div class="col-md-4 ms-2">
                             <h5 class="mb-2">{{product.name}}</h5>
-                            <p-rating [readonly]="true"  [cancel]="false" [(ngModel)]="product.ratingNumber"></p-rating>
                         </div>
                         <div class="col-md-1">
-                            <div class="product-list-action">
-                                <h5 class="mb-2">${{product.price}}</h5>
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">Price: ${{product.price}}</h5>
                             </div>
-                            <div class="product-list-action">
-                                <h6 class="mb-2 medPriceRemove">${{product.prevPrice}}</h6>
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">Category: {{product.category }}</h5>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <h5 class="mb-2">{{product.stockStatus }}</h5>
+                            </div>
+                            <div class="col-md-4 ms-2">
+                                <h6 class="mb-2 ">Quantity: {{product.quantity }}</h6>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </ng-template>
             </p-orderList>
             </div>

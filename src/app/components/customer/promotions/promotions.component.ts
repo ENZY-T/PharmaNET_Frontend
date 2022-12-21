@@ -91,7 +91,7 @@ export class PromotionsComponent implements OnInit {
     this.router.navigateByUrl('/allPromotions');
   }
   getMedCardsArray(){
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+    let pharmacyOwnerEmail =localStorage.getItem("SelectedPharmcyEmail");
     let data={
       email:pharmacyOwnerEmail
     }

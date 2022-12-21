@@ -44,6 +44,11 @@ export class CrudTableComponent implements OnInit {
   }
 
   openNew() {
+    this.product.image ="";
+    this.product.name="";
+    this.product.category = "";
+    this.product.price=0;
+    this.product.quantity=0;
     this.product = emptyProduct;
     this.submitted = false;
     this.productDialog = true;
@@ -202,6 +207,7 @@ export class CrudTableComponent implements OnInit {
   }
 
   DeleteProduct(product: Product) {
+
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + product.name + '?',
       header: 'Confirm',
@@ -215,18 +221,19 @@ export class CrudTableComponent implements OnInit {
               this.messageService.add({
                 severity: 'danger',
                 summary: 'Error',
-                detail: 'Product Create Failed',
+                detail: 'Product Delete Failed',
                 life: 3000,
               });
             },
             () => {
               this.messageService.add({
                 severity: 'success',
-                summary: 'Successfully Edited',
-                detail: 'Product Edited',
+                summary: 'Successfully Deleted',
+                detail: 'Product Deleted',
                 life: 3000,
               });
               this.getOwnerInventry();
+              this.unfilteredProducts = this.products;
             }
           );
       },
