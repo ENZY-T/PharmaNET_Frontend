@@ -15,9 +15,17 @@ export class NavBarComponent implements OnInit {
   isPrevOk:boolean =false;
   display: boolean = false;
   products: Product[] = [];
+  loading: boolean = true;
+  statuses?: any[];
 
   constructor( private router: Router,private service1:PharmacyProfileService,private service:CustomerServicesService) { }
   ngOnInit(): void {
+    this.statuses = [
+      {label: 'INSTOCK', value: 'instock'},
+      {label: 'LOWSTOCK', value: 'lowstock'},
+      {label: 'OUTOFSTOCK', value: 'outofstock'}
+  ];
+  
     this.getOwnerInventry();
     this.onPrevDashboardLink();
     console.log("Test");
@@ -51,6 +59,8 @@ export class NavBarComponent implements OnInit {
     
  }
 
+
+
  getOwnerInventry() {
   let pharmacyOwnerEmail =localStorage.getItem("UserName");
  
@@ -62,7 +72,7 @@ export class NavBarComponent implements OnInit {
       console.log("inventry received");
       console.log(val);
       this.products =val;
-
+      this.loading = false;
     },
     response => {
        console.log(response);
@@ -73,6 +83,7 @@ export class NavBarComponent implements OnInit {
           console.log("inventry received");
           console.log(response);
           this.products =response;
+          this.loading = false;
         }
         else{
          

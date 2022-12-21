@@ -1,89 +1,68 @@
-<p-dialog  [(visible)]="display" [style]="{width: '50vw'}">
-  <div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-md-6 ms-5">
-            <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="Selected Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
-                <ng-template let-product pTemplate="item">
+<p-dialog  [(visible)]="display" [style]="{width: '80vw'}">
+ 
+  <div class="card">
+    <h5>Filter Row</h5>
+    <p>Filters are displayed inline within a separate row.</p>
+    <p-table #dt2 [value]="products" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name','country.name','representative.name','status']" [tableStyle]="{'min-width':'75rem'}">
+        <!-- <ng-template pTemplate="caption">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template> -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:22%">Name</th>
+                <th style="width:22%">Image</th>
+                <th style="width:22%">Price</th>
+                
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="name"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="image"></p-columnFilter>
+                </th>
+            
+                <th>
+                    <p-columnFilter type="boolean" field="price"></p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>
+                    {{customer.name}}
+                </td>
+                <td>
+                    <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + customer.image" width="30">
+                    <span class="image-text">{{customer.image}}</span>
+                </td>
+                <td>
+                  {{customer.price}
+              </td>
+                <!-- <td>
+                    <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+                </td> -->
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No products found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
 
-                    <div class="container">
-                        <div class="row">
-                          <div class="col-sm">
-                            <div class="col-md-3 image-container imageStyle">
-                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
-                           </div>
-                          </div>
-                          <div class="col">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p class="mb-2">{{product.name}} </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">${{product.price}}</p>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">{{product.category }} </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">${{product.quantity}}</p>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col">
-                                    
-                                        <p  class="mb-2">{{product.stockStatus }}</p>
-                                   
-                                </div>
-                              </div>
-                          </div>
-                       
-                        </div>
-                      </div>
-<!-- 
-                    <div class="row align-items-end">
-                        <div class="col-md-3 image-container imageStyle">
-                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
-                        </div>
-                        <div class="col-md-4 ms-2">
-                            <h5 class="mb-2">{{product.name}}</h5>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">Price: ${{product.price}}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">Category: {{product.category }}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">{{product.stockStatus }}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h6 class="mb-2 ">Quantity: {{product.quantity }}</h6>
-                            </div>
-                        </div>
-                    </div> -->
-                </ng-template>
-            </p-orderList>
-            </div>
-        </div>
-        <div class="row mt-3 mb-4 justify-content-md-center">
-            <div class="col-md-1 ">
-            </div>
-            <div class="col-md-1 ">
-                <button pButton pRipple type="button" label="Back"  (click)="onBack()" class="p-button-raised p-button-sm"></button>
-             </div>
-         </div>
-    </div>
-    
+
+  
 </p-dialog>
 
 <div class="container-fluid">
