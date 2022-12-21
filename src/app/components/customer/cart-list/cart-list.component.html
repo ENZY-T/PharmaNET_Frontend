@@ -1,85 +1,166 @@
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-md-6 ms-5">
-            <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="Selected Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
-                <ng-template let-product pTemplate="item">
 
-                    <div class="container">
-                        <div class="row">
-                          <div class="col-sm">
-                            <div class="col-md-3 image-container imageStyle">
-                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
-                           </div>
-                          </div>
-                          <div class="col">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p class="mb-2">{{product.name}} </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">${{product.price}}</p>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">{{product.category }} </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="col-md-4 ms-2">
-                                        <p  class="mb-2">${{product.quantity}}</p>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col">
-                                    
-                                        <p  class="mb-2">{{product.stockStatus }}</p>
-                                   
-                                </div>
-                              </div>
-                          </div>
-                       
-                        </div>
-                      </div>
-<!-- 
-                    <div class="row align-items-end">
-                        <div class="col-md-3 image-container imageStyle">
-                                <img src="{{product.image}}" [alt]="product.name" class="product-image imageStyle" />
-                        </div>
-                        <div class="col-md-4 ms-2">
-                            <h5 class="mb-2">{{product.name}}</h5>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">Price: ${{product.price}}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">Category: {{product.category }}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h5 class="mb-2">{{product.stockStatus }}</h5>
-                            </div>
-                            <div class="col-md-4 ms-2">
-                                <h6 class="mb-2 ">Quantity: {{product.quantity }}</h6>
-                            </div>
-                        </div>
-                    </div> -->
-                </ng-template>
-            </p-orderList>
+<app-nav-bar></app-nav-bar>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h3>Search Products</h3>
+        <p-orderList
+        [value]="products"
+        [listStyle]="{ 'max-height': '30rem' }"
+        header="Products"
+        filterBy="name"
+        filterPlaceholder="Filter by name"
+        [dragdrop]="true"
+      >
+        <ng-template let-product pTemplate="item">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="col-md-3 image-container imageStyle">
+                  <img
+                    src="{{ product.image }}"
+                    [alt]="product.name"
+                    class="product-image imageStyle"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="col-md-4 ms-2">
+                      <p class="mb-2">{{ product.name }}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="col-md-4 ms-2">
+                      <p class="mb-2">${{ product.price }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="col-md-4 ms-2">
+                      <p class="mb-2">{{ product.category }}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="col-md-4 ms-2">
+                      <p class="mb-2">${{ product.quantity }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <p class="mb-2">{{ product.stockStatus }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="row mt-3 mb-4 justify-content-md-center">
-            <div class="col-md-1 ">
-            </div>
-            <div class="col-md-1 ">
-                <button pButton pRipple type="button" label="Back"  (click)="onBack()" class="p-button-raised p-button-sm"></button>
-             </div>
-         </div>
-    </div>
+          </div>
     
+        </ng-template>
+      </p-orderList> 
+      </div>
+      <div class="col-sm">
+        <h3>Add to Cart</h3>
+        <form [formGroup]="registrationForm">
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <div class="input-group mb-2 col-md-4">
+                    <label>Item Name</label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="input-group mb-2 col-md-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Item Name"
+                        required
+                        formControlName="itemName"
+                      />
+                    </div>
+                  </div>
+  
+                
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col">
+                    <div class="input-group mb-2 col-md-4">
+                      <label>Amount</label>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group mb-2 col-md-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Amount"
+                          required
+                          formControlName="quantity"
+                        />
+                      </div>
+                    </div>
+    
+                   
+                  </div>
+                </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-2">
+                <button type="submit" class="btn btn-primary loingBtn" (click)="onAdd()">
+                  Add
+                </button>
+              </div>
+            </div>
+          </form> 
+      </div>
+      <div class="col-sm">
+        <h3>Bill</h3>
+       <div class="widths">
+        <input 
+        type="text"
+        class="form-control"
+        placeholder="Amount"
+        required
+        [(ngModel)]="totalBIll"
+      />
+
+       </div>
+        <p-table [value]="cart" [tableStyle]="{'min-width': '35rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Single Unit Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.itemName}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.unitPrice}}</td>
+                    <td>{{product.totalPrice}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+

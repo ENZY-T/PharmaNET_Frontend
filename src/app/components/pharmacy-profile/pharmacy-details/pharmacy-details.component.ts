@@ -135,6 +135,7 @@ export class PharmacyDetailsComponent implements OnInit {
       about:this.aboutCompany?.value,
       image:this.selectedFile
      }
+     console.log(data);
      var formData: any = new FormData();
      formData.append('name', this.pharmacyName?.value);
      formData.append('address', this.pharmacyAddress?.value);
@@ -142,8 +143,8 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
      formData.append('image', this.selectedFile);
-     formData.append('latitude',this.latitude);
-     formData.append('longitude',this.longitude);
+    // formData.append('latitude',this.latitude);
+  //   formData.append('longitude',this.longitude);
 
      //console.log("formData");
     // console.log(formData);
@@ -154,6 +155,7 @@ export class PharmacyDetailsComponent implements OnInit {
            this.isBlock=false;
            this.toastFunction("Pharmacy Details added Succefully",true);
            console.log("p d g");
+           console.log(val);
            this.onCheckInventy();
        },
        response => {

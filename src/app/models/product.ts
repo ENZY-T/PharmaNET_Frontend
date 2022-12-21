@@ -10,7 +10,13 @@ export interface Product {
   price: number;
   quantity: number;
 }
-
+export interface Cart {
+  id: string;
+  name: string;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+}
 export interface MedCards {
   id: string;
   discount:string;
