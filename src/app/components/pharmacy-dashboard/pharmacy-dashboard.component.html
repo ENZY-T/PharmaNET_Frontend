@@ -295,7 +295,32 @@
         <!-- Content Goes Here -->
         <div [ngSwitch]="selectedTab">
           <!-- Billing -->
-          <div *ngSwitchCase="'billing'"></div>
+          <div *ngSwitchCase="'billing'">
+
+            <h3 class="text">Subcribers</h3>
+
+
+            <p-table [value]="subcriberList" [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Code</th>
+                    
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product>
+                  <tr>
+                      <td>{{product.subscriberEmail}}</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+
+
+
+
+
+
+
+          </div>
 
           <!-- Inventory -->
           <div *ngSwitchCase="'inventory'">

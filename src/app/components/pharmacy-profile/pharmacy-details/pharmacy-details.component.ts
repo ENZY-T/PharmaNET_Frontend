@@ -144,8 +144,8 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
      formData.append('image', this.selectedFile);
-     formData.append('currentLatitude',this.latitude);
-     formData.append('currentLongitude',this.longitude);
+     formData.append('CurrentLatitude',this.latitude);
+     formData.append('CurrentLongitude',this.longitude);
 
      //console.log("formData");
     // console.log(formData);
