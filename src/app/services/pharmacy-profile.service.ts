@@ -20,6 +20,10 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.post(`${this.baseURL}Pharmacy`, data);
   }
+  subcribe(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}Subscribe`, data);
+  }
   pharmacyDataPut(data: any): Observable<any> {
     console.log(data);
     return this.http.put(`${this.baseURL}Pharmacy`, data);

@@ -76,14 +76,12 @@
                         <div class="footer-text mb-25">
                             <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
                         </div>
+                     
                         <div class="subscribe-form">
-                            <form action="#">
-
-                                <form action="#">
-                                    <input type="text" style="height: 40px;" placeholder="Email Address">
-                                    <button pButton pRipple type="button"  style="height: 40px;" label="Subscribe" ></button>
-                                </form>
-                            </form>
+                            
+                                    <input type="text" style="height: 40px;"  [(ngModel)]="subcriberEmail" placeholder="Email Address">
+                                    <button pButton pRipple type="button"   style="height: 40px;" (click)="onSubcribe()" label="Subscribe" ></button>
+                              
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerServicesService } from 'src/app/services/customer-services.service';
+import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,7 @@ import { CustomerServicesService } from 'src/app/services/customer-services.serv
 export class FooterComponent implements OnInit {
 
   value="";
-
+  subcriberEmail:String="";
   isShowToast:boolean =false;
   toastContent:string="";
   isToastTypeSuccess:boolean =true ;
@@ -19,7 +20,7 @@ export class FooterComponent implements OnInit {
   dataAddress:string="";
   dataEmail:string="";
   dataContact:string="";
-  constructor(private service:CustomerServicesService) { }
+  constructor(private service:CustomerServicesService, private service1:PharmacyProfileService) { }
 
   ngOnInit(): void {
     let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
@@ -83,7 +84,56 @@ export class FooterComponent implements OnInit {
     delay(ms: number) {
       return new Promise( resolve => setTimeout(resolve, ms) );
     }
-    onSubsrcibe(){
+
+
+    onSubsrcibe()
+    {
+      let receiverEmail=localStorage.getItem("SelectedPharmcyEmail");
+      let data={
+        subscriberEmail :this.subcriberEmail,
+        recieverEmail :receiverEmail
+      }
+      console.log(this.subcriberEmail);
+      console.log(data);
+  
+  
+      this.service1.subcribe(data)
+      .subscribe(
+        (val) => {
+          //  this.isBlock=false;
+            this.toastFunction("Succefully Subcribed",true);
+            // this.onCheckInventy();
+            console.log("Suncribed ok");
+            console.log(val);
+            this.subcriberEmail = "";
+        },
+        response => {
+            if(response.status == 201){
+            //  this.isBlock=false;
+            this.toastFunction("Subcribed Failed",true);
+            //  this.onCheckInventy();
+            console.log("Suncribed 201");
+            console.log(response);
+            }
+            else{
+              this.toastFunction("Pharmacy Owner Details Updated Failed",false);
+              // this.isBlock=false;
+              console.log("Suncribed error");
+              console.log(response);
+            }
+        },
+        () => {
+            // this.isBlock=false;
+        });
+  
+  
+    }
+
+    onSubsrcibew(){
+
+
+
+
       if(this.value ==""){
         this.toastFunction("Please Enter the Email",false);
 

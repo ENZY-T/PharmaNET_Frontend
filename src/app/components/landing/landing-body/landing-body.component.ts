@@ -11,7 +11,7 @@ export class LandingBodyComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
+    localStorage.setItem("SelectedPharmcyEmail","enzy2022@info.com");
   }
   onLogin(){
     this.router.navigateByUrl('/registration');
@@ -21,4 +21,5 @@ export class LandingBodyComponent implements OnInit {
     console.log(location);
   }
  
+
 }
