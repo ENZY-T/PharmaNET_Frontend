@@ -23,6 +23,7 @@ export class PrescriptionUploadComponent implements OnInit {
   selectedImage?: string='No File selected';
   selectedFile?: any;
 
+
   heading:string = "Upload Prescription";
 
   loadName:string|null="";
@@ -75,17 +76,23 @@ export class PrescriptionUploadComponent implements OnInit {
    let name =localStorage.getItem("SelectedPharmcyEmail");
    const formData = new FormData();
    console.log(name);
+  
+  let lat=localStorage.getItem("latitude");
+  let lng=localStorage.getItem("longitude");
 
    formData.append('Name', ngName);
    formData.append('Email', ngEmail);
    formData.append('Telephone', ngTelephone);
    formData.append('Prescription',this.selectedFile);
    formData.append('OwnerEmail',name?? '');
+   formData.append('CurrentLatitude',lat?? '');
+   formData.append('CurrentLongitude',lng?? '');
 
      console.log(formData);
      this.service.uploadPrescription(formData)
      .subscribe(
        (val) => {
+        console.log("Prescription response");
           console.log(val);
            this.isBlock=false;
            this.toastFunction("Prescription Uploaded Succefully",true);
@@ -112,6 +119,7 @@ export class PrescriptionUploadComponent implements OnInit {
     onUpload() {
       this.display = true;
     }
+
     onBack(){
       this.router.navigateByUrl('/customerView');
 

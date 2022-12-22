@@ -34,6 +34,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import {BadgeModule} from 'primeng/badge';
 import { AllPromotionsComponent } from './all-promotions/all-promotions.component';
 import { TableModule } from 'primeng/table';
+import { LocalizationModule } from 'src/app/modules/localization/localization.module';
 
 @NgModule({
   declarations: [CustomerViewComponent,NavBarComponent, MainWallpaperComponent, OnlineServicesComponent, AboutPharmacyComponent, FooterComponent, CardSliderComponent, PromotionsComponent, MedicineCardPrevComponent, CartListComponent, LocationComponent, ImageUploadComponent, PrescriptionUploadComponent, AllPromotionsComponent],
@@ -60,7 +61,8 @@ import { TableModule } from 'primeng/table';
   InputTextareaModule,
   InputTextModule,
   BadgeModule,
-  TableModule
+  TableModule,
+  LocalizationModule
   
   
 ],

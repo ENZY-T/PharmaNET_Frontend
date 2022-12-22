@@ -29,6 +29,8 @@ export class CrudTableComponent implements OnInit {
   product: Product = emptyProduct;
   selectedProducts: Product[] = [];
   submitted: boolean = false;
+  latitude:String ="";
+  longitude:String ="";
 
   constructor(
     private messageService: MessageService,
@@ -41,6 +43,14 @@ export class CrudTableComponent implements OnInit {
   ngOnInit() {
     this.getOwnerInventry();
     this.unfilteredProducts = this.products;
+  }
+
+  onDisplayLocation(location:any){
+   
+    this.latitude=location.latitude;
+    this.longitude=location.longitude;
+    console.log(this.latitude);
+    console.log(this.longitude);
   }
 
   openNew() {
@@ -147,6 +157,9 @@ export class CrudTableComponent implements OnInit {
     formData.append('stockStatus', this.product.stockStatus);
     formData.append('category', this.product.category);
     formData.append('email', user?? '');
+    formData.append('searchKey',"");
+    formData.append('currentLatitude',"");
+    formData.append('currentLongitude',"");
     
     this.httpClient
       .post('https://localhost:5001/api/Inventory', formData)

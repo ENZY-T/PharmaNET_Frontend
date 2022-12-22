@@ -74,9 +74,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
   ngOnInit(): void {
     console.log( "--------------owner" );
     let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
-    //  this.ngFirstName = JSON.parse(localStorage.getItem('FName') || '{}');
-    //  this.ngLastName = JSON.parse(localStorage.getItem('LName') || '{}');
-    //  this.ngAddress = JSON.parse(localStorage.getItem('UserName') || '{}');
+
     
     console.log( this.ngFirstName );
     let data={
@@ -87,8 +85,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     this.service.getSelectedPharmacyOwner(data)
     .subscribe(
      (val) => {
-         console.log("pharmay data");
-         console.log(val);
+        
         // this.dataAddress=val.address;
         this.ngFirstName =val.fName;
         this.ngLastName =val.lName;
@@ -98,8 +95,8 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
 
         this.ngMobileNumber =val.phoneNumber;
         this.loadAbout =val.about;
-
-        console.log(val.address);
+        console.log("Phamacy owner details");
+        console.log(val);
         
 
      },
@@ -162,9 +159,9 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     const formData = new FormData();
  
     formData.append('FName', ngFName);
-    formData.append('LName', ngFName);
+    formData.append('LName', ngLName);
     formData.append('Email', ngEmail);
-    formData.append('Telephone', ngTelephone);
+    formData.append('phoneNumber', ngTelephone);
     formData.append('Address', ngAddress);
     formData.append('ProfilePicture',this.selectedFile);
 
@@ -172,17 +169,19 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
      .subscribe(
        (val) => {
            this.isBlock=false;
-           this.toastFunction("Pharmacy Owner Details added Succefully",true);
+           this.toastFunction("Pharmacy Owner Details Updated Succefully",true);
            this.onCheckInventy();
+           console.log("Owner added data response");
+           console.log(val);
        },
        response => {
-           if(response.status == 200){
+           if(response.status == 201){
             this.isBlock=false;
-            this.toastFunction("Pharmacy Owner Details added Succefully",true);
+            this.toastFunction("Pharmacy Owner Details Updated Succefully",true);
             this.onCheckInventy();
            }
            else{
-             this.toastFunction("Customer login Faild",false);
+             this.toastFunction("Pharmacy Owner Details Updated Failed",false);
              this.isBlock=false;
            }
        },

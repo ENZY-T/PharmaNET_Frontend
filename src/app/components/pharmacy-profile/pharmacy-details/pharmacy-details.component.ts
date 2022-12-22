@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PharmacyProfileService } from 'src/app/services/pharmacy-profile.service';
-import { FormBuilder } from "@angular/forms";
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pharmacy-details',
@@ -11,8 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./pharmacy-details.component.scss']
 })
 export class PharmacyDetailsComponent implements OnInit {
-
-
 
   saveBtn:String ="Save";
   
@@ -35,7 +31,7 @@ export class PharmacyDetailsComponent implements OnInit {
   loadAbout:String ="";
   latitude:String ="";
   longitude:String ="";
-
+  isInitiated:boolean =false;
 
   registrationForm = new FormGroup({
 
@@ -77,7 +73,7 @@ export class PharmacyDetailsComponent implements OnInit {
     this.service.getSelectedPharmacy(data)
     .subscribe(
      (val) => {
-         console.log("pharmay data");
+         console.log("get pharmay  data");
          console.log(val);
         // this.dataAddress=val.address;
         this.loadName =val.name;
@@ -85,18 +81,20 @@ export class PharmacyDetailsComponent implements OnInit {
         this.loadEmail =val.email;
         this.loadNumber =val.contact_Number;
         this.loadAbout =val.about;
-
         console.log(val.address);
-        
+        this.isInitiated =true;
 
      },
      response => {
+      console.log("get pharmay  data error2");
+      this.isInitiated =false;
       // this.toastFunction("User registered Faild",false);
       
        //  console.log("POST call in error", response);
       //   this.isBlock=false;
      },
      () => {
+      //console.log("get pharmay  data error1");
         // console.log("The POST observable is now completed.");
      });
 
@@ -133,8 +131,11 @@ export class PharmacyDetailsComponent implements OnInit {
       email:this.email?.value,
       contact_Number:this.contactNumber?.value,
       about:this.aboutCompany?.value,
-      image:this.selectedFile
+      image:this.selectedFile,
+      currentLatitude:this.latitude,
+      currentLongitude:this.longitude
      }
+     // set
      console.log(data);
      var formData: any = new FormData();
      formData.append('name', this.pharmacyName?.value);
@@ -143,35 +144,65 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
      formData.append('image', this.selectedFile);
-    // formData.append('latitude',this.latitude);
-  //   formData.append('longitude',this.longitude);
+     formData.append('currentLatitude',this.latitude);
+     formData.append('currentLongitude',this.longitude);
 
      //console.log("formData");
     // console.log(formData);
 
-     this.service.pharmacyDataPost(formData)
-     .subscribe(
-       (val) => {
-           this.isBlock=false;
-           this.toastFunction("Pharmacy Details added Succefully",true);
-           console.log("p d g");
-           console.log(val);
-           this.onCheckInventy();
-       },
-       response => {
-           if(response.status == 201){
+    if(this.isInitiated == false)
+    {
+      this.service.pharmacyDataPost(formData)
+      .subscribe(
+        (val) => {
             this.isBlock=false;
+            this.toastFunction("Pharmacy Details added Succefully",true);
+            console.log("p d g");
+            console.log(val);
             this.onCheckInventy();
-           
-           }
-           else{
+        },
+        response => {
+            if(response.status == 201){
              this.isBlock=false;
-             this.toastFunction("Pharmacy Details added Faild",false);
-           }
-       },
-       () => {
-           this.isBlock=false;
-       });
+             this.onCheckInventy();
+            
+            }
+            else{
+              this.isBlock=false;
+              this.toastFunction("Pharmacy Details added Faild",false);
+            }
+        },
+        () => {
+            this.isBlock=false;
+        });
+    }
+    else{
+      this.service.pharmacyDataPut(formData)
+      .subscribe(
+        (val) => {
+            this.isBlock=false;
+            this.toastFunction("Pharmacy Details Updated Succefully",true);
+            console.log("p d g");
+            console.log(val);
+            this.onCheckInventy();
+        },
+        response => {
+            if(response.status == 201){
+             this.isBlock=false;
+             this.onCheckInventy();
+            
+            }
+            else{
+              this.isBlock=false;
+              this.toastFunction("Pharmacy Details Updated Faild",false);
+            }
+        },
+        () => {
+            this.isBlock=false;
+        });
+    }
+  
+       
   }
 
   onCheckInventy(){
