@@ -21,6 +21,8 @@ export class CartListComponent implements OnInit {
   totalBIll?:Number=0;
   uniPriceValees?:Number=0;
   oneSetPrice?:Number=0;
+  itemNameGet:String="";
+  itemQuantity:String="";
   registrationForm = new FormGroup({
 
     itemName : new FormControl(''),
@@ -101,7 +103,7 @@ onFind()
   {
    // this.onFind();
     var quantityValue =Number( this.quantity?.value);
-    var unitPriceValue=100;  
+  
     var unitPriceValueGet= this.products.find(x => x.name === this.itemName?.value);
     console.log("Find item");
     console.log(unitPriceValueGet?.price);
@@ -116,9 +118,13 @@ onFind()
     }
   //  console.log(this.itemName?.value);
    // console.log(this.quantity?.value);
-  //  console.log(this.cartItem);
+   
     this.totalBIll=this.totalBIll+this.cartItem.totalPrice;
     this.cart.push(this.cartItem);
+    console.log(this.cart);
+    this.itemNameGet ="";
+    this.itemQuantity ="";
+
 
   }
   onClear(){

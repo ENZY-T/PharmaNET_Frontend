@@ -12,12 +12,9 @@
 
       <!-- Prescription Image -->
       <td>
-        <img
-          [src]="globalData.baseUrl + rowData.prescriptionUrl"
-          [alt]="'No Image'"
-          width="100"
-          class="shadow-4"
-        />
+        <p-image [src]="globalData.baseUrl + rowData.prescriptionUrl" alt="Image" width="100" [preview]="true"></p-image>
+
+      
       </td>
 
       <td>{{ rowData.email }}</td>

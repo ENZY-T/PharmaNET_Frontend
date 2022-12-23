@@ -99,37 +99,13 @@
 </p-dialog>
 
 <div class="container-fluid">
-  <div class="row justify-content-md-end firstNav">
-    <ng-container *ngIf="isPrevOk == true">
-      <div class="col-md-1 mt-1 d-flex flex-row">
-        <a
-          (click)="onNavigateToDashboard()"
-          class="badge badge-light firstNavItems"
-          ><p>Dashboard</p></a
-        >
-      </div>
-    </ng-container>
-
-    <!-- <li class="nav-item">
-
-      <a class="nav-link" (click)="onLogOut()">My Pharmacy</a>
-    </li>
- -->
-
-    <div class="col-md-1 mt-1 d-flex flex-row">
-      <a href="/location" class="badge badge-light firstNavItems">
-        <p>Branch Network</p>
-      </a>
-    </div>
-
-
-  </div>
+ 
   
   <div class="row secondNav justify-content-end">
     <div class="col-md-4">
       <p class="pharmacyName">{{ dataName }}</p>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <form class="form-inline">
         <button
           class="btn btn-outline-success my-2 my-sm-0"
@@ -139,6 +115,8 @@
         </button>
       </form>
     </div>
+
+
     <div class="col-md-2">
       <button
         pButton
@@ -149,6 +127,20 @@
         class="p-button-sm py-1 mt-1 p-button-rounded p-button-warning"
       ></button>
     </div>
+
+    
+    <ng-container *ngIf="isPrevOk == true">
+      <div class="col-md-1">
+        <a
+          (click)="onNavigateToDashboard()"
+          class="badge badge-light firstNavItems"
+          ><p>Dashboard</p></a
+        >
+      </div>
+    </ng-container>
+    
+
+
     <div class="col-md-1">
       <a href="/landing" class="badge badge-light" style="text-decoration: none"
         ><p class="firstNavItems mt-1">Home</p></a
