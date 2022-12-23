@@ -2,7 +2,7 @@
 <app-nav-bar></app-nav-bar>
 
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
       <div class="col-sm">
         <h4>Search Products</h4>
@@ -121,7 +121,7 @@
        
 
        </div>
-        <p-table [value]="cart" [tableStyle]="{'min-width': '35rem'}">
+        <p-table [value]="cart" [tableStyle]="{'max-width': '400px'}"  [scrollable]="true" scrollHeight="400px" [virtualScroll]="true" [virtualScrollItemSize]="46">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Item Name</th>
@@ -139,7 +139,7 @@
                 </tr>
             </ng-template>
         </p-table>
-        
+        <button pButton type="button" (click)="onClear()" label="Check Out" ></button>
 
 
 

@@ -121,5 +121,9 @@ onFind()
     this.cart.push(this.cartItem);
 
   }
+  onClear(){
+    this.cart =[];
+    this.totalBIll=0;
+  }
 
 }
