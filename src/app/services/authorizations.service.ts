@@ -24,7 +24,7 @@ export class AuthorizationsService {
 
 
   userRegister(data: any): Observable<any> {
-    return this.http.post(`${this.baseURL}auth/register`, data);
+    return this.http.post(`${this.baseURL}Auth/register`, data);
   }
  
   loginAuth(){

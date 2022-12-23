@@ -90,10 +90,10 @@ export class RegistrationComponent implements OnInit {
     this.isBlock=true;
 
     let data={
-      FName:this.firstName?.value ,
-      LName: this.lastName?.value,
-      Email :this.email?.value,
-      Password :this.password?.value,
+      fName:this.firstName?.value ,
+      lName: this.lastName?.value,
+      email :this.email?.value,
+      password :this.password?.value,
       confirmPassword :this.confirmPassword?.value,
       role:this.role1?.value
      }
