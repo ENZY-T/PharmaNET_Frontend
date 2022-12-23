@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-navbar',
@@ -9,7 +10,7 @@ export class LandingNavbarComponent implements OnInit {
 
   isLogOrReg:boolean=false;
   user:String="";
-  constructor() { }
+  constructor(    private router: Router) { }
 
   ngOnInit(): void {
     let currentUser =localStorage.getItem("UserFullName");
@@ -26,5 +27,13 @@ export class LandingNavbarComponent implements OnInit {
     localStorage.setItem("Role","Patient");
     localStorage.removeItem("UserName");
     localStorage.removeItem("UserFullName");
+   }
+
+   myPharmacy(){
+    console.log("L");
+  if(  localStorage.getItem("Role") == "Pharmacy"){
+    this.router.navigateByUrl('/pharma-dash');
+  }
+    
    }
 }

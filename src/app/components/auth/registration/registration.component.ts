@@ -123,7 +123,11 @@ export class RegistrationComponent implements OnInit {
 
      
   }
-  
+  async navigateToHome(){
+    //  this.remove();
+    // this.toastFunction("Failed to add",false);
+     this.router.navigateByUrl('/landing');
+   }
   async onRegisterSuccess(val:any){
     this.addToLocalStorage(val);
     this.toastFunction("User registered successfully",true);

@@ -126,6 +126,12 @@ export class LoginComponent implements OnInit {
    // this.toastFunction("Failed to add",false);
     this.router.navigateByUrl('/registration');
   }
+
+  async navigateToHome(){
+    //  this.remove();
+    // this.toastFunction("Failed to add",false);
+     this.router.navigateByUrl('/landing');
+   }
   async onLoginSuccess(res:any){
     this.addToLocalStorage(res);
     this.toastFunction("User log successfully",true);
