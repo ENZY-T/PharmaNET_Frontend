@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm">
-        <h3>Search Products</h3>
+        <h4>Search Products</h4>
         <p-orderList
         [value]="products"
         [listStyle]="{ 'max-height': '30rem' }"
@@ -20,7 +20,7 @@
               <div class="col-sm">
                 <div class="col-md-3 image-container imageStyle">
                   <img
-                    src="{{ product.image }}"
+                    src="https://localhost:5001{{ product.image }}"
                     [alt]="product.name"
                     class="product-image imageStyle"
                   />
@@ -45,15 +45,15 @@
                       <p class="mb-2">{{ product.category }}</p>
                     </div>
                   </div>
-                  <div class="col-sm">
+                  <!-- <div class="col-sm">
                     <div class="col-md-4 ms-2">
-                      <p class="mb-2">${{ product.quantity }}</p>
+                      <p class="mb-2">{{ product.quantity }}</p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="row">
                   <div class="col">
-                    <p class="mb-2">{{ product.stockStatus }}</p>
+                    <p class="mb-2">{{ product.stockStatus }} : {{ product.quantity }} </p>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
       </p-orderList> 
       </div>
       <div class="col-sm">
-        <h3>Add to Cart</h3>
+        <h4>Add to Cart</h4>
         <form [formGroup]="registrationForm">
             <div class="form-group">
               <div class="row">
@@ -83,8 +83,6 @@
                       />
                     </div>
                   </div>
-  
-                
                 </div>
               </div>
               <div class="row">
@@ -103,8 +101,6 @@
                         />
                       </div>
                     </div>
-    
-                   
                   </div>
                 </div>
             </div>
@@ -119,7 +115,7 @@
           </form> 
       </div>
       <div class="col-sm">
-        <h3>Bill</h3>
+        <h4>Bill</h4>
        <div class="widths">
         <input 
         type="text"

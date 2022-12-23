@@ -20,12 +20,29 @@
           <div class="input-group">
             <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"  [(ngModel)]="searchText"  />
             
-            <button type="button" class="btn btn-outline-primary"   (click)="onSearch()">search</button>
+            <button type="button" class="btn btn-outline-primary"   (click)="onChange()">search</button>
           </div>
         </div>
         <div class="col-md">
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md">
+        </div>
+        <div class="col-md">
+          <div class="input-group">
+            
+            <div class="field-checkbox">
+              <p-checkbox [(ngModel)]="checked" (click)="onChangeCheck()" [binary]="true" inputId="binary"></p-checkbox>
+              <label for="binary">{{isLocationBased}}</label>
+          </div>
+          </div>
+        </div>
+        <div class="col-md">
+        </div>
+      </div>
+     
     </div>
 
 

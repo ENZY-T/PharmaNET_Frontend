@@ -13,13 +13,13 @@ export class PharmacyListComponent implements OnInit {
  // pharmacyCard: pharmacyCard[] = [];
   pharmacyCard: pharmacyCardsData[] = [];
   searchText?:String;
+
+  checked: boolean = false;
+  isLocationBased: String = "Location Not Based";
   constructor(private service:PharmacyProfileService, private router: Router) { }
 
   ngOnInit(): void {
    this.onGetPharmacy();
-
-  
-
   }
   greet(event:any){
     console.log(event);
@@ -43,6 +43,53 @@ export class PharmacyListComponent implements OnInit {
   onSearch(){
    
     this.onGetSearchPharmacies()
+  }
+  
+  onChange(){
+    console.log(this.searchText);
+    let lat=localStorage.getItem("longitude");
+    let lng=localStorage.getItem("latitude");
+    var data;
+    if(this.checked){
+      this.isLocationBased ="Location Based";
+       data={
+        SearchKey:this.searchText,
+        CurrentLatitude:lat,
+        CurrentLongitude:lng,
+
+      }
+      console.log(data);
+
+    }
+    else{
+      this.isLocationBased ="Location Not Based";
+       data={
+        SearchKey:this.searchText,
+        CurrentLatitude:"",
+        CurrentLongitude:"",
+
+      }
+      console.log(data);
+    }
+   
+
+  }
+  onChangeCheck(){
+
+    if(this.checked){
+      this.isLocationBased ="Location Based";
+      
+
+    }
+    else{
+      this.isLocationBased ="Location Not Based";
+      
+
+      }
+    
+    
+   
+
   }
 
   async onGetSearchPharmacies(){

@@ -10,6 +10,7 @@ import { PharmacyListComponent } from './pharmacy-list/pharmacy-list.component';
 import { CarouselModule } from 'primeng/carousel';
 import { FormsModule } from '@angular/forms';
 import { LocalizationModule } from 'src/app/modules/localization/localization.module';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 
@@ -30,7 +31,8 @@ import { LocalizationModule } from 'src/app/modules/localization/localization.mo
     PharmacyCardModule,
     CarouselModule,
     FormsModule,
-    LocalizationModule
+    LocalizationModule,
+    CheckboxModule
     
     ],
   exports:[LandingNavbarComponent,LandingPageComponent]

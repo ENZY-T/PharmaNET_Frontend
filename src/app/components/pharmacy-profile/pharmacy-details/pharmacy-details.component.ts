@@ -73,15 +73,15 @@ export class PharmacyDetailsComponent implements OnInit {
     this.service.getSelectedPharmacy(data)
     .subscribe(
      (val) => {
-         console.log("get pharmay  data");
-         console.log(val);
+       //  console.log("get pharmay  data");
+       //  console.log(val);
         // this.dataAddress=val.address;
         this.loadName =val.name;
         this.loadAddress =val.address;
         this.loadEmail =val.email;
         this.loadNumber =val.contact_Number;
         this.loadAbout =val.about;
-        console.log(val.address);
+      //  console.log(val.address);
         this.isInitiated =true;
 
      },
@@ -136,7 +136,8 @@ export class PharmacyDetailsComponent implements OnInit {
       currentLongitude:this.longitude
      }
      // set
-     console.log(data);
+
+    
      var formData: any = new FormData();
      formData.append('name', this.pharmacyName?.value);
      formData.append('address', this.pharmacyAddress?.value);
@@ -147,18 +148,20 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('CurrentLatitude',this.latitude);
      formData.append('CurrentLongitude',this.longitude);
 
-     //console.log("formData");
-    // console.log(formData);
+    console.log("image");
+     console.log(this.selectedFile);
 
     if(this.isInitiated == false)
     {
+   //   console.log("Pharmacy data post");
+   //   console.log(data);
       this.service.pharmacyDataPost(formData)
       .subscribe(
         (val) => {
             this.isBlock=false;
             this.toastFunction("Pharmacy Details added Succefully",true);
-            console.log("p d g");
-            console.log(val);
+          //  console.log("p d g");
+          //  console.log(val);
             this.onCheckInventy();
         },
         response => {
@@ -177,12 +180,14 @@ export class PharmacyDetailsComponent implements OnInit {
         });
     }
     else{
+     // console.log("Pharmacy data put");
+      console.log(data);
       this.service.pharmacyDataPut(formData)
       .subscribe(
         (val) => {
             this.isBlock=false;
             this.toastFunction("Pharmacy Details Updated Succefully",true);
-            console.log("p d g");
+         //   console.log("response put");
             console.log(val);
             this.onCheckInventy();
         },

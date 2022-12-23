@@ -288,7 +288,7 @@
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
         >
-          <h4>Pharmacy Admin Name and Email</h4>
+          <h4 class="clolor">{{pharmacyName}} </h4>  <h6> Hello {{userName}}</h6>
           <div class="btn-toolbar mb-2 mb-md-0"></div>
         </div>
 
@@ -301,12 +301,7 @@
 
 
             <p-table [value]="subcriberList" [tableStyle]="{'min-width': '50rem'}">
-              <ng-template pTemplate="header">
-                  <tr>
-                      <th>Code</th>
-                    
-                  </tr>
-              </ng-template>
+             
               <ng-template pTemplate="body" let-product>
                   <tr>
                       <td>{{product.subscriberEmail}}</td>

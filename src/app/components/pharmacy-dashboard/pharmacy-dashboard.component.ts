@@ -16,14 +16,18 @@ export class PharmacyDashboardComponent implements OnInit {
   dummyProductArray: Product[] = [dummyProduct, dummyProduct2];
   selectedTab: string = 'inventory';
 
-
+  userName:String |null="";
+  pharmacyName:String |null="";
+  
   items: any[]=[];
   subcriberList: any[]=[];
 
-  constructor(private router: Router,private service1:PharmacyProfileService) {}
+  constructor(private router: Router,private service1:PharmacyProfileService ,  private service:PharmacyProfileService) {}
 
   ngOnInit(): void {
-    console.log("Bisadi");
+   this.getPharmacy();
+    let UserName=localStorage.getItem("UserFullName");
+    this.userName=UserName;
     this.onSubsrcibe();
 
     this.items = [
@@ -47,7 +51,44 @@ export class PharmacyDashboardComponent implements OnInit {
   }
   
 
+ getPharmacy(){
+  let pharmacyEmail =localStorage.getItem("SelectedPharmcyEmail");
+  console.log(pharmacyEmail);
+  let data={
+    name: "string",
+    email: pharmacyEmail
+  }
 
+  this.service.getSelectedPharmacy(data)
+  .subscribe(
+   (val) => {
+       console.log("get pharmay  name");
+       console.log(val.name);
+       localStorage.setItem("PhamacyName",val.name);
+       this.pharmacyName =val.name
+      // this.dataAddress=val.address;
+   
+
+   },
+   response => {
+    console.log("get pharmay  data error2");
+    
+    // this.toastFunction("User registered Faild",false);
+    
+     //  console.log("POST call in error", response);
+    //   this.isBlock=false;
+   },
+   () => {
+    //console.log("get pharmay  data error1");
+      // console.log("The POST observable is now completed.");
+   });
+
+
+  let isNavigateFromInventy =localStorage.getItem("navPharmacy");
+  if(isNavigateFromInventy =="true"){
+ //   this.saveBtn ="Save";
+  }
+ }
 
   onNavigatePharmacyOwner(){
     localStorage.setItem("navOwner","true");

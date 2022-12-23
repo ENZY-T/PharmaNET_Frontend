@@ -123,6 +123,7 @@ export class RegistrationComponent implements OnInit {
 
      
   }
+  
   async onRegisterSuccess(val:any){
     this.addToLocalStorage(val);
     this.toastFunction("User registered successfully",true);
@@ -133,6 +134,7 @@ export class RegistrationComponent implements OnInit {
      this.router.navigateByUrl('/landing');
     }
     else if(val.role =="Pharmacy"){
+     
       this.router.navigateByUrl('/pharma-dash');
      }
   }
