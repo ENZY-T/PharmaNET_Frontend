@@ -1,6 +1,5 @@
 import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language } from 'src/app/models/localization';
 import { AuthorizationsService } from 'src/app/services/authorizations.service';
 
 @Component({
