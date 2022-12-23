@@ -23,6 +23,7 @@ export class LandingNavbarComponent implements OnInit {
    onLogOut(){
     console.log("click");
     this.isLogOrReg =false;
+    localStorage.setItem("Role","Patient");
     localStorage.removeItem("UserName");
     localStorage.removeItem("UserFullName");
    }

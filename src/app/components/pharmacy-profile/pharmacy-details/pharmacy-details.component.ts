@@ -144,7 +144,7 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('email', this.email?.value);
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
-     formData.append('Current_Image', this.selectedFile);
+     formData.append('Current_Image',"testImagePath");
      formData.append('CurrentLatitude',this.latitude);
      formData.append('CurrentLongitude',this.longitude);
 

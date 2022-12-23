@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'pharma-dash', component: PharmacyDashboardComponent,canActivate:[AuthGuard]},
   { path: 'pharmacyOwnerProfile', component: PharmacyOwnerDetailsComponent ,canActivate:[AuthGuard]},
   { path: 'pharmacyDetails', component: PharmacyDetailsComponent,canActivate:[AuthGuard] },
-  { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent,canActivate:[AuthGuard] },
+  { path: 'prescriptionUploadComponent', component: PrescriptionUploadComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'addCard', component: AddCardComponent,canActivate:[AuthGuard] },
   { path: 'allPromotions', component: AllPromotionsComponent,canActivate:[AuthGuard]},

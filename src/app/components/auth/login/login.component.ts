@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.primengConfig.ripple = true;
     this.removeFromLocalStorage();
-
+    localStorage.setItem("Role","Patient")
     let userLogData =localStorage.getItem("UserLog");
     console.log(userLogData);
    

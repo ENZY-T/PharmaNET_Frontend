@@ -55,7 +55,7 @@ export class CartListComponent implements OnInit {
   }
 
   getOwnerInventry() {
-    let pharmacyOwnerEmail =localStorage.getItem("UserName");
+    let pharmacyOwnerEmail =localStorage.getItem("SelectedPharmcyEmail");
    
     var formData: any = new FormData();
     formData.append('email', pharmacyOwnerEmail);
