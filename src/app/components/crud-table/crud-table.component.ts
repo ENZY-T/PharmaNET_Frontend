@@ -100,11 +100,14 @@ export class CrudTableComponent implements OnInit {
     if (this.product.name.trim()) {
       if (this.product.id) {
         //If Edit
+        console.log("PUt");
         this.PutProduct();
       } else {
         // If new product
-        this.product;
+        console.log("post");
+       // this.product;
         this.PostProduct();
+       
       }
 
       this.products = [...this.products];
@@ -144,7 +147,8 @@ export class CrudTableComponent implements OnInit {
     }
   }
 
-  PostProduct(url?: string) {
+  PostProduct() {
+    console.log("this.product");
     console.log(this.product);
     let user =localStorage.getItem("UserName");
 

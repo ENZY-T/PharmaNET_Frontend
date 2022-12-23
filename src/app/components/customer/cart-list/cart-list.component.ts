@@ -19,6 +19,8 @@ export class CartListComponent implements OnInit {
   cart: Cart[] = [];
   cartItem?: any;
   totalBIll?:Number=0;
+  uniPriceValees?:Number=0;
+  oneSetPrice?:Number=0;
   registrationForm = new FormGroup({
 
     itemName : new FormControl(''),
@@ -41,6 +43,7 @@ export class CartListComponent implements OnInit {
   ngOnInit(): void {
 
     this.getOwnerInventry();
+   
 
 
   }
@@ -59,7 +62,11 @@ export class CartListComponent implements OnInit {
       (val) => {
         console.log("inventry received");
         console.log(val);
+        console.log("array length");
+        console.log(val.length);
+       
         this.products =val;
+
  
       },
       response => {
@@ -83,22 +90,33 @@ export class CartListComponent implements OnInit {
 
     
   }
+onFind()
+{
+ var data= this.products.find(x => x.name === "sds");
+ console.log("Find item");
+ console.log(data);
+}
 
   onAdd()
   {
-    
+   // this.onFind();
     var quantityValue =Number( this.quantity?.value);
     var unitPriceValue=100;  
+    var unitPriceValueGet= this.products.find(x => x.name === this.itemName?.value);
+    console.log("Find item");
+    console.log(unitPriceValueGet?.price);
+    this.uniPriceValees =unitPriceValueGet?.price;
+    this.oneSetPrice =quantityValue*Number(this.uniPriceValees) ;
     this.cartItem={
       itemName:this.itemName?.value,
       quantity:this.quantity?.value,
-      unitPrice: unitPriceValue,
-      totalPrice: unitPriceValue*quantityValue
+      unitPrice: unitPriceValueGet?.price,
+      totalPrice: this.oneSetPrice
 
     }
-    console.log(this.itemName?.value);
-    console.log(this.quantity?.value);
-    console.log(this.cartItem);
+  //  console.log(this.itemName?.value);
+   // console.log(this.quantity?.value);
+  //  console.log(this.cartItem);
     this.totalBIll=this.totalBIll+this.cartItem.totalPrice;
     this.cart.push(this.cartItem);
 

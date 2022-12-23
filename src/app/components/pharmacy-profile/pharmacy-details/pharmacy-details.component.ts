@@ -81,6 +81,7 @@ export class PharmacyDetailsComponent implements OnInit {
         this.loadEmail =val.email;
         this.loadNumber =val.contact_Number;
         this.loadAbout =val.about;
+        this.selectedImage =val.image;
       //  console.log(val.address);
         this.isInitiated =true;
 
@@ -131,12 +132,11 @@ export class PharmacyDetailsComponent implements OnInit {
       email:this.email?.value,
       contact_Number:this.contactNumber?.value,
       about:this.aboutCompany?.value,
-      image:this.selectedFile,
+      Current_Image:this.selectedFile,
       currentLatitude:this.latitude,
       currentLongitude:this.longitude
      }
      // set
-
     
      var formData: any = new FormData();
      formData.append('name', this.pharmacyName?.value);
@@ -144,7 +144,7 @@ export class PharmacyDetailsComponent implements OnInit {
      formData.append('email', this.email?.value);
      formData.append('contact_Number', this.contactNumber?.value);
      formData.append('about', this.aboutCompany?.value);
-     formData.append('image', this.selectedFile);
+     formData.append('Current_Image', this.selectedFile);
      formData.append('CurrentLatitude',this.latitude);
      formData.append('CurrentLongitude',this.longitude);
 
@@ -180,14 +180,14 @@ export class PharmacyDetailsComponent implements OnInit {
         });
     }
     else{
-     // console.log("Pharmacy data put");
+      console.log("Pharmacy data put");
       console.log(data);
       this.service.pharmacyDataPut(formData)
       .subscribe(
         (val) => {
             this.isBlock=false;
             this.toastFunction("Pharmacy Details Updated Succefully",true);
-         //   console.log("response put");
+            console.log("response put");
             console.log(val);
             this.onCheckInventy();
         },

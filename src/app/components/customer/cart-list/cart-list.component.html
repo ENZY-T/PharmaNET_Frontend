@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-sm">
                     <div class="col-md-4 ms-2">
-                      <p class="mb-2">${{ product.price }}</p>
+                      <p class="mb-2">Rs.{{ product.price }}</p>
                     </div>
                   </div>
                 </div>
@@ -115,15 +115,10 @@
           </form> 
       </div>
       <div class="col-sm">
-        <h4>Bill</h4>
-       <div class="widths">
-        <input 
-        type="text"
-        class="form-control"
-        placeholder="Amount"
-        required
-        [(ngModel)]="totalBIll"
-      />
+        <h4 style="text-align: center;">Bill</h4>
+       <div >
+        <label><b>Total Bill</b> - Rs.{{totalBIll}}</label>
+       
 
        </div>
         <p-table [value]="cart" [tableStyle]="{'min-width': '35rem'}">

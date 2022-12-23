@@ -90,6 +90,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
         this.ngFirstName =val.fName;
         this.ngLastName =val.lName;
         this.ngEmail =val.email;
+        this.selectedImage =val.profilePictureUrl;
 
         this.loadAddress =val.address;
 
