@@ -29,4 +29,6 @@ export class PromotionsComponent implements OnInit {
   ];
   }
 
+
+  
 }

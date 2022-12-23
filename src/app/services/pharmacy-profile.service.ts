@@ -68,4 +68,10 @@ export class PharmacyProfileService {
     console.log(data);
     return this.http.post(`${this.baseURL}getMedicineIcludePharmacy`, data);
   }
+
+  getNearestPharmacy(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post(`${this.baseURL}search/sort/0`, data);
+  }
+
 }

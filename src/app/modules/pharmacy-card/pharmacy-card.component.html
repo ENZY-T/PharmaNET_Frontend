@@ -54,9 +54,13 @@
               class="p-button-outlined py-1 px-3 btnClass p-button-rounded btnStyle"
             ></button>
             </ng-template>
-            
-            
+            <ng-container *ngIf="item.isSelect == false; else setSelectedw">
+              <label>Minimum Distance :{{item.name}}</label>
 
+            </ng-container>
+            <ng-template #setSelectedw>
+              <label>Distance :{{item.name}}</label>
+            </ng-template>
           </div>
         </div>
       </div>

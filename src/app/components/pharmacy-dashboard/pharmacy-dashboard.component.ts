@@ -100,7 +100,10 @@ export class PharmacyDashboardComponent implements OnInit {
     this.router.navigateByUrl('/customerView');
   }
 
-  
+  onSignOut(){
+    localStorage.removeItem("token");
+    this.router.navigateByUrl('/login');
+  }
   onSubsrcibe()
   {
     let receiverEmail=localStorage.getItem("SelectedPharmcyEmail");

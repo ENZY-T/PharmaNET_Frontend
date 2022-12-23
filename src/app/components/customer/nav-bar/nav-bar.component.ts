@@ -59,7 +59,10 @@ export class NavBarComponent implements OnInit {
     
  }
 
-
+ onSignOut(){
+  localStorage.removeItem("token");
+  this.router.navigateByUrl('/login');
+}
 
  getOwnerInventry() {
   let pharmacyOwnerEmail =localStorage.getItem("UserName");

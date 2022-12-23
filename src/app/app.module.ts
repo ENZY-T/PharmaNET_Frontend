@@ -52,7 +52,6 @@ import { AuthGuard } from './guard/auth.guard';
     DropdownModule,
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     LoadingUiModule,
     ReactiveFormsModule,
     NavigationbarModule,

@@ -47,8 +47,8 @@ export class PharmacyListComponent implements OnInit {
   
   onChange(){
     console.log(this.searchText);
-    let lat=localStorage.getItem("longitude");
-    let lng=localStorage.getItem("latitude");
+    let lat=localStorage.getItem("latitude");
+    let lng=localStorage.getItem("longitude");
     var data;
     if(this.checked){
       this.isLocationBased ="Location Based";
@@ -71,6 +71,27 @@ export class PharmacyListComponent implements OnInit {
       }
       console.log(data);
     }
+
+ 
+    this.service.getNearestPharmacy(data)
+    .subscribe(
+     (val) => {
+         console.log("Nearest Pharmacies");
+         this.pharmacyCard =val;
+         console.log(val);
+         
+
+     },
+     response => {
+      console.log("Nearest Pharmacies error");
+      
+       //  console.log("POST call in error", response);
+        
+     },
+     () => {
+        // console.log("The POST observable is now completed.");
+     });
+
    
 
   }
