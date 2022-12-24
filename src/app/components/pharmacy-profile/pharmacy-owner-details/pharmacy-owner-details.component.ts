@@ -154,7 +154,7 @@ export class PharmacyOwnerDetailsComponent implements OnInit {
     if(this.address?.value){
       ngAddress =this.address?.value;
      }
-     console.log("Image");
+     console.log("Image owner");
     console.log(this.selectedFile);
  
     const formData = new FormData();

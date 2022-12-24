@@ -1,6 +1,13 @@
 <div class="card"  style="width: 14rem;padding-bottom: 20px;" severity="danger" size="xlarge" styleClass="mr-2">
   <div class="card-columns">
-    <img class="card-img-top" src="https://localhost:5001{{item.image}}" alt="Card image cap" />
+    <ng-container *ngIf="item.image.length; else setSelected2">
+      <img class="card-img-top" src="https://localhost:5001{{item.image}}" alt="Card image cap" />
+
+    </ng-container>
+    <ng-template #setSelected2>
+      <img class="card-img-top" src="https://myinvestmentideas.com/wp-content/uploads/2021/05/How-to-start-Pharmacy-Retail-Chain-Business.jpg" alt="Card image cap" />
+
+    </ng-template>
     <div class="card-body">
       <div class="container">
         <div class="row rowStyle">

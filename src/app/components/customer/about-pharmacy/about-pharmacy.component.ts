@@ -31,9 +31,18 @@ export class AboutPharmacyComponent implements OnInit {
          console.log(val.about);
          this.dataName=val.name;
          this.dataAbout=val.about;
-         this.dataImage =val.image;
+        // this.dataImage =val.image;
          console.log("this.dataImage");
-         console.log(this.dataImage);
+         console.log(val.image);
+         if(val.image =="")
+         {
+          this.dataImage ="https://myinvestmentideas.com/wp-content/uploads/2021/05/How-to-start-Pharmacy-Retail-Chain-Business.jpg";
+         }
+         else{
+          this.dataImage ="https://localhost:5001"+val.image;
+         }
+
+         
          console.log("val");
          console.log(val);
 
@@ -47,14 +56,29 @@ export class AboutPharmacyComponent implements OnInit {
      () => {
         // console.log("The POST observable is now completed.");
      });
-
-     this.aboutCompany = [
-      {
-          name:this.dataName,
-          about: this.dataAbout,
-          image:"https://localhost:5001"+ this.dataImage,
-      }
-    ]
+     if(this.dataImage ==""){
+        console.log("empty image");
+        this.aboutCompany = [
+          {
+              name:this.dataName,
+              about: this.dataAbout,
+             
+              image:"https://myinvestmentideas.com/wp-content/uploads/2021/05/How-to-start-Pharmacy-Retail-Chain-Business.jpg",
+          }
+        ]
+     }
+     else{
+      console.log("have");
+      this.aboutCompany = [
+        {
+            name:this.dataName,
+            about: this.dataAbout,
+           
+            image:"https://myinvestmentideas.com/wp-content/uploads/2021/05/How-to-start-Pharmacy-Retail-Chain-Business.jpg",
+        }
+      ]
+     }
+    
     
  }
 
