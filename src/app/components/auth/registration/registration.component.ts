@@ -72,6 +72,12 @@ export class RegistrationComponent implements OnInit {
   onChange(e:any){
     console.log(this.selectedValue);
   }
+  async navigateToSignUp(){
+    //  this.remove();
+    // this.toastFunction("Failed to add",false);
+     this.router.navigateByUrl('/login');
+   }
+ 
 
   onDisplayLocation(location:any){
     console.log("this.latitude");
@@ -126,6 +132,7 @@ export class RegistrationComponent implements OnInit {
   async navigateToHome(){
     //  this.remove();
     // this.toastFunction("Failed to add",false);
+    console.log("Route");
      this.router.navigateByUrl('/landing');
    }
   async onRegisterSuccess(val:any){

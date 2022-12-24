@@ -104,7 +104,6 @@ export class PharmacyListComponent implements OnInit {
   console.log(this.searchText);
   this.onGetPharmacy();
  }
-   
 
    
 

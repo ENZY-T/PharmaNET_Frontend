@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" >
       <div class="col-4">
         <h4 style="text-align: center;">Search Products</h4>
         <p-orderList
@@ -16,7 +16,7 @@
       >
         <ng-template let-product pTemplate="item">
           <div class="container">
-            <div class="row">
+            <div class="row" (click)="onClick(product)">
               <div class="col-sm">
                 <div class="col-md-3 image-container imageStyle">
                   <img

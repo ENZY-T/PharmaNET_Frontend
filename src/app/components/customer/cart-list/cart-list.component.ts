@@ -92,6 +92,13 @@ export class CartListComponent implements OnInit {
 
     
   }
+
+  onClick(product:any){
+    console.log("Cliked row");
+    console.log(product);
+    this.itemNameGet =product.name;
+
+  }
 onFind()
 {
  var data= this.products.find(x => x.name === "sds");
