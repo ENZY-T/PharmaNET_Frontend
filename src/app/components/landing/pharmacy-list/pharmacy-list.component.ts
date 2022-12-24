@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class PharmacyListComponent implements OnInit {
  // pharmacyCard: pharmacyCard[] = [];
   pharmacyCard: pharmacyCardsData[] = [];
-  searchText?:String;
+  searchText:String="";
 
   checked: boolean = false;
   isLocationBased: String = "Location Not Based";
@@ -46,6 +46,7 @@ export class PharmacyListComponent implements OnInit {
   }
   
   onChange(){
+   
     console.log(this.searchText);
     let lat=localStorage.getItem("latitude");
     let lng=localStorage.getItem("longitude");
@@ -72,25 +73,38 @@ export class PharmacyListComponent implements OnInit {
       console.log(data);
     }
 
- 
-    this.service.getNearestPharmacy(data)
-    .subscribe(
-     (val) => {
-         console.log("Nearest Pharmacies");
-         this.pharmacyCard =val;
-         console.log(val);
-         
+ if(this.searchText !=""){
+  console.log("not empty val");
+  console.log(this.searchText);
+  this.service.getNearestPharmacy(data)
+  .subscribe(
+   (val) => {
+       console.log("Nearest Pharmacies");
+       this.pharmacyCard =[];
+       this.pharmacyCard =val;
+       console.log(val);
+       
 
-     },
-     response => {
-      console.log("Nearest Pharmacies error");
+   },
+   response => {
+    if(response.status == 404){
+      this.pharmacyCard =[];
+    }
+    console.log("Nearest Pharmacies error");
+    
+     //  console.log("POST call in error", response);
       
-       //  console.log("POST call in error", response);
-        
-     },
-     () => {
-        // console.log("The POST observable is now completed.");
-     });
+   },
+   () => {
+      // console.log("The POST observable is now completed.");
+   });
+ }
+ else{
+  console.log("empty val");
+  console.log(this.searchText);
+  this.onGetPharmacy();
+ }
+   
 
    
 
